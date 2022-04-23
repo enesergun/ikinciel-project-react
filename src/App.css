@@ -36,7 +36,9 @@ body {
 }
 
 .formValidation {    
-    width: calc(100% - 49%);    
+    width: calc(100% - 49%);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 0 80px;
 }
 
 .header {
@@ -44,7 +46,7 @@ body {
     margin: 50px 0;
 }
 
-.form {
+.formContainer {
     /* width: 50%; */
     margin: 0 auto;
 }
@@ -57,18 +59,34 @@ body {
 label {
     font-size: 20px;
 }
+.error {
+    color: red;
+    border: 2px solid #F77474;
+    background-color: #FFF2F2;
+}
+
 input[type="text"],
 input[type="password"] {
     border: 2px solid #8E8E8E;
     height: 40px;
-    background-color: transparent;
+    background-color: #F4F4F4;
     border-radius: 4px;  
     font-size: 16px;
     line-height: 20.2px;
     letter-spacing: 0.15px;
-    color: #000;
+    color: #99A0A7;
     outline: none;
     width: 100%
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background-color: #F0F8FF;
+    color: #3E3E3E;
+    border: 2px solid #4B9CE2;
+}
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    padding-left: 10px;
 }
 .registerButton {
     height: 40px;

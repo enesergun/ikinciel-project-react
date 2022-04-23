@@ -22,7 +22,7 @@ function Register() {
                    <h1>Üye Ol</h1>
                    <p>Fırsatlardan yararlanmak için üye ol!</p>
                </div>
-                <div className="form">
+                <div className="formContainer">
                     <Formik 
                     initialValues={{                                                 
                         email: '',                        
@@ -34,14 +34,15 @@ function Register() {
                             <form>
                                 <div className="formGroup">
                                     <label>Email</label>
-                                    <input 
+                                    <input
+                                        className={touched.email && errors.email ? 'error' : ""} 
                                         type="text"
                                         name="email"
-                                        placeholder='Eposta adresinizi giriniz'
+                                        placeholder='Example@example.com'
                                         value={values.email}
                                         onChange={handleChange}
                                         onBlur={handleBlur}/>
-                                    <span className="error">{touched.email && errors.email}</span>
+                                    {/* <span className="error">{touched.email && errors.email}</span> */}
                                 </div>
 
                                 <div className="formGroup">
@@ -53,7 +54,7 @@ function Register() {
                                         value={values.password}
                                         onChange={handleChange}
                                         onBlur={handleBlur}/>
-                                    <span className="error">{touched.password && errors.password}</span>
+                                    {/* <span className="error">{touched.password && errors.password}</span> */}
                                 </div>
 
                                 <div className="formGroup">
@@ -62,6 +63,9 @@ function Register() {
                             </form>   
                         }
                     </Formik>
+                </div>
+                <div>
+                    <p>Hesabın var mı? <a>Giriş Yap</a></p>
                 </div>
             </div>
         </div>
