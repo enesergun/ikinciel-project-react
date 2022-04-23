@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: 'Nunito', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* REGISTER PAGE START */
+
+.registerPage {
+    overflow: hidden;
+    display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.leftSide {
+    width: 43.5%;   
+    height: 100vh;     
+}
+.registerGirl {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;    
 }
 
-.App-link {
-  color: #61dafb;
+.rightSide {
+    width: calc(100% - 43.5%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #525252;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.formValidation {    
+    width: calc(100% - 49%);    
 }
+
+.header {
+    text-align: center;
+}
+
+.form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-size: 20px;
+}
+input[type="text"],
+input[type="password"] {
+    border: 2px solid #8E8E8E;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 4px;  
+    font-size: 16px;
+    line-height: 20.2px;
+    letter-spacing: 0.15px;
+    color: #000;
+    outline: none;
+    width: 100%
+}
+
+/* REGISTER PAGE END */
