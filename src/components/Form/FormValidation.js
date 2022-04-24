@@ -2,8 +2,9 @@ import React from 'react'
 import { Formik } from 'formik';
 import { RegisterSchema } from '../../constants/yupSchema'
 import FormButton from '../ButtonGroup/FormButton'
+import {Link} from 'react-router-dom'
 
-const FormValidation = ({ComponentType, text, isAlready, Route}) => {
+const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath}) => {
     console.log(ComponentType);
   return (
     <div className="formValidation">
@@ -45,14 +46,13 @@ const FormValidation = ({ComponentType, text, isAlready, Route}) => {
                                         onBlur={handleBlur}/>                                    
                                 </div>
                                 
-                                <FormButton handleSubmit={handleSubmit} content={ComponentType}/>
-                                
+                                <FormButton handleSubmit={handleSubmit} content={ComponentType}/>                                
                             </form>   
                         }
                     </Formik>
                 </div>
                 <div className='alreadyAccount'> 
-                    <p>{isAlready} <a href=""> {Route} </a></p>
+                    <p>{isAlready} <Link to={`/${RoutePath}`}>{Route}</Link></p>
                 </div>
             </div>
   )

@@ -21,7 +21,8 @@ function SignIn() {
                 ComponentType={'Giriş Yap'} 
                 text={'Fırsatlardan yararlanmak için giriş yap!'} 
                 isAlready={'Hesabın yok mu?'} 
-                Route={'Üye ol'}/>
+                Route={'Üye ol'}
+                RoutePath={'register'}/>
         </div>
     </div>
   )

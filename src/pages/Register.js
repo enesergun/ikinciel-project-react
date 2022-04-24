@@ -21,7 +21,8 @@ function Register() {
                 ComponentType={'Üye ol'} 
                 text={'Fırsatlardan yararlanmak için üye ol!'} 
                 isAlready={'Hesabın var mı?'} 
-                Route={'Giriş Yap'}/>
+                Route={'Giriş Yap'}
+                RoutePath={'signin'}/>
         </div>
     </div>
   )
