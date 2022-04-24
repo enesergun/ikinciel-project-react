@@ -59,11 +59,6 @@ body {
 label {
     font-size: 20px;
 }
-.error {
-    color: red;
-    border: 2px solid #F77474;
-    background-color: #FFF2F2;
-}
 
 input[type="text"],
 input[type="password"] {
@@ -77,6 +72,13 @@ input[type="password"] {
     color: #99A0A7;
     outline: none;
     width: 100%
+}
+
+#errorEmail,
+#errorPassword {
+    color: red;
+    border: 2px solid #F77474;
+    background-color: #FFF2F2;
 }
 input[type="text"]:focus,
 input[type="password"]:focus {
@@ -97,6 +99,11 @@ input[type="password"]::placeholder {
 }
 .formGroup:nth-child(3) {
     margin-top: 30px;
+}
+
+.alreadyAccount {
+    padding: 20px;
+    text-align: center;
 }
 
 /* REGISTER PAGE END */

@@ -35,7 +35,7 @@ function Register() {
                                 <div className="formGroup">
                                     <label>Email</label>
                                     <input
-                                        className={touched.email && errors.email ? 'error' : ""} 
+                                        id={touched.email && errors.email ? `errorEmail` : ""}                                        
                                         type="text"
                                         name="email"
                                         placeholder='Example@example.com'
@@ -48,6 +48,7 @@ function Register() {
                                 <div className="formGroup">
                                     <label>Şifre</label>
                                     <input
+                                        id={touched.password && errors.password ? `errorPassword` : ""}                                        
                                         type="password"
                                         name="password"
                                         placeholder='Lütfen Şifrenizi Giriniz'
@@ -64,8 +65,8 @@ function Register() {
                         }
                     </Formik>
                 </div>
-                <div>
-                    <p>Hesabın var mı? <a>Giriş Yap</a></p>
+                <div className='alreadyAccount'> 
+                    <p>Hesabın var mı? <a href=""> Giriş Yap</a></p>
                 </div>
             </div>
         </div>
