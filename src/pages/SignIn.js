@@ -6,7 +6,7 @@ import brandLogo from '../assets/brandLogo.png'
 import FormValidation from '../components/Form/FormValidation'
 
 
-function Register() {
+function SignIn() {
   return (
     <div className="registerPage">
         <div className="leftSide">
@@ -18,13 +18,13 @@ function Register() {
             </div>
             {/* üye ol, yararlanmak için, buton üye ol */}
             <FormValidation 
-                ComponentType={'Üye ol'} 
-                text={'Fırsatlardan yararlanmak için üye ol!'} 
-                isAlready={'Hesabın var mı?'} 
-                Route={'Giriş Yap'}/>
+                ComponentType={'Giriş Yap'} 
+                text={'Fırsatlardan yararlanmak için giriş yap!'} 
+                isAlready={'Hesabın yok mu?'} 
+                Route={'Üye ol'}/>
         </div>
     </div>
   )
 }
 
-export default Register
+export default SignIn
