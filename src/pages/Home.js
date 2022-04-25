@@ -1,8 +1,11 @@
 import React from 'react'
+import { useAuth } from '../context/AuthContext'
 
 function Home() {
+  const {deneme} = useAuth();
+  
   return (
-    <div>Home</div>
+    <div onClick={deneme}>Home</div>
   )
 }
 

@@ -4,11 +4,21 @@ import RegisterGirl from '../assets/RegisterGirl.png'
 import brandLogo from '../assets/brandLogo.png'
 
 import FormValidation from '../components/Form/FormValidation'
+import { useAuth } from '../context/AuthContext'
 
+import { ToastContainer } from 'react-toastify';
+import {Navigate} from 'react-router-dom'
 
 function SignIn() {
+
+  const { loggenIn, login} = useAuth();
+  
   return (
-    <div className="registerPage">
+    <>
+      {
+      loggenIn ? <Navigate replace to="/home" /> 
+      :
+      <div className="registerPage">
         <div className="leftSide">
             <img src={RegisterGirl} alt="registerGirl" className='registerGirl' />
         </div>
@@ -22,9 +32,13 @@ function SignIn() {
                 text={'Fırsatlardan yararlanmak için giriş yap!'} 
                 isAlready={'Hesabın yok mu?'} 
                 Route={'Üye ol'}
-                RoutePath={'register'}/>
+                RoutePath={'register'}
+                Authentication={login}/>
         </div>
+        <ToastContainer hideProgressBar={true}/>
     </div>
+    }
+    </>    
   )
 }
 

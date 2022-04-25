@@ -6,9 +6,10 @@ import SignIn from "../pages/SignIn";
 
 function Router() {
 
+
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="register" element={<Register />} />
       <Route path="signin" element={<SignIn />} />
     </Routes>

@@ -4,8 +4,8 @@ import { RegisterSchema } from '../../constants/yupSchema'
 import FormButton from '../ButtonGroup/FormButton'
 import {Link} from 'react-router-dom'
 
-const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath}) => {
-    console.log(ComponentType);
+const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath, Authentication}) => {
+    
   return (
     <div className="formValidation">
                <div className="header">
@@ -17,7 +17,10 @@ const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath}) => {
                     initialValues={{                                                 
                         email: '',                        
                         password: '',                    
-                        }} 
+                        }}
+                    onSubmit={auth => {
+                        Authentication(auth);
+                    }} 
                     validationSchema={RegisterSchema}>
                         {
                          ({ values, handleChange, handleSubmit, errors, touched, handleBlur  }) => 
