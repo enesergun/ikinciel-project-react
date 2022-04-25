@@ -9,7 +9,7 @@ const AuthContext = React.createContext();
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    const [loggenIn, setLoggenIn] = useState(false);
+    const [loggenIn, setLoggenIn] = useState(() => localStorage.getItem('loggedIn'));
     const [token] = useState(document.cookie.split("=")[1])
     
     
@@ -29,6 +29,7 @@ const AuthProvider = ({children}) => {
             document.cookie = `name=${response.data.jwt}`
             setUser(response.data.user);
             setLoggenIn(true);
+            localStorage.setItem('loggedIn', true);
         })
         .catch((error) => {            
             console.log("An error occured", error.response);
@@ -43,7 +44,11 @@ const AuthProvider = ({children}) => {
         }).then((response) => {
             console.log("Giriş başarılı");
             console.log("token", response.data.jwt);
-            setLoggenIn(true);
+            document.cookie = `name=${response.data.jwt}`;
+            localStorage.setItem('loggedIn', true);
+            setTimeout(() => {
+                setLoggenIn(true);
+              }, 3000);            
             SuccessPopUp('giriş Başarılı')
         }).catch((error) => {
             console.log("error", error);

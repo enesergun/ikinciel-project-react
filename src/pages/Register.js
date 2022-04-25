@@ -23,7 +23,7 @@ function Register() {
     <>
     {
       loggenIn 
-      ? <Navigate replace to="/home" /> 
+      ? <Navigate replace to="/index" /> 
       :
       <div className="registerPage">
       <div className="leftSide">
@@ -39,7 +39,7 @@ function Register() {
               text={'Fırsatlardan yararlanmak için üye ol!'} 
               isAlready={'Hesabın var mı?'} 
               Route={'Giriş Yap'}
-              RoutePath={'signin'}
+              RoutePath={'login'}
               Authentication={register}/>
       </div>
       <ToastContainer hideProgressBar={true}/>

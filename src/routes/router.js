@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from '../pages/Home'
+import Index from '../pages/Index'
 import Register from '../pages/Register'
 import SignIn from "../pages/SignIn";
 
@@ -9,9 +9,9 @@ function Router() {
 
   return (
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/index" element={<Index />} />
       <Route path="register" element={<Register />} />
-      <Route path="signin" element={<SignIn />} />
+      <Route path="login" element={<SignIn />} />
     </Routes>
   )
 }

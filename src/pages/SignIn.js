@@ -16,7 +16,7 @@ function SignIn() {
   return (
     <>
       {
-      loggenIn ? <Navigate replace to="/home" /> 
+      loggenIn ? <Navigate replace to="/index" /> 
       :
       <div className="registerPage">
         <div className="leftSide">
