@@ -7,6 +7,7 @@
 
 body {
     font-family: 'Nunito', sans-serif;
+    background-color: #F2F2F2;
 }
 
 /* REGISTER PAGE START */
@@ -26,7 +27,6 @@ body {
     width: 100%;
     height: 100%;    
 }
-
 .rightSide {
     width: calc(100% - 43.5%);
     display: flex;
@@ -35,27 +35,22 @@ body {
     justify-content: center;
     color: #525252;
 }
-
 .formValidation {    
     width: calc(100% - 49%);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding: 0 60px;
 }
-
 .brandLogo {
     margin-bottom: 30px
 }
-
 .header {
     text-align: center;
     margin: 55px 0;
 }
-
 .formContainer {
     /* width: 50%; */
     margin: 0 auto;
 }
-
 .formGroup {
     display: flex;
     flex-direction: column;
@@ -64,7 +59,6 @@ body {
 label {
     font-size: 20px;
 }
-
 input[type="text"],
 input[type="password"] {
     border: 2px solid #8E8E8E;
@@ -78,7 +72,6 @@ input[type="password"] {
     outline: none;
     width: 100%
 }
-
 #errorEmail,
 #errorPassword {
     color: red;
@@ -105,7 +98,6 @@ input[type="password"]::placeholder {
 .formGroup:nth-child(3) {
     margin-top: 30px;
 }
-
 .alreadyAccount {
     padding: 30px 0;
     text-align: center;
@@ -116,17 +108,11 @@ input[type="password"]::placeholder {
 
 /* INDEX PAGE START */
 
-.indexPage {
-    /* max-width: 80%;
-    margin: 0 auto; */
-}
-
-
 .navbar {
     padding: 10px 0;
-    background: beige;   
     position: fixed;     
     width: 100%;
+    background-color: white;
 }
 .navbarWrapper {
     display: flex;
@@ -149,7 +135,6 @@ input[type="password"]::placeholder {
 .addProductButton {
     margin-right: 15px;
 }
-
 .navbarWrapper,
 .banner {
     max-width: 80%;
@@ -161,6 +146,23 @@ input[type="password"]::placeholder {
     margin-top: 80px;
 
 }
-
-
+.categories {
+    display: flex;
+    margin: 0 auto;
+    max-width: 80%;
+    justify-content: space-between;
+}
+.categoryName {
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #525252;
+    cursor: pointer;
+}
+.underline {
+    width: 80%;
+    margin: 8px auto;
+    height: 2px;
+    background-color: #E0E0E0;
+}
 /* INDEX PAGE END */
