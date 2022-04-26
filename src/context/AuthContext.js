@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import axios, { URL } from "../constants/axios";
 
@@ -9,7 +9,7 @@ const AuthContext = React.createContext();
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    const [loggenIn, setLoggenIn] = useState(() => localStorage.getItem('loggedIn'));
+    const [loggenIn, setLoggenIn] = useState(() => sessionStorage.getItem('loggedIn'));
     const [token] = useState(document.cookie.split("=")[1])
     
     
@@ -29,7 +29,7 @@ const AuthProvider = ({children}) => {
             document.cookie = `name=${response.data.jwt}`
             setUser(response.data.user);
             setLoggenIn(true);
-            localStorage.setItem('loggedIn', true);
+            sessionStorage.setItem('loggedIn', true);
         })
         .catch((error) => {            
             console.log("An error occured", error.response);
@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
             console.log("Giriş başarılı");
             console.log("token", response.data.jwt);
             document.cookie = `name=${response.data.jwt}`;
-            localStorage.setItem('loggedIn', true);
+            sessionStorage.setItem('loggedIn', true);
             setTimeout(() => {
                 setLoggenIn(true);
               }, 3000);            

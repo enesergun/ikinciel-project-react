@@ -112,3 +112,55 @@ input[type="password"]::placeholder {
 }
 
 /* REGISTER PAGE END */
+
+
+/* INDEX PAGE START */
+
+.indexPage {
+    /* max-width: 80%;
+    margin: 0 auto; */
+}
+
+
+.navbar {
+    padding: 10px 0;
+    background: beige;   
+    position: fixed;     
+    width: 100%;
+}
+.navbarWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.buttons {
+    display: flex;
+}
+.navbarButton {
+    background-color: #F0F8FF;
+    border: none;    
+    border-radius: 8px;
+    width: 124px;
+    height: 40px;
+    color: #4B9CE2;
+    font-size: 15px;
+    font-weight: 700;
+}
+.addProductButton {
+    margin-right: 15px;
+}
+
+.navbarWrapper,
+.banner {
+    max-width: 80%;
+    margin: 0 auto;
+}
+.banner img {
+    width: 100%;
+    object-fit: cover;
+    margin-top: 80px;
+
+}
+
+
+/* INDEX PAGE END */
