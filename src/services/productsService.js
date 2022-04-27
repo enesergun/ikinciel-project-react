@@ -18,4 +18,23 @@ export const getAllProduct = async () => {
     } catch (error) {
       console.log(error);
     }
+}
+
+export const getAllCategory = async () => {
+  try {
+    const res = await axios.get(URL.categories); 
+
+    if(res.statusText === 'OK') {
+                
+      return res.data;
+              
+    }
+    else {
+      return {
+        error: 'Data gelmedi'
+      }
+    }
+  } catch (error) {
+    console.log(error);
   }
+}
