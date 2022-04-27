@@ -7,7 +7,6 @@ export const URL = {
   categories: '/categories',
   register: '/auth/local/register',  
   login: '/auth/local',
-  users: '/users',
-  usersMe:'/users/me',
-  usersPermissionsRoles: '/users-permissions/roles',
+  products: '/products',
+  usersMe:'/users/me',  
 }

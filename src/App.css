@@ -151,6 +151,8 @@ input[type="password"]::placeholder {
     margin: 0 auto;
     max-width: 80%;
     justify-content: space-between;
+    /* overflow: scroll; */
+    flex-wrap: wrap;
 }
 .categoryName {
     font-weight: 600;
@@ -165,4 +167,38 @@ input[type="password"]::placeholder {
     height: 2px;
     background-color: #E0E0E0;
 }
+.products {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap; 
+    justify-content: space-between  ;
+
+}
+.product {
+    width: 17%;
+    margin: 10px 6px;
+    /* height: 200px; */
+    background-color: white;
+    padding: 10px;   
+}
+.productImage  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.productImage img {
+    width: 100%;
+}
+.productFeatures {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+.productPrice {
+    font-size: 15px;
+    margin-top: 20px;
+}
+
 /* INDEX PAGE END */
