@@ -44,8 +44,16 @@ function Index() {
 }; */
 
   const getData = async () => {
-    const res = await getAllProduct(start);
-    setProducts(res)
+    const PRODUCTS = JSON.parse(localStorage.getItem('products'));
+
+    if (PRODUCTS) {
+      setProducts(PRODUCTS)
+    } else {
+      const res = await getAllProduct(start);
+      setProducts(res)
+      localStorage.setItem('products', JSON.stringify(res))
+
+  }
 }
 
 const getCategory = async () => {
