@@ -25,7 +25,7 @@ const ProductCard = ({index, image, brand, productColor, productPrice, productID
   return (
     <div className="product" key={index}>
       <LinkStyled>
-        <Link to={`productdetail/${productID}`}>
+        <Link to={`/productdetail/${productID}`}>
           <div className="productImage">
               <img src={image} alt="" />
           </div>        

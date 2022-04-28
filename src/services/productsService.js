@@ -39,3 +39,22 @@ export const getAllCategory = async () => {
     console.log(error);
   }
 }
+
+export const getProductDetail = async (id) => {
+  try {
+    const res = await axios.get(URL.products + '/' + id ); 
+
+    if(res.statusText === 'OK') {
+                
+      return res.data;
+              
+    }
+    else {
+      return {
+        error: 'Category error'
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
