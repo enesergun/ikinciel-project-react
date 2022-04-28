@@ -5,6 +5,7 @@ import Index from '../pages/Index'
 import Register from '../pages/Register'
 import SignIn from "../pages/SignIn";
 import Account from "../pages/Account";
+import ProductDetail from "../pages/ProductDetail";
 
 
 function Router() {
@@ -17,7 +18,7 @@ function Router() {
       <Route path="login" element={<SignIn />} />
       <Route path="addproduct" element={<AddProduct />} />
       <Route path="account" element={<Account />} />
-
+      <Route path="productdetail/id" element={<ProductDetail />} />
     </Routes>
   )
 }

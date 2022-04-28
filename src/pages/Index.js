@@ -1,16 +1,17 @@
 import {useState, useEffect} from 'react'
-import brandLogoIndex from '../assets/brandLogoIndex.svg'
-/* import addPlus from '../assets/addPlus.svg' */
+
 import Banner from '../assets/Banner1.png';
 
 import {getAllProduct, getAllCategory } from '../services/productsService';
-import {baseURL} from '../constants/axios'
+import {baseURL} from '../constants/axios';
+import {Link} from 'react-router-dom';
 
 import ProductCard from '../components/ProductCard/ProductCard'
 import Categories from '../components/Categories/Categories';
 import Navbar from '../components/Navbar/Navbar';
 
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/AuthContext';
+
 
 
 /*  */
@@ -105,11 +106,13 @@ console.log(selectedCategory);
           ?
           products.map((product, index) => (
 
-            <ProductCard index={index} image={baseURL + product.image.url} brand={product.brand} productColor={product.color} productPrice={product.price}/>             
+            
+              <ProductCard index={index} image={baseURL + product.image.url} brand={product.brand} productColor={product.color} productPrice={product.price} productID={product.id}/>
+            
            
             )) 
           :
-          <div>Seçili Ürün Bulunamadı</div>
+          <div>Seçili Kategoride Ürün Bulunmamaktadır.</div>
         }                
       </div>
     </div>
