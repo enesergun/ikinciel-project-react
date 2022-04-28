@@ -3,7 +3,7 @@ import brandLogoIndex from '../assets/brandLogoIndex.svg'
 /* import addPlus from '../assets/addPlus.svg' */
 import Banner from '../assets/Banner1.png';
 
-import {getAllProduct } from '../services/productsService';
+import {getAllProduct, getAllCategory } from '../services/productsService';
 import {baseURL} from '../constants/axios'
 
 import ProductCard from '../components/ProductCard/ProductCard'
@@ -16,17 +16,20 @@ import { useAuth } from '../context/AuthContext'
 /*  */
 function Index() {
 
-  const [categories] = useState(['Hepsi', 'Pantolon', 'Gömlek', 'Tişört', 'Şort', 'Sweathirt', 'Kazak', 'Polar', 'Mont', 'Abiye', 'Ayakkabı', 'Çanta', 'Triko', 'Diğer']);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('Hepsi')
   const [products, setProducts] = useState([]);
   const [start, setStart] = useState(0);
-
   const {loggenIn} = useAuth();
 
-  console.log(loggenIn);
   useEffect(() => {
     getData();
-    /* getCategory(); */
+    getCategory();
   }, []);
+
+  useEffect(() => {
+    getCategoryProduct(selectedCategory)
+  }, [selectedCategory])
 
   
  /*  const handleScroll = () => {
@@ -45,13 +48,25 @@ function Index() {
     setProducts(res)
 }
 
-/* const getCategory = async () => {
+const getCategory = async () => {
   const res = await getAllCategory();
-  setCategory(res)
-} */
+  console.log(res);
+  setCategories(res);
+}
 
+const getCategoryProduct = (category) => {
+  if (category === "Hepsi") {
+    getData();
+  }
+  categories.map((element) => {
+    if (element.name === category) {
+      setProducts(element.products)
+    }
+  })
+}
 
-console.log(products);
+console.log(selectedCategory);
+
   
   return (
     <div className="indexPage">
@@ -65,12 +80,15 @@ console.log(products);
       </div>
 
       <div className="categories">
+        <div className='categoryName' onClick={(e) => setSelectedCategory(e.target.textContent)}>Hepsi</div>
         {
           categories.map((category, index) => (
-            <Categories category={category} />            
+            <div className='categoryName' onClick={(e) => setSelectedCategory(e.target.textContent)}>{category.name}</div>          
           ))
         }
+        <div className='categoryName' onClick={(e) => setSelectedCategory(e.target.textContent)}>Diğer</div>
       </div>
+
       <div className="underline"></div>
 
       <div className="products">

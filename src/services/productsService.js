@@ -31,7 +31,7 @@ export const getAllCategory = async () => {
     }
     else {
       return {
-        error: 'Data gelmedi'
+        error: 'Category error'
       }
     }
   } catch (error) {
