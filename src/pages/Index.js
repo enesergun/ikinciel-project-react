@@ -88,13 +88,13 @@ console.log(selectedCategory);
       </div>
 
       <div className="categories">
-        <div className='categoryName' onClick={(e) => setSelectedCategory(e.target.textContent)}>Hepsi</div>
+        <div className={selectedCategory === 'Hepsi' ? 'categoryName activeCategory' : 'categoryName'} onClick={(e) => setSelectedCategory(e.target.textContent)}>Hepsi</div>
         {
           categories.map((category, index) => (
-            <div className='categoryName' onClick={(e) => setSelectedCategory(e.target.textContent)}>{category.name}</div>          
+            <div className={selectedCategory === category.name ? 'categoryName activeCategory' : 'categoryName'} onClick={(e) => setSelectedCategory(e.target.textContent)}>{category.name}</div>          
           ))
         }
-        <div className='categoryName' onClick={(e) => setSelectedCategory(e.target.textContent)}>Diğer</div>
+        <div className={selectedCategory === 'Diğer' ? 'categoryName activeCategory' : 'categoryName'} onClick={(e) => setSelectedCategory(e.target.textContent)}>Diğer</div>
       </div>
 
       <div className="underline"></div>
