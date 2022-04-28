@@ -93,11 +93,15 @@ console.log(selectedCategory);
 
       <div className="products">
         {
+          products.length > 0 
+          ?
           products.map((product, index) => (
 
-           <ProductCard index={index} image={baseURL + product.image.url} brand={product.brand} productColor={product.color} productPrice={product.price}/>             
-          
-           ))
+            <ProductCard index={index} image={baseURL + product.image.url} brand={product.brand} productColor={product.color} productPrice={product.price}/>             
+           
+            )) 
+          :
+          <div>Seçili Ürün Bulunamadı</div>
         }                
       </div>
     </div>
