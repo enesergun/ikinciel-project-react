@@ -1,19 +1,23 @@
 import axios, { URL, baseURL } from "../constants/axios";
 
 export const getAllProduct = async () => {
-    /* https://dummyjson.com/products */
     try {
-        
-      const res = await axios.get(URL.products ); /* + '?_limit=5 */
+      const PRODUCTS = JSON.parse(localStorage.getItem('products'));
+
+      if (PRODUCTS) {
+        return PRODUCTS
+      } else {
+        const res = await axios.get(URL.products ); /* + '?_limit=5 */
   
-      if(res.statusText === 'OK') {
+        if(res.statusText === 'OK') {
+          localStorage.setItem('products', JSON.stringify(res.data))                  
+          return res.data;
                   
-        return res.data;
-                
-      }
-      else {
-        return {
-          error: 'Data gelmedi'
+        }
+        else {
+          return {
+            error: 'Data gelmedi'
+          }
         }
       }
     } catch (error) {
