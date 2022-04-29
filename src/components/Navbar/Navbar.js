@@ -11,7 +11,8 @@ const Navbar = ({loggenIn}) => {
   return (
     <div className="navbarWrapper">        
         <div className="brand">
-            <img src={brandLogoIndex} alt="" />
+            <Link to="/index"><img src={brandLogoIndex} alt="" /></Link>
+            
         </div>
           
         <div className="buttons">

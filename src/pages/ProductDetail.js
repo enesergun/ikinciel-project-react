@@ -7,6 +7,9 @@ import Navbar from '../components/Navbar/Navbar';
 import { getProductDetail } from '../services/productsService';
 import { baseURL } from '../constants/axios';
 
+/* import '../../node_modules/uikit/dist/css/uikit.css';
+import '../../node_modules/uikit/dist/js/uikit' */
+
 function ProductDetail() {    
   const {loggenIn} = useAuth();
   const { id } = useParams();
@@ -60,8 +63,9 @@ function ProductDetail() {
                     <h1>{product.price} TL</h1>
                 </div>
 
-                <div className="buttons detailButtons">
+                <div className="buttons detailButtons">                        
                     <button className='buyButton'>Satın Al</button>
+
                     <button className='offerButton'>Teklif Ver</button>
                 </div>
 
