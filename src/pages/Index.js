@@ -4,10 +4,8 @@ import Banner from '../assets/Banner1.png';
 
 import {getAllProduct, getAllCategory } from '../services/productsService';
 import {baseURL} from '../constants/axios';
-import {Link} from 'react-router-dom';
 
 import ProductCard from '../components/ProductCard/ProductCard'
-import Categories from '../components/Categories/Categories';
 import Navbar from '../components/Navbar/Navbar';
 
 import { useAuth } from '../context/AuthContext';
@@ -25,45 +23,40 @@ function Index() {
 
   useEffect(() => {
     getData();
-    getCategory();
     window.addEventListener('scroll', handleScroll)
   }, [start]);
 
   useEffect(() => {
     getCategoryProduct(selectedCategory)
-  }, [selectedCategory])
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    getCategory();    
+  }, [])
+  
 
   
   const handleScroll = () => {
     let userScrollHeight = window.innerHeight + window.scrollY;
     let windowBottomHeight = document.documentElement.offsetHeight;
 
-    if (userScrollHeight >= windowBottomHeight - 0.5) {                  
+    if (userScrollHeight >= windowBottomHeight - 0.4) {                  
       setStart(start + 1 );
       }
 };
 
   const getData = async () => {
-    const newProducts = [...products];    
-    console.log("eski veriler", newProducts);
-    const res = await getAllProduct(start);
-    console.log("res", res);
+    const newProducts = [...products];        
+    const res = await getAllProduct(start);    
 
     if (newProducts.length > 0) {
       let newArr = newProducts.concat(res);
-      console.log("newProducts", newProducts);
       setProducts(newArr);
     } else {
       setProducts(res);
     }
-
-    /* newProducts.concat(res); */
-    /* console.log("newProducts", newProducts); */
-
-    /* setProducts(res); */
 }
 
-console.log(start);
 
 const getCategory = async () => {
   const res = await getAllCategory();  
