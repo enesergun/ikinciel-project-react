@@ -1,25 +1,19 @@
 import axios, { URL, baseURL } from "../constants/axios";
 
-export const getAllProduct = async () => {
-    try {
-      const PRODUCTS = JSON.parse(localStorage.getItem('products'));
-
-      if (PRODUCTS) {
-        return PRODUCTS
-      } else {
-        const res = await axios.get(URL.products ); /* + '?_limit=5 */
+export const getAllProduct = async (start) => {
+    try {     
+        const res = await axios.get(URL.products + '?_start=' +  start * 5 + '&_limit=5' ); /* + '?_limit=5 */
   
-        if(res.statusText === 'OK') {
-          localStorage.setItem('products', JSON.stringify(res.data))                  
+        if(res.statusText === 'OK') {                         
           return res.data;
                   
         }
         else {
           return {
-            error: 'Data gelmedi'
+            error: 'Data error'
           }
         }
-      }
+      /* } */
     } catch (error) {
       console.log(error);
     }

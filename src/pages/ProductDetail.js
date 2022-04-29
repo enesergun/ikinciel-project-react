@@ -24,9 +24,7 @@ function ProductDetail() {
     setProduct(res);
   } 
 
-  console.log(product.name);
-
-  /* console.log(product.image.formats.medium.url); */
+  /* console.log(product.image.url); */
 
   return (
     <div className='ProductDetailPage'>

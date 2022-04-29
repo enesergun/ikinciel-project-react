@@ -26,32 +26,47 @@ function Index() {
   useEffect(() => {
     getData();
     getCategory();
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+  }, [start]);
 
   useEffect(() => {
     getCategoryProduct(selectedCategory)
   }, [selectedCategory])
 
   
- /*  const handleScroll = () => {
+  const handleScroll = () => {
     let userScrollHeight = window.innerHeight + window.scrollY;
     let windowBottomHeight = document.documentElement.offsetHeight;
 
-    if (userScrollHeight >= windowBottomHeight - 1) {      
-      console.log("sondayım");
-      console.log("start", start );
+    if (userScrollHeight >= windowBottomHeight - 0.5) {                  
       setStart(start + 1 );
       }
-}; */
+};
 
   const getData = async () => {
+    const newProducts = [...products];    
+    console.log("eski veriler", newProducts);
     const res = await getAllProduct(start);
-    setProducts(res)
+    console.log("res", res);
+
+    if (newProducts.length > 0) {
+      let newArr = newProducts.concat(res);
+      console.log("newProducts", newProducts);
+      setProducts(newArr);
+    } else {
+      setProducts(res);
+    }
+
+    /* newProducts.concat(res); */
+    /* console.log("newProducts", newProducts); */
+
+    /* setProducts(res); */
 }
 
+console.log(start);
+
 const getCategory = async () => {
-  const res = await getAllCategory();
-  console.log(res);
+  const res = await getAllCategory();  
   setCategories(res);
 }
 
@@ -65,9 +80,6 @@ const getCategoryProduct = (category) => {
     }
   })
 }
-
-console.log(selectedCategory);
-
   
   return (
     <div className="indexPage">
