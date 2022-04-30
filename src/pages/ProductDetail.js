@@ -113,6 +113,7 @@ console.log(isOpen);
                                         initialValues={{
                                             toggle: false,
                                             checked: [],
+                                            
                                         }}
                                         onSubmit={(values) => {
                                             console.log(values);
@@ -158,6 +159,15 @@ console.log(isOpen);
                                                                 onClick={() => setChecked({'FourtyPercentage' : true})}/>
 
                                                             %40'ı Kadar Teklif Ver
+                                                        </label>
+
+                                                        <label htmlFor="offer offerByNumber">
+                                                            <input 
+                                                                type="number" 
+                                                                name='OfferPrice'
+                                                                onChange={handleChange}
+                                                                placeholder="Lütfen Teklif Giriniz"
+                                                                onClick={() => setChecked({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false})}/>
                                                         </label>
                                                     </div>
                                                     <button type="submit">Submit</button>
