@@ -1,13 +1,13 @@
 import {useState, useEffect} from 'react'
-import { useAuth } from '../context/AuthContext';
 import {useParams} from 'react-router-dom';
+import Modal from "react-modal";
+import { Formik, Field, Form} from 'formik';
 
 import Navbar from '../components/Navbar/Navbar';
-
+import { useAuth } from '../context/AuthContext';
 import { getProductDetail } from '../services/productsService';
 import { baseURL } from '../constants/axios';
 
-import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
@@ -16,19 +16,30 @@ function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
   
   useEffect(() => {    
     getProduct();
   }, [])
+
 
   const getProduct = async () => {
     const res = await getProductDetail(id);
     setProduct(res);
   } 
 
+
   const toggleModal = () => {
-      setIsOpen(!isOpen);
+    setIsOpen(!isOpen);
   }
+
+
+  const onlyOne = (checkbox) => {
+    var checkboxes = document.getElementsByName('check');
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
+}
 
 console.log(isOpen);
 
@@ -98,15 +109,61 @@ console.log(isOpen);
                                         <div className="popupPrice"><strong>{product.price} TL</strong></div>                                          
                                     </div>
                                     <div className="offerPercentage">
-                                        <div className="offer offerTwelvePercentage">
-                                            <p>%20'si Kadar Teklif Ver</p>
-                                        </div>
-                                        <div className="offer offerThirtyPercentage">
-                                            <p>%30'u Kadar Teklif Ver</p>
-                                        </div>
-                                        <div className="offer offerFourtyPercentage">
-                                         <p>%40'ı Kadar Teklif Ver</p>
-                                        </div>
+                                    <Formik
+                                        initialValues={{
+                                            toggle: false,
+                                            checked: [],
+                                        }}
+                                        onSubmit={(values) => {
+                                            console.log(values);
+                                        }}
+                                        handleChange={(e) => {
+                                            console.log(e);
+                                        }}                                       
+                                        >
+                                            {({values, handleChange}) => (
+                                                <Form>
+                                                    <div className='checkBoxGroup' role="group" aria-labelledby="checkbox-group">
+                                                        <label className="offer offerTwelvePercentage">
+                                                            <input 
+                                                                type="checkbox" 
+                                                                name="checked" 
+                                                                value="20%" 
+                                                                checked={checked.TwelvePercentage}
+                                                                onChange={handleChange}
+                                                                onClick={() => setChecked({'TwelvePercentage' : true})}/>
+
+                                                            %20'si kadar teklif ver
+                                                        </label>
+
+                                                        <label className="offer offerThirtyPercentage">
+                                                            <input 
+                                                                type="checkbox" 
+                                                                name="checked" 
+                                                                value="30%" 
+                                                                checked={checked.ThirtyPercentage}
+                                                                onChange={handleChange}
+                                                                onClick={() => setChecked({'ThirtyPercentage' : true})}/>
+
+                                                            %30'u Kadar Teklif Ver
+                                                        </label>
+
+                                                        <label className="offer offerFourtyPercentage">
+                                                            <input 
+                                                                type="checkbox" 
+                                                                name="checked" 
+                                                                value="40%" 
+                                                                checked={checked.FourtyPercentage}
+                                                                onChange={handleChange}
+                                                                onClick={() => setChecked({'FourtyPercentage' : true})}/>
+
+                                                            %40'ı Kadar Teklif Ver
+                                                        </label>
+                                                    </div>
+                                                    <button type="submit">Submit</button>
+                                                </Form>
+                                            )}
+                                        </Formik>                                      
                                     </div>
                                 </div>
                             </Modal>

@@ -335,6 +335,11 @@ input[type="password"]::placeholder {
     border-radius: 10px;
     margin-bottom: 10px;
 }
+.checkBoxGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .offer:hover {
     background-color: #F0F8FF;
     color: #4B9CE2;
