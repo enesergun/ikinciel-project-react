@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom';
-import Modal from "react-modal";
-import { Formik, Field, Form} from 'formik';
+
+
 
 import Navbar from '../components/Navbar/Navbar';
 import ProductInfo from '../components/ProductDetail/ProductInfo';
@@ -12,9 +12,9 @@ import BuyProduct from '../components/ButtonGroup/BuyProduct';
 import { useAuth } from '../context/AuthContext';
 import { getProductDetail } from '../services/productsService';
 import { baseURL } from '../constants/axios';
+import GetOfferButton from '../components/ButtonGroup/GetOfferButton';
 
 
-Modal.setAppElement("#root");
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
@@ -22,7 +22,6 @@ function ProductDetail() {
   const [product, setProduct] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenBuy, setIsOpenBuy] = useState(false);
-  
   const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
   
   useEffect(() => {    
@@ -70,112 +69,28 @@ console.log(isOpen);
                 <ProductInfo productName={product.name} productBrand={product.brand} productColor={product.color} productCondition={product.status} productPrice={product.price}/>                
 
                 <div className="buttons detailButtons">
-                    <BuyProduct toggleModalBuy={toggleModalBuy} isOpenBuy={isOpenBuy}/>
-
-                    {
-                        product.isOfferable 
-                        ?
-                        <>
-                            <button className='offerButton' onClick={toggleModal}>Teklif Ver</button>
-                            <Modal
-                                isOpen={isOpen}
-                                onRequestClose={toggleModal}
-                                contentLabel="My dialog"
-                                className="mymodal"
-                                overlayClassName="myoverlay"
-                                closeTimeoutMS={500}
-                            >
-                                <div className="popup">
-                                    <div className="PopUpheader">
-                                        <p>Teklif Ver</p>
-                                        <button onClick={toggleModal}>x</button>
-                                    </div>
-                                    <div className="productInfo">                                        
-                                        <img className="popUpImage" src={baseURL + product.image?.formats.thumbnail.url} alt="" />                                        
-                                        <div className="popupNameWrap">
-                                            <div className="popupName">
-                                                {product.name}
-                                            </div>
-                                        </div>  
-                                        <div className="popupPrice"><strong>{product.price} TL</strong></div>                                          
-                                    </div>
-                                    <div className="offerPercentage">
-                                    <Formik
-                                        initialValues={{
-                                            toggle: false,
-                                            checked: [],
-                                            
-                                        }}
-                                        onSubmit={(values) => {
-                                            console.log(values);
-                                        }}
-                                        handleChange={(e) => {
-                                            console.log(e);
-                                        }}                                       
-                                        >
-                                            {({values, handleChange}) => (
-                                                <Form>
-                                                    <div className='checkBoxGroup' role="group" aria-labelledby="checkbox-group">
-                                                        <label className="offer offerTwelvePercentage">
-                                                            <input 
-                                                                type="checkbox" 
-                                                                name="checked" 
-                                                                value="20%" 
-                                                                checked={checked.TwelvePercentage}
-                                                                onChange={handleChange}
-                                                                onClick={() => setChecked({'TwelvePercentage' : true})}/>
-
-                                                            <span>%20'si kadar teklif ver</span>
-                                                        </label>
-
-                                                        <label className="offer offerThirtyPercentage">
-                                                            <input 
-                                                                type="checkbox" 
-                                                                name="checked" 
-                                                                value="30%" 
-                                                                checked={checked.ThirtyPercentage}
-                                                                onChange={handleChange}
-                                                                onClick={() => setChecked({'ThirtyPercentage' : true})}/>
-
-                                                            <span>%30'u Kadar Teklif Ver</span>
-                                                        </label>
-
-                                                        <label className="offer offerFourtyPercentage">
-                                                            <input 
-                                                                type="checkbox" 
-                                                                name="checked" 
-                                                                value="40%" 
-                                                                checked={checked.FourtyPercentage}
-                                                                onChange={handleChange}
-                                                                onClick={() => setChecked({'FourtyPercentage' : true})}/>
-
-                                                            <span>%40'ı Kadar Teklif Ver</span>
-                                                        </label>
-
-                                                        <label htmlFor="offer offerByNumber">
-                                                            <input 
-                                                                type="number" 
-                                                                name='OfferPrice'
-                                                                onChange={handleChange}
-                                                                placeholder="Lütfen Teklif Giriniz"
-                                                                onClick={() => setChecked({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false})}/>
-                                                                
-                                                        </label>
-                                                    </div>
-                                                    <div className="popupSubmitButton">
-                                                        <button>Teklif Ver</button>
-                                                    </div>
-                                                </Form>
-                                            )}
-                                        </Formik>                                      
-                                    </div>
-                                </div>
-                            </Modal>
+                   {
+                       product.isSold 
+                       ? <div>Bu ürün satışta değil</div>
+                       : 
+                       <>
+                        <BuyProduct toggleModalBuy={toggleModalBuy} isOpenBuy={isOpenBuy}/>                    
+                        {
+                            product.isOfferable 
+                            ?
+                            <>
+                                <GetOfferButton 
+                                    toggleModal={toggleModal} 
+                                    isOpen={isOpen} 
+                                    product={product}
+                                    checked={checked}
+                                />
+                                
+                            </>                                                         
+                          : <span></span>
+                        }
                         </> 
-                        
-                        
-                      : <span></span>
-                    }
+                   }
                 </div>
 
                 <div className="description">
