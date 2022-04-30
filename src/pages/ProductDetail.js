@@ -7,13 +7,15 @@ import Navbar from '../components/Navbar/Navbar';
 import { getProductDetail } from '../services/productsService';
 import { baseURL } from '../constants/axios';
 
-/* import '../../node_modules/uikit/dist/css/uikit.css';
-import '../../node_modules/uikit/dist/js/uikit' */
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
   const { id } = useParams();
-  const [product, setProduct] = useState([])
+  const [product, setProduct] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   
   useEffect(() => {    
     getProduct();
@@ -24,7 +26,11 @@ function ProductDetail() {
     setProduct(res);
   } 
 
+  const toggleModal = () => {
+      setIsOpen(!isOpen);
+  }
 
+console.log(isOpen);
 
   return (
     <div className='ProductDetailPage'>
@@ -65,7 +71,25 @@ function ProductDetail() {
                     <button className='buyButton'>Satın Al</button>
 
                     {
-                        product.isOfferable ? <button className='offerButton'>Teklif Ver</button> : <span></span>
+                        product.isOfferable 
+                        ?
+                        <>
+                            <button className='offerButton' onClick={toggleModal}>Teklif Ver</button>
+                            <Modal
+                                isOpen={isOpen}
+                                onRequestClose={toggleModal}
+                                contentLabel="My dialog"
+                                className="mymodal"
+                                overlayClassName="myoverlay"
+                                closeTimeoutMS={500}
+                            >
+                                <div>My modal dialog.</div>
+                                <button onClick={toggleModal}>Close modal</button>
+                            </Modal>
+                        </> 
+                        
+                        
+                      : <span></span>
                     }
                 </div>
 
