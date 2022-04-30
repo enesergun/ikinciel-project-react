@@ -4,6 +4,9 @@ import Modal from "react-modal";
 import { Formik, Field, Form} from 'formik';
 
 import Navbar from '../components/Navbar/Navbar';
+import ProductInfo from '../components/ProductDetail/ProductInfo';
+
+
 import { useAuth } from '../context/AuthContext';
 import { getProductDetail } from '../services/productsService';
 import { baseURL } from '../constants/axios';
@@ -60,29 +63,9 @@ console.log(isOpen);
             <div className="productLargeImage">
                <img src={baseURL + product.image?.url} alt="" />
             </div>
+
             <div className="productDetails">
-                <div className="name">
-                    <p>{product.name}</p>
-                </div>
-
-                <div className="features">
-                    <div className="ProductBrand">
-                        <div className='featureName'><strong>Marka:</strong></div>
-                        <span>{product.brand}</span>                        
-                    </div>
-                    <div className="productColor">
-                        <div className='featureName'><strong>Renk:</strong></div>
-                        <span>{product.color}</span>
-                    </div>
-                    <div className="productCondition">
-                        <div className='featureName'><strong>Kullanım Durumu:</strong></div>
-                        <span>{product.status}</span>
-                    </div>
-                </div>
-
-                <div className="productPrice">
-                    <h1>{product.price} TL</h1>
-                </div>
+                <ProductInfo productName={product.name} productBrand={product.brand} productColor={product.color} productCondition={product.status} productPrice={product.price}/>                
 
                 <div className="buttons detailButtons">                        
                     <button className='buyButton' onClick={toggleModalBuy}>Satın Al</button>
