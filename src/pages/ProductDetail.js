@@ -5,6 +5,8 @@ import { Formik, Field, Form} from 'formik';
 
 import Navbar from '../components/Navbar/Navbar';
 import ProductInfo from '../components/ProductDetail/ProductInfo';
+import BuyProduct from '../components/ButtonGroup/BuyProduct';
+
 
 
 import { useAuth } from '../context/AuthContext';
@@ -67,31 +69,8 @@ console.log(isOpen);
             <div className="productDetails">
                 <ProductInfo productName={product.name} productBrand={product.brand} productColor={product.color} productCondition={product.status} productPrice={product.price}/>                
 
-                <div className="buttons detailButtons">                        
-                    <button className='buyButton' onClick={toggleModalBuy}>Satın Al</button>
-                    <Modal
-                        isOpen={isOpenBuy}
-                        onRequestClose={toggleModalBuy}
-                        contentLabel="BuyModal"
-                        className="mymodal"
-                        overlayClassName="myoverlay"
-                        closeTimeoutMS={500}
-                            >
-                            <div className="buyButtonModal">    
-
-                                <p><strong>Satın Al</strong></p>                                
-
-                                <div className="PopUpContent">
-                                    <p>Satın almak istiyor musunuz?</p>
-                                </div>
-
-                                <div className="PopUpButtons">
-                                    <button className='Quit' onClick={toggleModalBuy}>Vazgeç</button>
-                                    <button className='buyButton'>Satın Al</button>
-                                </div>
-                            </div>
-                    </Modal> 
-
+                <div className="buttons detailButtons">
+                    <BuyProduct toggleModalBuy={toggleModalBuy} isOpenBuy={isOpenBuy}/>
 
                     {
                         product.isOfferable 
