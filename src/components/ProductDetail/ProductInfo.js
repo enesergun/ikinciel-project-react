@@ -1,29 +1,29 @@
 import React from 'react'
 
-const ProductInfo = ({productName, productBrand, productColor, productCondition, productPrice}) => {
+const ProductInfo = ({product}) => {
   return (
     <>
         <div className="name">
-                    <p>{productName}</p>
+                    <p>{product.name}</p>
                 </div>
 
                 <div className="features">
                     <div className="ProductBrand">
                         <div className='featureName'><strong>Marka:</strong></div>
-                        <span>{productBrand}</span>                        
+                        <span>{product.brand}</span>                        
                     </div>
                     <div className="productColor">
                         <div className='featureName'><strong>Renk:</strong></div>
-                        <span>{productColor}</span>
+                        <span>{product.color}</span>
                     </div>
                     <div className="productCondition">
                         <div className='featureName'><strong>Kullanım Durumu:</strong></div>
-                        <span>{productCondition}</span>
+                        <span>{product.status}</span>
                     </div>
                 </div>
 
                 <div className="productPrice">
-                    <h1>{productPrice} TL</h1>
+                    <h1>{product.price} TL</h1>
                 </div>
     </>
   )

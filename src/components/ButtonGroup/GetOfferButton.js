@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { Formik, Form} from 'formik';
 import Modal from "react-modal";
 import { baseURL } from '../../constants/axios';
+import { Link } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 
-const GetOfferButton = ({toggleModal, isOpen, product}) => {
+const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
   const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
 
   return (
@@ -19,7 +20,9 @@ const GetOfferButton = ({toggleModal, isOpen, product}) => {
                 overlayClassName="myoverlay"
                 closeTimeoutMS={500}
             >
-                <div className="popup">
+                {
+                    loggenIn &&
+                    <div className="popup">
                     <div className="PopUpheader">
                         <p>Teklif Ver</p>
                         <button onClick={toggleModal}>x</button>
@@ -105,6 +108,8 @@ const GetOfferButton = ({toggleModal, isOpen, product}) => {
                         </Formik>
                     </div>
                 </div>
+                }
+                <div>sdakdmasşldk</div> 
             </Modal>
     </>
   )

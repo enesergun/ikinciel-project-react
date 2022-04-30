@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const BuyProduct = ({toggleModalBuy, isOpenBuy}) => {
+const BuyProduct = ({toggleModalBuy, isOpenBuy, loggenIn}) => {
   return (
     <>
         <button className='buyButton' onClick={toggleModalBuy}>Satın Al</button>

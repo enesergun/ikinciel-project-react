@@ -51,7 +51,7 @@ function ProductDetail() {
     })
 }
 
-console.log(isOpen);
+console.log(loggenIn);
 
   return (
     <div className='ProductDetailPage'>
@@ -66,7 +66,10 @@ console.log(isOpen);
             </div>
 
             <div className="productDetails">
-                <ProductInfo productName={product.name} productBrand={product.brand} productColor={product.color} productCondition={product.status} productPrice={product.price}/>                
+                <ProductInfo 
+                    productName={product.name}                     
+                    product={product}
+                    />                
 
                 <div className="buttons detailButtons">
                    {
@@ -74,7 +77,11 @@ console.log(isOpen);
                        ? <div>Bu ürün satışta değil</div>
                        : 
                        <>
-                        <BuyProduct toggleModalBuy={toggleModalBuy} isOpenBuy={isOpenBuy}/>                    
+                        <BuyProduct 
+                            toggleModalBuy={toggleModalBuy} 
+                            isOpenBuy={isOpenBuy} 
+                            loggenIn={loggenIn}
+                        />                    
                         {
                             product.isOfferable 
                             ?
@@ -84,8 +91,8 @@ console.log(isOpen);
                                     isOpen={isOpen} 
                                     product={product}
                                     checked={checked}
-                                />
-                                
+                                    loggenIn={loggenIn}
+                                />                                
                             </>                                                         
                           : <span></span>
                         }

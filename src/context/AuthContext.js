@@ -12,7 +12,8 @@ const AuthProvider = ({children}) => {
     const [loggenIn, setLoggenIn] = useState(() => sessionStorage.getItem('loggedIn'));
     const [token] = useState(document.cookie.split("=")[1])
     
-    
+
+
 
     const register = (user) => {
         /* user'da email ve şifre geliyor */
