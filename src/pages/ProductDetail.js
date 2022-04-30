@@ -104,7 +104,7 @@ console.log(isOpen);
 
                                 <div className="PopUpButtons">
                                     <button className='Quit' onClick={toggleModalBuy}>Vazgeç</button>
-                                    <button className='Buy'>Satın Al</button>
+                                    <button className='buyButton'>Satın Al</button>
                                 </div>
                             </div>
                     </Modal> 

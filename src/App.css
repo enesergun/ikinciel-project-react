@@ -274,7 +274,8 @@ input[type="password"]::placeholder {
     cursor: pointer;
 }
 
-.offerButton {
+.offerButton,
+.Quit {
     width: 50%;
     height: 40px;
     background-color: #F0F8FF;
