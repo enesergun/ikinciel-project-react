@@ -24,7 +24,7 @@ function ProductDetail() {
     setProduct(res);
   } 
 
-  /* console.log(product.image.url); */
+
 
   return (
     <div className='ProductDetailPage'>
@@ -35,7 +35,7 @@ function ProductDetail() {
 
        <div className="container">
             <div className="productLargeImage">
-                {/* <img src={baseURL + product.image.url} alt="" /> */}
+               <img src={baseURL + product.image?.url} alt="" />
             </div>
             <div className="productDetails">
                 <div className="name">

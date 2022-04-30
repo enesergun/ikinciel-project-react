@@ -2,7 +2,7 @@ import axios, { URL, baseURL } from "../constants/axios";
 
 export const getAllProduct = async (start) => {
     try {     
-        const res = await axios.get(URL.products + '?_start=' +  start * 5 + '&_limit=5' ); /* + '?_limit=5 */
+        const res = await axios.get(URL.products + '?_start=' +  start * 10 + '&_limit=10' ); /* + '?_limit=5 */
   
         if(res.statusText === 'OK') {                         
           return res.data;
