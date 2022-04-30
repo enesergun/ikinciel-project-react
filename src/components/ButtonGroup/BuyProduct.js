@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from "react-modal";
+import { Link } from 'react-router-dom';
+import LoginButton from './LoginButton';
 
 Modal.setAppElement("#root");
 
@@ -15,19 +17,28 @@ const BuyProduct = ({toggleModalBuy, isOpenBuy, loggenIn}) => {
                         overlayClassName="myoverlay"
                         closeTimeoutMS={500}
                             >
-                            <div className="buyButtonModal">    
+                                {
+                                    loggenIn 
+                                    ?
+                                    <div className="buyButtonModal">    
+                                        <p><strong>Satın Al</strong></p>                                
 
-                                <p><strong>Satın Al</strong></p>                                
+                                        <div className="PopUpContent">
+                                            <p>Satın almak istiyor musunuz?</p>
+                                        </div>
 
-                                <div className="PopUpContent">
-                                    <p>Satın almak istiyor musunuz?</p>
-                                </div>
-
-                                <div className="PopUpButtons">
-                                    <button className='Quit' onClick={toggleModalBuy}>Vazgeç</button>
-                                    <button className='buyButton'>Satın Al</button>
-                                </div>
-                            </div>
+                                        <div className="PopUpButtons">
+                                            <button className='Quit' onClick={toggleModalBuy}>Vazgeç</button>
+                                            <button className='buyButton'>Satın Al</button>
+                                        </div>
+                                    </div> 
+                                    :
+                                    <>
+                                        <div><strong>Lütfen giriş yapınız.</strong></div>
+                                        <Link to="/login"><LoginButton /></Link>
+                                    </>
+                                }
+                            
                     </Modal> 
     </>
   )

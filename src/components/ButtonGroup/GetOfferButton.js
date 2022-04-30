@@ -3,6 +3,7 @@ import { Formik, Form} from 'formik';
 import Modal from "react-modal";
 import { baseURL } from '../../constants/axios';
 import { Link } from 'react-router-dom';
+import LoginButton from './LoginButton';
 
 Modal.setAppElement("#root");
 
@@ -21,7 +22,7 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                 closeTimeoutMS={500}
             >
                 {
-                    loggenIn &&
+                    loggenIn ?
                     <div className="popup">
                     <div className="PopUpheader">
                         <p>Teklif Ver</p>
@@ -108,8 +109,13 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                         </Formik>
                     </div>
                 </div>
+                : 
+                <>
+                    <div><strong>Lütfen giriş yapınız.</strong></div>
+                    <Link to="/login"><LoginButton /></Link>
+                </>
                 }
-                <div>sdakdmasşldk</div> 
+                
             </Modal>
     </>
   )
