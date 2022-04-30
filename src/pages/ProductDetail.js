@@ -64,7 +64,9 @@ function ProductDetail() {
                 <div className="buttons detailButtons">                        
                     <button className='buyButton'>Satın Al</button>
 
-                    <button className='offerButton'>Teklif Ver</button>
+                    {
+                        product.isOfferable ? <button className='offerButton'>Teklif Ver</button> : <span></span>
+                    }
                 </div>
 
                 <div className="description">
