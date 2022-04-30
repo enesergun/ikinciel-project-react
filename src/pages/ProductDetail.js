@@ -83,8 +83,21 @@ console.log(isOpen);
                                 overlayClassName="myoverlay"
                                 closeTimeoutMS={500}
                             >
-                                <div>My modal dialog.</div>
-                                <button onClick={toggleModal}>Close modal</button>
+                                <div className="popup">
+                                    <div className="PopUpheader">
+                                        <p>Teklif Ver</p>
+                                        <button onClick={toggleModal}>x</button>
+                                    </div>
+                                    <div className="productInfo">                                        
+                                            <img className="popUpImage" src={baseURL + product.image?.formats.thumbnail.url} alt="" />                                        
+                                            <div className="popupNameWrap">
+                                                <div className="popupName">
+                                                    {product.name}
+                                                </div>
+                                            </div>  
+                                            <div className="popupPrice"><strong>{product.price} TL</strong></div>                                          
+                                        </div>
+                                    </div>
                             </Modal>
                         </> 
                         

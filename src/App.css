@@ -290,23 +290,53 @@ input[type="password"]::placeholder {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-  
+    transform: translate(-50%, -50%); 
     border: 1px solid #ccc;
     background: #fff;
     overflow: auto;
     border-radius: 4px;
     outline: none;
     padding: 20px;
-  }
-  
+}
+.popup {
+    min-width: 300px;
+}
+.PopUpheader {
+    display: flex;
+    justify-content: space-between;
+}
+.PopUpheader p {
+    font-size: 28px;
+}
+.productInfo {
+    margin-top: 5px;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #F0F8FF; 
+    display: flex;
+    align-items: center;
+}
+.popUpImage {
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+.popupNameWrap {
+    width: 60%;
+}
+.popupName {
+    width: 50%;
+    font-size: 13px;
+}
   .myoverlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(125,182,231, 0.7);
+    z-index: 2;
   }
   
   .ReactModal__Overlay {
