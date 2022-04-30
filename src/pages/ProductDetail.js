@@ -89,15 +89,26 @@ console.log(isOpen);
                                         <button onClick={toggleModal}>x</button>
                                     </div>
                                     <div className="productInfo">                                        
-                                            <img className="popUpImage" src={baseURL + product.image?.formats.thumbnail.url} alt="" />                                        
-                                            <div className="popupNameWrap">
-                                                <div className="popupName">
-                                                    {product.name}
-                                                </div>
-                                            </div>  
-                                            <div className="popupPrice"><strong>{product.price} TL</strong></div>                                          
+                                        <img className="popUpImage" src={baseURL + product.image?.formats.thumbnail.url} alt="" />                                        
+                                        <div className="popupNameWrap">
+                                            <div className="popupName">
+                                                {product.name}
+                                            </div>
+                                        </div>  
+                                        <div className="popupPrice"><strong>{product.price} TL</strong></div>                                          
+                                    </div>
+                                    <div className="offerPercentage">
+                                        <div className="offer offerTwelvePercentage">
+                                            <p>%20'si Kadar Teklif Ver</p>
+                                        </div>
+                                        <div className="offer offerThirtyPercentage">
+                                            <p>%30'u Kadar Teklif Ver</p>
+                                        </div>
+                                        <div className="offer offerFourtyPercentage">
+                                         <p>%40'ı Kadar Teklif Ver</p>
                                         </div>
                                     </div>
+                                </div>
                             </Modal>
                         </> 
                         
