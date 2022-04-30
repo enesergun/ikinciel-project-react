@@ -335,6 +335,10 @@ input[type="password"]::placeholder {
     border-radius: 10px;
     margin-bottom: 10px;
 }
+.offer span {
+    font-size: 14px;
+    margin-left: 5px;
+}
 .checkBoxGroup {
     display: flex;
     flex-direction: column;
@@ -343,6 +347,41 @@ input[type="password"]::placeholder {
 .offer:hover {
     background-color: #F0F8FF;
     color: #4B9CE2;
+}
+
+input[type=number] {
+    height: 35px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background-color: #F4F4F4;
+    color: #99A0A7;
+    font-size: 16px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.popupSubmitButton {
+    text-align: center;
+    margin-top: 10px;
+}
+.popupSubmitButton button {    
+    width: 70%;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4B9CE2;
+    color: #FFF;
+    font-size: 14px;
 }
   .myoverlay {
     position: fixed;

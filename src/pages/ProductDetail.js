@@ -134,7 +134,7 @@ console.log(isOpen);
                                                                 onChange={handleChange}
                                                                 onClick={() => setChecked({'TwelvePercentage' : true})}/>
 
-                                                            %20'si kadar teklif ver
+                                                            <span>%20'si kadar teklif ver</span>
                                                         </label>
 
                                                         <label className="offer offerThirtyPercentage">
@@ -146,7 +146,7 @@ console.log(isOpen);
                                                                 onChange={handleChange}
                                                                 onClick={() => setChecked({'ThirtyPercentage' : true})}/>
 
-                                                            %30'u Kadar Teklif Ver
+                                                            <span>%30'u Kadar Teklif Ver</span>
                                                         </label>
 
                                                         <label className="offer offerFourtyPercentage">
@@ -158,7 +158,7 @@ console.log(isOpen);
                                                                 onChange={handleChange}
                                                                 onClick={() => setChecked({'FourtyPercentage' : true})}/>
 
-                                                            %40'ı Kadar Teklif Ver
+                                                            <span>%40'ı Kadar Teklif Ver</span>
                                                         </label>
 
                                                         <label htmlFor="offer offerByNumber">
@@ -168,9 +168,12 @@ console.log(isOpen);
                                                                 onChange={handleChange}
                                                                 placeholder="Lütfen Teklif Giriniz"
                                                                 onClick={() => setChecked({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false})}/>
+                                                                
                                                         </label>
                                                     </div>
-                                                    <button type="submit">Submit</button>
+                                                    <div className="popupSubmitButton">
+                                                        <button>Teklif Ver</button>
+                                                    </div>
                                                 </Form>
                                             )}
                                         </Formik>                                      
