@@ -301,12 +301,22 @@ input[type="password"]::placeholder {
 .popup {
     min-width: 300px;
 }
+.buyButtonModal {
+    text-align: center;
+}
+.buyButtonModal * {
+    margin: 10px 0;
+}
 .PopUpheader {
     display: flex;
     justify-content: space-between;
 }
 .PopUpheader p {
     font-size: 28px;
+    color: #525252;
+}
+.PopUpButtons {
+    width: 300px;
 }
 .productInfo {
     margin: 15px 0;
@@ -383,7 +393,8 @@ input[type=number] {
     color: #FFF;
     font-size: 14px;
 }
-  .myoverlay {
+  .myoverlay,
+  .buyModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -391,6 +402,21 @@ input[type=number] {
     bottom: 0;
     background-color: rgba(125,182,231, 0.7);
     z-index: 2;
+  }
+
+  .PopUpButtons {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .Quit,
+  .Buy {
+      width: 40%;
+      height: 35px;
+  }
+
+  .PopUpContent {
+      color: #555555;
   }
   
   .ReactModal__Overlay {

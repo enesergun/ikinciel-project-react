@@ -16,6 +16,8 @@ function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenBuy, setIsOpenBuy] = useState(false);
+  
   const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
   
   useEffect(() => {    
@@ -31,6 +33,10 @@ function ProductDetail() {
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
+  }
+
+  const toggleModalBuy = () => {
+    setIsOpenBuy(!isOpenBuy)
   }
 
 
@@ -79,7 +85,30 @@ console.log(isOpen);
                 </div>
 
                 <div className="buttons detailButtons">                        
-                    <button className='buyButton'>Satın Al</button>
+                    <button className='buyButton' onClick={toggleModalBuy}>Satın Al</button>
+                    <Modal
+                        isOpen={isOpenBuy}
+                        onRequestClose={toggleModalBuy}
+                        contentLabel="BuyModal"
+                        className="mymodal"
+                        overlayClassName="myoverlay"
+                        closeTimeoutMS={500}
+                            >
+                            <div className="buyButtonModal">    
+
+                                <p><strong>Satın Al</strong></p>                                
+
+                                <div className="PopUpContent">
+                                    <p>Satın almak istiyor musunuz?</p>
+                                </div>
+
+                                <div className="PopUpButtons">
+                                    <button className='Quit' onClick={toggleModalBuy}>Vazgeç</button>
+                                    <button className='Buy'>Satın Al</button>
+                                </div>
+                            </div>
+                    </Modal> 
+
 
                     {
                         product.isOfferable 
