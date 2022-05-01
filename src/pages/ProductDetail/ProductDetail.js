@@ -23,12 +23,16 @@ function ProductDetail() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenBuy, setIsOpenBuy] = useState(false);
   const [checked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
-  const [isOffer] = useState([]);
+  const [isOffer, setIsOffer] = useState([])
 
   useEffect(() => {    
     getProduct();
-    
   }, [])
+
+  useEffect(() => {
+    setIsOffer(JSON.parse(localStorage.getItem(product.id)));
+  }, [product])
+  
 
   const getProduct = async () => {
     const res = await getProductDetail(id);
@@ -44,6 +48,8 @@ function ProductDetail() {
   }
 
   /* JSON.parse(localStorage.getItem(product.id)) */
+  
+  console.log(isOffer);
   return (
     <div className={styles.ProductDetailPage}>
 
@@ -60,7 +66,7 @@ function ProductDetail() {
                 <ProductInfo 
                     productName={product.name}                     
                     product={product}
-                    />                
+                /> 
 
                 <div className={`${styles.buttons} ${styles.detailButtons}`}>
                    {
@@ -74,18 +80,25 @@ function ProductDetail() {
                             loggenIn={loggenIn}
                         />                    
                         {
-                            product.isOfferable 
-                            ?
-                            <>
-                                <GetOfferButton 
-                                    toggleModal={toggleModal} 
-                                    isOpen={isOpen} 
-                                    product={product}
-                                    checked={checked}
-                                    loggenIn={loggenIn}
-                                />                                
-                            </>                                                         
-                          : <span></span>
+                           isOffer 
+                           ? <button>Teklifi Geri Çek</button>
+                           : 
+                           <>
+                            {
+                               product.isOfferable 
+                               ?
+                               <>
+                                   <GetOfferButton 
+                                       toggleModal={toggleModal} 
+                                       isOpen={isOpen} 
+                                       product={product}
+                                       checked={checked}
+                                       loggenIn={loggenIn}
+                                   />                                
+                               </>                                                         
+                             : <span></span>
+                            }
+                           </>
                         }
                         </> 
                    }
