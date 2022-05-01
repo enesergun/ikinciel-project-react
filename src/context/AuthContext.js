@@ -8,12 +8,26 @@ import  SuccessPopUp  from '../utils/successPopup'
 const AuthContext = React.createContext();
 
 const AuthProvider = ({children}) => {
+    const [userMe, setUserMe] = useState([])
     const [user, setUser] = useState(null);
     const [loggenIn, setLoggenIn] = useState(() => sessionStorage.getItem('loggedIn'));
     const [token] = useState(document.cookie.split("=")[1])
     
 
 
+    const getMyUserInformation = () => {
+        
+        axios
+        .get(URL.usersMe, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((response) => {
+            localStorage.setItem('userMeInformation', JSON.stringify(response.data))
+        })
+
+    }
 
     const register = (user) => {
         /* user'da email ve şifre geliyor */
@@ -31,6 +45,7 @@ const AuthProvider = ({children}) => {
             setUser(response.data.user);
             setLoggenIn(true);
             sessionStorage.setItem('loggedIn', true);
+            getMyUserInformation();
         })
         .catch((error) => {            
             console.log("An error occured", error.response);
@@ -50,7 +65,8 @@ const AuthProvider = ({children}) => {
             setTimeout(() => {
                 setLoggenIn(true);
               }, 3000);            
-            SuccessPopUp('giriş Başarılı')
+            SuccessPopUp('giriş Başarılı');
+            getMyUserInformation();
         }).catch((error) => {
             console.log("error", error);
             ErrorPopUp("Email veya şifre hatalı!");

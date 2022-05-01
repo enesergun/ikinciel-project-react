@@ -17,7 +17,7 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
-  const {deneme} = useProduct();
+  
 
 
   const { id } = useParams();
@@ -28,7 +28,7 @@ function ProductDetail() {
   
   useEffect(() => {    
     getProduct();
-    deneme();
+    
   }, [])
 
 

@@ -9,4 +9,5 @@ export const URL = {
   login: '/auth/local',
   products: '/products',
   usersMe:'/users/me',  
+  offers: '/offers',
 }

@@ -5,12 +5,52 @@ import { baseURL } from '../../constants/axios';
 import { Link } from 'react-router-dom';
 import LoginButton from './LoginButton';
 
+import { useProduct } from '../../context/ProductContext';
 import styles from './ButtonGroup.module.css'
+
+import { ToastContainer } from 'react-toastify';
 
 Modal.setAppElement("#root");
 
-const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
-  const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
+const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {    
+    const [isOpenModal, setisOpenModal] = useState(isOpen)
+    console.log(isOpenModal);
+  /* const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false}); */
+    const {getOffer} = useProduct();
+    /* const deneme = (arr) => {
+        console.log("burdayım");
+        if (arr.includes('40%')) {
+            arr.splice(arr.indexOf('40%'), 1);
+        } else {
+            arr.push('40%');
+            console.log("puslama");
+        }        
+    } */
+
+    const handleOffer = (values) => {
+        console.log(values);
+        let offer;
+        /* console.log(values.checked[0] === '30'); */
+        if (values.checked[0] === '20') {
+            offer = ((product.price / 100) * 20).toFixed(1);
+            
+        } else if (values.checked[0] === '30') {
+            offer = ((product.price / 100) * 30).toFixed(1);
+
+        } else if (values.checked[0] === '40') {
+            offer = ((product.price / 100) * 40).toFixed(1);
+
+        } else if (values.OfferPrice) {
+            offer = values.OfferPrice;
+        }
+
+        getOffer(offer, product.id);
+
+        setTimeout(() => {
+            isOpen = false;
+          }, 1000);
+        
+    }
 
   return (
     <>
@@ -45,13 +85,12 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                     
                     <div className={styles.offerPercentage}>
                         <Formik
-                            initialValues={{
-                                toggle: false,
+                            initialValues={{                                
                                 checked: [],                                            
                             }}
                             onSubmit={(values) => {
-                                console.log(values);
-                            }}                                                                               
+                                handleOffer(values);
+                            }}                                                                                                      
                             >
                             {({values, handleChange}) => (
                                 <Form>
@@ -60,10 +99,10 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 
-                                                value="20%" 
-                                                checked={checked.TwelvePercentage}
+                                                value="20" 
+                                                checked={values.checked.includes('20')}
                                                 onChange={handleChange}
-                                                onClick={() => setChecked({'TwelvePercentage' : true})}
+                                                /* onClick={() => setChecked({'TwelvePercentage' : true})} */
                                             />                        
                                             <span>%20'si kadar teklif ver</span>
                                         </label>
@@ -72,10 +111,10 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 
-                                                value="30%" 
-                                                checked={checked.ThirtyPercentage}
+                                                value="30" 
+                                                checked={values.checked.includes('30')}
                                                 onChange={handleChange}
-                                                onClick={() => setChecked({'ThirtyPercentage' : true})}
+                                                /* onClick={() => setChecked({'ThirtyPercentage' : true})} */
                                             />
                                                 <span>%30'u Kadar Teklif Ver</span>
                                         </label>
@@ -84,10 +123,11 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 
-                                                value="40%"
-                                                checked={checked.FourtyPercentage}
+                                                value="40"
+                                                checked={values.checked.includes('40')}
+                                                /* onClick={(e) => deneme(values.checked)} */
                                                 onChange={handleChange}
-                                                onClick={() => setChecked({'FourtyPercentage' : true})}
+                                                
                                             />
                                                 <span>%40'ı Kadar Teklif Ver</span>
                                         </label>
@@ -98,13 +138,13 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                                                 name='OfferPrice'
                                                 onChange={handleChange}
                                                 placeholder="Lütfen Teklif Giriniz"
-                                                onClick={() => setChecked({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false})}
+                                                /* onClick={() => setChecked({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false})} */
                                             />                                                                
                                         </label>
                                     </div>
 
                                     <div className={styles.popupSubmitButton}>
-                                        <button>Teklif Ver</button>
+                                        <button type='submit'>Teklif Ver</button> {/* disabled yapılacak */}
                                     </div>
                                 </Form>
                             )}
@@ -116,9 +156,9 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                     <div><strong>Lütfen giriş yapınız.</strong></div>
                     <Link to="/login"><LoginButton /></Link>
                 </>
-                }
-                
+                }                
             </Modal>
+            <ToastContainer hideProgressBar={true}/>
     </>
   )
 }
