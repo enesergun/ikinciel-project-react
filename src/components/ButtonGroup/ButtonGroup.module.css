@@ -10,3 +10,16 @@
     flex-direction: column;
     margin-bottom: 15px;
 }
+.navbarButton {
+    background-color: #F0F8FF;
+    border: none;    
+    border-radius: 8px;
+    width: 124px;
+    height: 40px;
+    color: #4B9CE2;
+    font-size: 15px;
+    font-weight: 700;
+}
+.addProductButton {
+    margin-right: 15px;
+}

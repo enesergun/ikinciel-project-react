@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 
 import Banner from '../../assets/Banner1.png';
+import styles from "../style/Index.module.css";
 
 import {getAllProduct, getAllCategory } from '../../services/productsService';
 import {baseURL} from '../../constants/axios';
@@ -75,29 +76,29 @@ const getCategoryProduct = (category) => {
 }
   
   return (
-    <div className="indexPage">
+    <div className={styles.indexPage}>
 
-      <div className="navbar">
+      <div className={styles.navbar}>
         <Navbar loggenIn={loggenIn}/>
       </div>
 
-      <div className="banner">
+      <div className={styles.banner}>
         <img src={Banner} alt="" />
       </div>
 
-      <div className="categories">
-        <div className={selectedCategory === 'Hepsi' ? 'categoryName activeCategory' : 'categoryName'} onClick={(e) => setSelectedCategory(e.target.textContent)}>Hepsi</div>
+      <div className={styles.categories}>
+        <div className={selectedCategory === 'Hepsi' ? `${styles.categoryName} ${styles.activeCategory}` : styles.categoryName} onClick={(e) => setSelectedCategory(e.target.textContent)}>Hepsi</div>
         {
           categories.map((category, index) => (
-            <div className={selectedCategory === category.name ? 'categoryName activeCategory' : 'categoryName'} onClick={(e) => setSelectedCategory(e.target.textContent)}>{category.name}</div>          
+            <div className={selectedCategory === category.name ? `${styles.categoryName} ${styles.activeCategory}` : styles.categoryName} onClick={(e) => setSelectedCategory(e.target.textContent)}>{category.name}</div>          
           ))
         }
-        <div className={selectedCategory === 'Diğer' ? 'categoryName activeCategory' : 'categoryName'} onClick={(e) => setSelectedCategory(e.target.textContent)}>Diğer</div>
+        <div className={selectedCategory === 'Diğer' ? `${styles.categoryName} ${styles.activeCategory}` : styles.categoryName} onClick={(e) => setSelectedCategory(e.target.textContent)}>Diğer</div>
       </div>
 
-      <div className="underline"></div>
+      <div className={styles.underline}></div>
 
-      <div className="products">
+      <div className={styles.products}>
         {
           products.length > 0 
           ?

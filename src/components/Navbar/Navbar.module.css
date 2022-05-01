@@ -1,0 +1,31 @@
+.navbar {
+    padding: 10px 0;
+    position: fixed;     
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+}
+.navbarWrapper {
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.navbarButton {
+    background-color: #F0F8FF;
+    border: none;    
+    border-radius: 8px;
+    width: 124px;
+    height: 40px;
+    color: #4B9CE2;
+    font-size: 15px;
+    font-weight: 700;
+}
+.addProductButton {
+    margin-right: 15px;
+}

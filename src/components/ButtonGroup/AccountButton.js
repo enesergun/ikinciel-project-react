@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from './ButtonGroup.module.css'
 
 const AccountButton = () => {
   return (
-    <div className="accountButton">
-    <button className='navbarButton'>Hesabım</button>
+    <div className={styles.accountButton}>
+    <button className={styles.navbarButton}>Hesabım</button>
 </div>
   )
 }
