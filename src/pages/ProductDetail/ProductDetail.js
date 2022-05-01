@@ -1,19 +1,14 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom';
 
+import Navbar from '../../components/Navbar/Navbar';
+import ProductInfo from '../../components/ProductDetail/ProductInfo';
+import BuyProduct from '../../components/ButtonGroup/BuyProduct';
 
-
-import Navbar from '../components/Navbar/Navbar';
-import ProductInfo from '../components/ProductDetail/ProductInfo';
-import BuyProduct from '../components/ButtonGroup/BuyProduct';
-
-
-
-import { useAuth } from '../context/AuthContext';
-import { getProductDetail } from '../services/productsService';
-import { baseURL } from '../constants/axios';
-import GetOfferButton from '../components/ButtonGroup/GetOfferButton';
-
+import { useAuth } from '../../context/AuthContext';
+import { getProductDetail } from '../../services/productsService';
+import { baseURL } from '../../constants/axios';
+import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
 
 function ProductDetail() {    
@@ -22,7 +17,7 @@ function ProductDetail() {
   const [product, setProduct] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenBuy, setIsOpenBuy] = useState(false);
-  const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
+  const [checked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
   
   useEffect(() => {    
     getProduct();
@@ -34,7 +29,6 @@ function ProductDetail() {
     setProduct(res);
   } 
 
-
   const toggleModal = () => {
     setIsOpen(!isOpen);
   }
@@ -42,16 +36,6 @@ function ProductDetail() {
   const toggleModalBuy = () => {
     setIsOpenBuy(!isOpenBuy)
   }
-
-
-  const onlyOne = (checkbox) => {
-    var checkboxes = document.getElementsByName('check');
-    checkboxes.forEach((item) => {
-        if (item !== checkbox) item.checked = false
-    })
-}
-
-console.log(loggenIn);
 
   return (
     <div className='ProductDetailPage'>

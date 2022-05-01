@@ -1,10 +1,12 @@
 import React from 'react'
 
+import styles from '../Form/FormValidation.module.css'
+
 const FormButton = ({content, handleSubmit}) => {
   return (
-    <div className="formGroup">
+    <div className={styles.formGroup}>
         
-        <button className="registerButton" type='submit' onClick={handleSubmit}>{content}</button>
+        <button className={styles.registerButton} type='submit' onClick={handleSubmit}>{content}</button>
     </div>
   )
 }

@@ -1,18 +1,18 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import AddProduct from "../pages/AddProduct";
-import Index from '../pages/Index'
-import Register from '../pages/Register'
-import SignIn from "../pages/SignIn";
-import Account from "../pages/Account";
-import ProductDetail from "../pages/ProductDetail";
+import AddProduct from "../pages/AddProduct/AddProduct";
+import Index from '../pages/Index/Index'
+import Register from '../pages/Register/Register'
+import SignIn from "../pages/SignIn/SignIn";
+import Account from "../pages/Account/Account";
+import ProductDetail from "../pages/ProductDetail/ProductDetail";
 
 
 function Router() {
 
 
   return (
-    <Routes>
+    <Routes>      
       <Route path="/index" element={<Index />} />
       <Route path="register" element={<Register />} />
       <Route path="login" element={<SignIn />} />

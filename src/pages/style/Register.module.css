@@ -1,0 +1,34 @@
+.registerPage {
+    overflow: hidden;
+    display: flex;
+    background-color: white;
+    
+}
+.leftSide {
+    width: 43.5%;   
+    height: 100vh;     
+}
+.registerGirl {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;    
+}
+.rightSide {
+    width: calc(100% - 43.5%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #525252;
+}
+
+.brandLogo {
+    margin-bottom: 30px
+}
+.header {
+    text-align: center;
+    margin: 55px 0;
+}
+
+
+/* REGISTER PAGE END */

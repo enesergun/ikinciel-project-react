@@ -1,13 +1,15 @@
 import React from 'react'
 
-import RegisterGirl from '../assets/RegisterGirl.png'
-import brandLogo from '../assets/brandLogo.png'
+import RegisterGirl from '../../assets/RegisterGirl.png'
+import brandLogo from '../../assets/brandLogo.png'
+import styles from '../style/Register.module.css'
 
-import FormValidation from '../components/Form/FormValidation'
-import { useAuth } from '../context/AuthContext'
+import FormValidation from '../../components/Form/FormValidation'
+import { useAuth } from '../../context/AuthContext'
 
 import { ToastContainer } from 'react-toastify';
 import {Navigate} from 'react-router-dom'
+
 
 function SignIn() {
 
@@ -18,13 +20,13 @@ function SignIn() {
       {
       loggenIn ? <Navigate replace to="/index" /> 
       :
-      <div className="registerPage">
-        <div className="leftSide">
-            <img src={RegisterGirl} alt="registerGirl" className='registerGirl' />
+      <div className={styles.registerPage}>
+        <div className={styles.leftSide}>
+            <img src={RegisterGirl} alt="registerGirl" className={styles.registerGirl} />
         </div>
-        <div className="rightSide">
-            <div className="brandLogo">
-                <img src={brandLogo} alt="brandLogo" className='brandLogo' />
+        <div className={styles.rightSide}>
+            <div className={styles.brandLogo}>
+                <img src={brandLogo} alt="brandLogo" className={styles.brandLogo} />
             </div>
             {/* üye ol, yararlanmak için, buton üye ol */}
             <FormValidation 

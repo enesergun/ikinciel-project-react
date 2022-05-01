@@ -1,0 +1,66 @@
+.formValidation {    
+    width: calc(100% - 49%);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 0 60px;
+}
+.formContainer {
+    /* width: 50%; */
+    margin: 0 auto;
+}
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+label {
+    font-size: 20px;
+}
+input[type="text"],
+input[type="password"] {
+    border: none;
+    height: 40px;
+    background-color: #F4F4F4;
+    border-radius: 4px;  
+    font-size: 16px;
+    line-height: 20.2px;
+    letter-spacing: 0.15px;
+    color: #99A0A7;
+    outline: none;
+    width: 100%
+    
+}
+#errorEmail,
+#errorPassword {
+    color: red;
+    border: 2px solid #F77474;
+    background-color: #FFF2F2;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background-color: #F0F8FF;
+    color: #3E3E3E;
+    border: 2px solid #4B9CE2;
+}
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    padding-left: 10px;
+}
+.registerButton {
+    height: 40px;
+    background-color: #4B9CE2;
+    border: none;
+    color: #FFF;
+    border-radius: 4px; 
+}
+.formGroup:nth-child(3) {
+    margin-top: 30px;
+}
+.alreadyAccount {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+    margin: 55px 0;
+}

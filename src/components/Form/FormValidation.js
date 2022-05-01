@@ -4,15 +4,17 @@ import { RegisterSchema } from '../../constants/yupSchema'
 import FormButton from '../ButtonGroup/FormButton'
 import {Link} from 'react-router-dom'
 
+import styles from './FormValidation.module.css'
+
 const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath, Authentication}) => {
     
   return (
-    <div className="formValidation">
-               <div className="header">
+    <div className={styles.formValidation}>
+               <div className={styles.header}>
                    <h1>{ComponentType}</h1>
                    <p>{text}</p>
                </div>
-                <div className="formContainer">
+                <div className={styles.formContainer}>
                     <Formik 
                     initialValues={{                                                 
                         email: '',                        
@@ -25,10 +27,10 @@ const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath, Authe
                         {
                          ({ values, handleChange, handleSubmit, errors, touched, handleBlur  }) => 
                             <form>
-                                <div className="formGroup">
+                                <div className={styles.formGroup}>
                                     <label>Email</label>
                                     <input
-                                        id={touched.email && errors.email ? `errorEmail` : "email"}                                        
+                                        id={touched.email && errors.email ? styles.errorEmail : styles.email}                                        
                                         type="text"
                                         name="email"
                                         placeholder='Example@example.com'
@@ -40,7 +42,7 @@ const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath, Authe
                                 <div className="formGroup">
                                     <label>Şifre</label>
                                     <input
-                                        id={touched.password && errors.password ? `errorPassword` : "password"}                                        
+                                        id={touched.password && errors.password ? styles.errorPassword : styles.password}                                        
                                         type="password"
                                         name="password"
                                         placeholder='Lütfen Şifrenizi Giriniz'
@@ -54,7 +56,7 @@ const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath, Authe
                         }
                     </Formik>
                 </div>
-                <div className='alreadyAccount'> 
+                <div className={styles.alreadyAccount}> 
                     <p>{isAlready} <Link to={`/${RoutePath}`}>{Route}</Link></p>
                 </div>
             </div>

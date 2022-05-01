@@ -1,14 +1,14 @@
 import {useState, useEffect} from 'react'
 
-import Banner from '../assets/Banner1.png';
+import Banner from '../../assets/Banner1.png';
 
-import {getAllProduct, getAllCategory } from '../services/productsService';
-import {baseURL} from '../constants/axios';
+import {getAllProduct, getAllCategory } from '../../services/productsService';
+import {baseURL} from '../../constants/axios';
 
-import ProductCard from '../components/ProductCard/ProductCard'
-import Navbar from '../components/Navbar/Navbar';
+import ProductCard from '../../components/ProductCard/ProductCard'
+import Navbar from '../../components/Navbar/Navbar';
 
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 
 
@@ -104,7 +104,7 @@ const getCategoryProduct = (category) => {
           products.map((product, index) => (
 
             
-              <ProductCard index={index} image={baseURL + product.image.url} brand={product.brand} productColor={product.color} productPrice={product.price} productID={product.id}/>
+              <ProductCard index={index} image={baseURL + product.image?.url} brand={product.brand} productColor={product.color} productPrice={product.price} productID={product.id}/>
             
            
             )) 
