@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom';
 
+import styles from "../style/ProductDetail.module.css";
+
 import Navbar from '../../components/Navbar/Navbar';
 import ProductInfo from '../../components/ProductDetail/ProductInfo';
 import BuyProduct from '../../components/ButtonGroup/BuyProduct';
@@ -38,24 +40,24 @@ function ProductDetail() {
   }
 
   return (
-    <div className='ProductDetailPage'>
+    <div className={styles.ProductDetailPage}>
 
-       <div className="navbar">
+       <div className={styles.navbar}>
             <Navbar loggenIn={loggenIn}/>
        </div>
 
-       <div className="container">
-            <div className="productLargeImage">
+       <div className={styles.container}>
+            <div className={styles.productLargeImage}>
                <img src={baseURL + product.image?.url} alt="" />
             </div>
 
-            <div className="productDetails">
+            <div className={styles.productDetails}>
                 <ProductInfo 
                     productName={product.name}                     
                     product={product}
                     />                
 
-                <div className="buttons detailButtons">
+                <div className={`${styles.buttons} ${styles.detailButtons}`}>
                    {
                        product.isSold 
                        ? <div>Bu ürün satışta değil</div>
@@ -84,7 +86,7 @@ function ProductDetail() {
                    }
                 </div>
 
-                <div className="description">
+                <div className={styles.description}>
                     <p><strong>Açıklama</strong></p>
                     <p>{product.description}</p>
                 </div>

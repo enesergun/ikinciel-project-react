@@ -1,0 +1,25 @@
+.product {
+    width: 17%;
+    margin: 10px 6px;
+    /* height: 200px; */
+    background-color: white;
+    padding: 10px;   
+}
+.productImage  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.productImage img {
+    width: 100%;
+}
+.productFeatures {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+.productPrice {
+    font-size: 15px;
+    margin-top: 20px;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
 
+import styles from "./ProductCard.module.css";
+
 const LinkStyled = styled.div`
   a {
     text-decoration: none;
@@ -23,19 +25,19 @@ const LinkStyled = styled.div`
 
 const ProductCard = ({index, image, brand, productColor, productPrice, productID}) => {
   return (
-    <div className="product" key={index}>
+    <div className={styles.product} key={index}>
       <LinkStyled>
         <Link to={`/productdetail/${productID}`}>
-          <div className="productImage">
+          <div className={styles.productImage}>
               <img src={image} alt="" />
           </div>        
 
-          <div className="productFeatures">
-              <div className="brandName">{brand}</div>
-              <div className="productColor"><strong>Renk</strong>: {productColor}</div>
+          <div className={styles.productFeatures}>
+              <div className={styles.brandName}>{brand}</div>
+              <div className={styles.productColor}><strong>Renk</strong>: {productColor}</div>
           </div>
 
-          <div className="productPrice">{productPrice} TL</div>
+          <div className={styles.productPrice}>{productPrice} TL</div>
         </Link>
       </LinkStyled>
     </div>

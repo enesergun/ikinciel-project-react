@@ -5,6 +5,8 @@ import { baseURL } from '../../constants/axios';
 import { Link } from 'react-router-dom';
 import LoginButton from './LoginButton';
 
+import styles from './ButtonGroup.module.css'
+
 Modal.setAppElement("#root");
 
 const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
@@ -12,36 +14,36 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
 
   return (
     <>
-        <button className='offerButton' onClick={toggleModal}>Teklif Ver</button>
+        <button className={styles.offerButton} onClick={toggleModal}>Teklif Ver</button>
             <Modal
                 isOpen={isOpen}
                 onRequestClose={toggleModal}
                 contentLabel="My dialog"
-                className="mymodal"
-                overlayClassName="myoverlay"
+                className={styles.mymodal}
+                overlayClassName={styles.myoverlay}
                 closeTimeoutMS={500}
             >
                 {
                     loggenIn ?
-                    <div className="popup">
-                    <div className="PopUpheader">
+                    <div className={styles.popup}>
+                    <div className={styles.PopUpheader}>
                         <p>Teklif Ver</p>
                         <button onClick={toggleModal}>x</button>
                     </div>
 
-                    <div className="productInfo">                                        
-                        <img className="popUpImage" src={baseURL + product.image?.formats.thumbnail.url} alt="" />                                        
+                    <div className={styles.productInfo}>                                        
+                        <img className={styles.popUpImage} src={baseURL + product.image?.formats.thumbnail.url} alt="" />                                        
 
-                        <div className="popupNameWrap">
-                            <div className="popupName">
+                        <div className={styles.popupNameWrap}>
+                            <div className={styles.popupName}>
                                 {product.name}
                             </div>
                         </div>  
                         
-                        <div className="popupPrice"><strong>{product.price} TL</strong></div>                                          
+                        <div className={styles.popupPrice}><strong>{product.price} TL</strong></div>                                          
                     </div>
                     
-                    <div className="offerPercentage">
+                    <div className={styles.offerPercentage}>
                         <Formik
                             initialValues={{
                                 toggle: false,
@@ -53,8 +55,8 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                             >
                             {({values, handleChange}) => (
                                 <Form>
-                                    <div className='checkBoxGroup' role="group" aria-labelledby="checkbox-group">
-                                        <label className="offer offerTwelvePercentage">
+                                    <div className={styles.checkBoxGroup} role="group" aria-labelledby="checkbox-group">
+                                        <label className={`${styles.offer} ${styles.offerTwelvePercentage}`}>
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 
@@ -66,7 +68,7 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                                             <span>%20'si kadar teklif ver</span>
                                         </label>
 
-                                        <label className="offer offerThirtyPercentage">
+                                        <label className={`${styles.offer} ${styles.offerThirtyPercentage}`}>
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 
@@ -78,7 +80,7 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                                                 <span>%30'u Kadar Teklif Ver</span>
                                         </label>
                                                         
-                                        <label className="offer offerFourtyPercentage">
+                                        <label className={`${styles.offer} ${styles.offerFourtyPercentage}`}>
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 
@@ -101,7 +103,7 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                                         </label>
                                     </div>
 
-                                    <div className="popupSubmitButton">
+                                    <div className={styles.popupSubmitButton}>
                                         <button>Teklif Ver</button>
                                     </div>
                                 </Form>

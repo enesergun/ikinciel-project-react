@@ -1,94 +1,51 @@
-.registerButton {
-    height: 40px;
-    background-color: #4B9CE2;
-    border: none;
-    color: #FFF;
-    border-radius: 4px; 
-}
-.formGroup {
+.container {
+    width: 80%;
+    position: relative;
+    top: 80px;  
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-.navbarButton {
-    background-color: #F0F8FF;
-    border: none;    
+    background-color: white;
     border-radius: 8px;
-    width: 124px;
-    height: 40px;
-    color: #4B9CE2;
-    font-size: 15px;
-    font-weight: 700;
 }
-.addProductButton {
-    margin-right: 15px;
+.navbar {
+    padding: 10px 0;
+    position: fixed;     
+    width: 100%;
+    background-color: white;
+    z-index: 1;
 }
 
-.buyButton {
-    width: 45%;
-    height: 40px;
-    background-color: #4B9CE2;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-}
-.offerButton,
-.Quit {
+.productLargeImage {
     width: 50%;
-    height: 40px;
-    background-color: #F0F8FF;
-    border: none;
-    color: #4B9CE2;
+    padding: 10px;
+}
+.productLargeImage img {
+    width: 100%;    
+    object-fit: cover;
+    height: 780px;
     border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
 }
 
-/* MODAL START */
-.mymodal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    border: 1px solid #ccc;
-    background: #fff;
-    overflow: auto;
-    border-radius: 4px;
-    outline: none;
-    padding: 20px;
+.productDetails {
+    width: 50%;
+    color: #525252;
+    padding: 10px;
 }
-.myoverlay,
-.buyModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(125,182,231, 0.7);
-    z-index: 2;
+.detailButtons {
+    margin-bottom: 20px;
 }
-.buyButtonModal {
-    text-align: center;
+
+.description,
+.detailButtons {
+    width: 70%;
 }
-.buyButtonModal * {
-    margin: 10px 0;
-}
-.popup {
-    min-width: 300px;
-}
-.PopUpButtons {
-    width: 300px;
-}
-.PopUpheader {
+
+.buttons {
     display: flex;
     justify-content: space-between;
 }
-.PopUpheader p {
-    font-size: 28px;
-    color: #525252;
-}
+
+/* MODAL START */
 .popup {
     min-width: 300px;
 }
@@ -191,4 +148,17 @@ input[type=number] {
 
   .PopUpContent {
       color: #555555;
+  }
+  
+  .ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+  
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+  
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
   }

@@ -1,0 +1,18 @@
+.name p{
+    font-size: 32px;
+    color: #555555;    
+}
+.features {
+    margin: 20px 0;
+}
+.features div {
+    margin-bottom: 10px;
+}
+
+.featureName {
+    display: inline-block;
+    width: 160px;
+}
+.productPrice {
+    margin-bottom: 20px;
+}
