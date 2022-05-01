@@ -17,8 +17,6 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
-  
-
 
   const { id } = useParams();
   const [product, setProduct] = useState([]);

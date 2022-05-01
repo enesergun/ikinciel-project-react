@@ -12,9 +12,12 @@ import { ToastContainer } from 'react-toastify';
 
 Modal.setAppElement("#root");
 
+
+/* teklif verdiğinde pop up kapanmalı  */
+
+
 const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {    
     const [isOpenModal, setisOpenModal] = useState(isOpen)
-    console.log(isOpenModal);
   /* const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false}); */
     const {getOffer} = useProduct();
     /* const deneme = (arr) => {
@@ -28,29 +31,37 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
     } */
 
     const handleOffer = (values) => {
-        console.log(values);
+
         let offer;
-        /* console.log(values.checked[0] === '30'); */
-        if (values.checked[0] === '20') {
-            offer = ((product.price / 100) * 20).toFixed(1);
-            
-        } else if (values.checked[0] === '30') {
-            offer = ((product.price / 100) * 30).toFixed(1);
 
-        } else if (values.checked[0] === '40') {
-            offer = ((product.price / 100) * 40).toFixed(1);
+        if (values.checked.length > 0 || values.OfferPrice) {
+            if (values.checked[0] === '20') {
+                offer = ((product.price / 100) * 20).toFixed(1);
+                
+            } else if (values.checked[0] === '30') {
+                offer = ((product.price / 100) * 30).toFixed(1);
+    
+            } else if (values.checked[0] === '40') {
+                offer = ((product.price / 100) * 40).toFixed(1);
+    
+            } else if (values.OfferPrice) {
+                offer = values.OfferPrice;
+            }
+            getOffer(offer, product.id);
 
-        } else if (values.OfferPrice) {
-            offer = values.OfferPrice;
+        } else {
+            console.log("hata");
         }
 
-        getOffer(offer, product.id);
+        
 
         setTimeout(() => {
-            isOpen = false;
-          }, 1000);
+            
+          }, 500);
         
     }
+
+    console.log(isOpen);
 
   return (
     <>
