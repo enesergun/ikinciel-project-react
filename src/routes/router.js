@@ -12,7 +12,8 @@ function Router() {
 
 
   return (
-    <Routes>      
+    <Routes>
+      <Route path="/" element={<Index />} />      
       <Route path="/index" element={<Index />} />
       <Route path="register" element={<Register />} />
       <Route path="login" element={<SignIn />} />

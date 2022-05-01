@@ -10,9 +10,6 @@ body {
     background-color: #F2F2F2;
 }
 
-/* INDEX PAGE END */
-
-/* DETAIL PAGE START */
 .ReactModal__Overlay {
     opacity: 0;
     transition: opacity 500ms ease-in-out;
@@ -25,8 +22,3 @@ body {
   .ReactModal__Overlay--before-close {
     opacity: 0;
 }
-
-
-  /* MODAL END */
-
-/* DETAIL PAGE END */

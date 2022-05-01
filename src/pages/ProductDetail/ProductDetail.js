@@ -8,6 +8,8 @@ import ProductInfo from '../../components/ProductDetail/ProductInfo';
 import BuyProduct from '../../components/ButtonGroup/BuyProduct';
 
 import { useAuth } from '../../context/AuthContext';
+import { useProduct } from '../../context/ProductContext';
+
 import { getProductDetail } from '../../services/productsService';
 import { baseURL } from '../../constants/axios';
 import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
@@ -15,6 +17,9 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
+  const {deneme} = useProduct();
+
+
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +28,7 @@ function ProductDetail() {
   
   useEffect(() => {    
     getProduct();
+    deneme();
   }, [])
 
 

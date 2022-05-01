@@ -56,7 +56,6 @@ const AuthProvider = ({children}) => {
             ErrorPopUp("Email veya şifre hatalı!");
         })
     }
-    
 
     return (
         <AuthContext.Provider
@@ -65,7 +64,7 @@ const AuthProvider = ({children}) => {
                 user,
                 loggenIn,
                 register,
-                login,            
+                login,                            
             }}>
             {children}
         </AuthContext.Provider>
