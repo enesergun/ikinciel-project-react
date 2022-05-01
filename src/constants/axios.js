@@ -10,4 +10,5 @@ export const URL = {
   products: '/products',
   usersMe:'/users/me',  
   offers: '/offers',
+  myOffers: '/offers?users_permissions_user='
 }

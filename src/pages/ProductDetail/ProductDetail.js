@@ -23,12 +23,12 @@ function ProductDetail() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenBuy, setIsOpenBuy] = useState(false);
   const [checked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
-  
+  const [isOffer] = useState([]);
+
   useEffect(() => {    
     getProduct();
     
   }, [])
-
 
   const getProduct = async () => {
     const res = await getProductDetail(id);
@@ -43,6 +43,7 @@ function ProductDetail() {
     setIsOpenBuy(!isOpenBuy)
   }
 
+  /* JSON.parse(localStorage.getItem(product.id)) */
   return (
     <div className={styles.ProductDetailPage}>
 

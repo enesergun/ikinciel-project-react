@@ -18,8 +18,8 @@ Modal.setAppElement("#root");
 
 const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {    
     const [isOpenModal, setisOpenModal] = useState(isOpen)
-  /* const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false}); */
-    const {getOffer} = useProduct();
+  /* const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false}); */    
+    const {getOffer, getMyOffers} = useProduct();
     /* const deneme = (arr) => {
         console.log("burdayım");
         if (arr.includes('40%')) {
@@ -51,17 +51,10 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
 
         } else {
             console.log("hata");
-        }
-
-        
-
-        setTimeout(() => {
-            
-          }, 500);
+        }    
         
     }
 
-    console.log(isOpen);
 
   return (
     <>
@@ -101,6 +94,7 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                             }}
                             onSubmit={(values) => {
                                 handleOffer(values);
+                                
                             }}                                                                                                      
                             >
                             {({values, handleChange}) => (

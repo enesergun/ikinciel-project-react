@@ -22,22 +22,19 @@ const ProductProvider = ({children}) => {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((res) => {
-            console.log(res);
-            setProductOffer(res.data);
-            setMyOffers([...myOffers, res.data]);
+        }).then((res) => {            
+            localStorage.setItem(productID, JSON.stringify(res.data))
             }
         )
         SuccessPopUp('Teklif verildi');        
   }
+
   
-console.log(myOffers);
 
   return (
     <ProductContext.Provider
       value={{
-        getOffer,
-        
+        getOffer        
       }}
     >
       {children}
