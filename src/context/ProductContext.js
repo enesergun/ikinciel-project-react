@@ -7,10 +7,8 @@ const ProductContext = React.createContext();
 const ProductProvider = ({children}) => {    
   const [userMe] = useState(JSON.parse(localStorage.getItem('userMeInformation')));
   const [token] = useState(document.cookie.split("=")[1]);
-  const [productOffer, setProductOffer] = useState({});
-  const [myOffers, setMyOffers] = useState([]);
+  const [productOffer, setProductOffer] = useState({});  
 
-  
   const getOffer = (offer, productID) => {
       axios
         .post(URL.offers,{
@@ -22,19 +20,34 @@ const ProductProvider = ({children}) => {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((res) => {            
-            localStorage.setItem(productID, JSON.stringify(res.data))
+        }).then((res) => {
+            SuccessPopUp('Teklif verildi');
+            sessionStorage.setItem(productID, JSON.stringify(res.data));
             }
-        )
-        SuccessPopUp('Teklif verildi');        
+        ).catch((error) => {
+            console.log(error);
+        })
   }
 
-  
+  const deleteProductOffer = (offer, productID) =>{  
+    axios
+      .delete(URL.offers + '/' + offer, {
+        headers: {
+          Authorization: `Bearer ${token}`
+      }
+      })
+      .then((response) =>{
+        sessionStorage.removeItem(productID);
+      })
+  }
+
 
   return (
     <ProductContext.Provider
       value={{
-        getOffer        
+        userMe,
+        getOffer,        
+        deleteProductOffer,
       }}
     >
       {children}

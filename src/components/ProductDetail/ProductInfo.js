@@ -2,7 +2,10 @@ import React from 'react'
 
 import styles from "./ProductInfo.module.css";
 
-const ProductInfo = ({product}) => {
+import { useProduct } from '../../context/ProductContext';
+
+const ProductInfo = ({product, offer}) => {
+    const {userMe} = useProduct();
   return (
     <>
         <div className={styles.name}>
@@ -26,6 +29,18 @@ const ProductInfo = ({product}) => {
 
                 <div className={styles.productPrice}>
                     <h1>{product.price} TL</h1>
+                </div>
+
+                <div className={styles.gotOfferPrice}>
+                    {
+                        offer 
+                        ? 
+                        <div className={styles.gotOfferPrice}>
+                            <div className={styles.Offer}>Verilen teklif : <strong>{offer.offerPrice} TL </strong></div>
+                        </div>
+                        : <span></span>
+                    }
+                  
                 </div>
     </>
   )

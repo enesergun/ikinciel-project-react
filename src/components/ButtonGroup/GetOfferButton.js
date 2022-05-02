@@ -94,6 +94,7 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {
                             }}
                             onSubmit={(values) => {
                                 handleOffer(values);
+                                /* console.log(values); */
                                 
                             }}                                                                                                      
                             >
