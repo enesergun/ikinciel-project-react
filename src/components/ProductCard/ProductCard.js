@@ -37,7 +37,7 @@ const ProductCard = ({index, image, brand, productColor, productPrice, productID
               <div className={styles.productColor}><strong>Renk</strong>: {productColor}</div>
           </div>
 
-          <div className={styles.productPrice}>{productPrice} TL</div>
+          <div className={styles.productPrice}><strong>{productPrice} TL</strong></div>
         </Link>
       </LinkStyled>
     </div>

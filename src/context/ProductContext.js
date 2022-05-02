@@ -38,6 +38,7 @@ const ProductProvider = ({children}) => {
       .then((response) =>{
         sessionStorage.removeItem(productID);
         sessionStorage.removeItem(`offer ${productID}`)
+        SuccessPopUp('Teklif geri çekildi');
       })
   }
 

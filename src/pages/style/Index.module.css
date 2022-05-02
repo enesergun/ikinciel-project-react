@@ -47,3 +47,34 @@
 .activeCategory {
     color: #4B9CE2;    
 }
+
+@media screen and (max-width: 376px) {
+    .banner,
+    .categories,
+    .underline{     
+        max-width: 100%;
+        padding: 0 10px;        
+    }
+    .banner img {
+        border-radius: 8px;
+        margin-top: 70px;
+    }
+    .categories {
+        overflow: scroll;
+        flex-wrap: nowrap;        
+    }
+    ::-webkit-scrollbar {
+        height: 1px;
+      }
+    .categoryName {
+        margin-right: 27.5px;
+        font-size: 18px;
+    }
+    .underline {
+        width: calc(100% - 40px);   
+    }
+
+    .products {
+        width: calc(100% - 20px);
+    }
+}

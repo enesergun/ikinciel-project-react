@@ -9,3 +9,21 @@
     display: flex;
     justify-content: space-between;
 }
+
+/* padding: 0 10px; */
+
+
+@media screen and (max-width: 376px) {
+    .navbarWrapper {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    .brandLogo {
+        width: 100px;
+        height: 33px;
+    }
+    .navbarButton {
+        width: 116px;
+    
+    }
+}

@@ -13,7 +13,7 @@ const Navbar = ({loggenIn}) => {
   return (
     <div className={styles.navbarWrapper}>        
         <div className={styles.brand}>
-            <Link to="/index"><img src={brandLogoIndex} alt="" /></Link>
+            <Link to="/index"><img src={brandLogoIndex} alt="" className={styles.brandLogo}/></Link>
             
         </div>
           

@@ -197,5 +197,8 @@ input[type=number] {
     .registerButton {
         font-size: 18px;
     }
+    .navbarButton {
+        width: 116px;    
+    }
 }
   
