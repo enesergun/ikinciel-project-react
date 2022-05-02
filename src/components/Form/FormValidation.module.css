@@ -64,3 +64,28 @@ input[type="password"]::placeholder {
     text-align: center;
     margin: 55px 0;
 }
+
+@media screen and (max-width: 376px) {   
+    .formValidation {
+        width: 335px;
+        padding: 10px;
+        background-color: white;
+        border-radius: 8px;
+    }
+    .header {
+        margin: 10px 0;
+    }
+    .header h1 {
+        margin: 22px 0 10px 0;
+    }
+    .header p {
+        font-size: 15px;
+    }
+
+    label {
+        font-size: 15px;
+    }
+    .registerButton {
+        font-size: 18px;
+    }
+}

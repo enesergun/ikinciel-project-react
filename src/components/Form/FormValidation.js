@@ -28,7 +28,7 @@ const FormValidation = ({ComponentType, text, isAlready, Route, RoutePath, Authe
                          ({ values, handleChange, handleSubmit, errors, touched, handleBlur  }) => 
                             <form>
                                 <div className={styles.formGroup}>
-                                    <label>Email</label>
+                                    <label className={styles.labelText}>Email</label>
                                     <input
                                         id={touched.email && errors.email ? styles.errorEmail : styles.email}                                        
                                         type="text"

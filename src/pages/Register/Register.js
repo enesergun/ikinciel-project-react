@@ -32,7 +32,7 @@ function Register() {
           <img src={RegisterGirl} alt="registerGirl" className={styles.registerGirl} />
       </div>
       <div className={styles.rightSide}>
-          <div className={styles.brandLogo}>
+          <div className={styles.brandLogoWrap}>
               <img src={brandLogo} alt="brandLogo" className={styles.brandLogo} />
           </div>
           {/* üye ol, yararlanmak için, buton üye ol */}
