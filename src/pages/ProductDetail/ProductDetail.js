@@ -20,22 +20,18 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 function ProductDetail() {    
   const {loggenIn} = useAuth();
   const { id } = useParams();
-  const {deleteProductOffer} = useProduct();
+  const {deleteProductOffer, getOffer} = useProduct();
 
   const [product, setProduct] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenBuy, setIsOpenBuy] = useState(false);
   const [checked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false});
-  const [isOffer, setIsOffer] = useState()
-
+  const [offer, setOffer] = useState(JSON.parse(sessionStorage.getItem(id)));  
+  
   useEffect(() => {    
-    getProduct();       
+    getProduct();
   }, [])
 
-  useEffect(() => {
-    setIsOffer(JSON.parse(sessionStorage.getItem(product.id)))  
-  }, [isOpen])
-  
     
   const getProduct = async () => {
     const res = await getProductDetail(id);
@@ -51,19 +47,36 @@ function ProductDetail() {
   }
 
   const handleDeleteOffer = async () => {
-    /* console.log(isOffer.id); */
-    const res = await deleteProductOffer(isOffer.id, product.id);
     
+    const res = await deleteProductOffer(offer.id, product.id); 
+    console.log("sildim");
+    
+
   }
 
-  /* const checkOffer = () => {
-    
-    if (!isOpen) {
-      console.log("modal false");
-      setIsOffer(JSON.parse(sessionStorage.getItem(product.id)));
-    }
-      
-  } */    
+  const handleOffer = (values) => {
+
+    let offer;
+
+    if (values.checked.length > 0 || values.OfferPrice) {
+        if (values.checked[0] === '20') {
+            offer = ((product.price / 100) * 20).toFixed(1);
+            
+        } else if (values.checked[0] === '30') {
+            offer = ((product.price / 100) * 30).toFixed(1);
+
+        } else if (values.checked[0] === '40') {
+            offer = ((product.price / 100) * 40).toFixed(1);
+
+        } else if (values.OfferPrice) {
+            offer = values.OfferPrice;
+        }
+        getOffer(offer, product.id);        
+
+    } else {
+        console.log("hata");
+    }          
+  }
 
   return (
     <div className={styles.ProductDetailPage}>
@@ -81,7 +94,7 @@ function ProductDetail() {
                 <ProductInfo 
                                         
                     product={product}
-                    offer={isOffer}
+                    offer={offer}
                 /> 
 
                 <div className={`${styles.buttons} ${styles.detailButtons}`}>
@@ -96,7 +109,7 @@ function ProductDetail() {
                             loggenIn={loggenIn}
                         />                    
                         {
-                           isOffer
+                           offer
                            ? <><CancelOffer handleDeleteOffer={handleDeleteOffer}/></>
                            : 
                            <>
@@ -110,6 +123,7 @@ function ProductDetail() {
                                        product={product}
                                        checked={checked}
                                        loggenIn={loggenIn}
+                                       handleOffer={handleOffer}
                                    />                                
                                </>                                                         
                              : <span></span>

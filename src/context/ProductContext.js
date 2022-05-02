@@ -7,8 +7,7 @@ const ProductContext = React.createContext();
 const ProductProvider = ({children}) => {    
   const [userMe] = useState(JSON.parse(localStorage.getItem('userMeInformation')));
   const [token] = useState(document.cookie.split("=")[1]);
-  const [productOffer, setProductOffer] = useState({});  
-
+    
   const getOffer = (offer, productID) => {
       axios
         .post(URL.offers,{
@@ -29,15 +28,16 @@ const ProductProvider = ({children}) => {
         })
   }
 
-  const deleteProductOffer = (offer, productID) =>{  
+  const deleteProductOffer = (offerID, productID) =>{  
     axios
-      .delete(URL.offers + '/' + offer, {
+      .delete(URL.offers + '/' + offerID, {
         headers: {
           Authorization: `Bearer ${token}`
       }
       })
       .then((response) =>{
         sessionStorage.removeItem(productID);
+        sessionStorage.removeItem(`offer ${productID}`)
       })
   }
 

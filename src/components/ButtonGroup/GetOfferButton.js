@@ -16,46 +16,9 @@ Modal.setAppElement("#root");
 /* teklif verdiğinde pop up kapanmalı  */
 
 
-const GetOfferButton = ({toggleModal, isOpen, product, loggenIn}) => {    
-    const [isOpenModal, setisOpenModal] = useState(isOpen)
-  /* const [checked, setChecked] = useState({'TwelvePercentage' : false, 'ThirtyPercentage': false, 'FourtyPercentage' : false}); */    
-    const {getOffer, getMyOffers} = useProduct();
-    /* const deneme = (arr) => {
-        console.log("burdayım");
-        if (arr.includes('40%')) {
-            arr.splice(arr.indexOf('40%'), 1);
-        } else {
-            arr.push('40%');
-            console.log("puslama");
-        }        
-    } */
-
-    const handleOffer = (values) => {
-
-        let offer;
-
-        if (values.checked.length > 0 || values.OfferPrice) {
-            if (values.checked[0] === '20') {
-                offer = ((product.price / 100) * 20).toFixed(1);
-                
-            } else if (values.checked[0] === '30') {
-                offer = ((product.price / 100) * 30).toFixed(1);
+const GetOfferButton = ({toggleModal, isOpen, product, loggenIn, handleOffer}) => {    
     
-            } else if (values.checked[0] === '40') {
-                offer = ((product.price / 100) * 40).toFixed(1);
     
-            } else if (values.OfferPrice) {
-                offer = values.OfferPrice;
-            }
-            getOffer(offer, product.id);
-
-        } else {
-            console.log("hata");
-        }    
-        
-    }
-
-
   return (
     <>
         <button className={styles.offerButton} onClick={toggleModal}>Teklif Ver</button>
