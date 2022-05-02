@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom';
 
 import styles from "../style/ProductDetail.module.css";
 
+import  errorPopup  from '../../utils/errorPopup'
+
 import Navbar from '../../components/Navbar/Navbar';
 import ProductInfo from '../../components/ProductDetail/ProductInfo';
 import BuyProduct from '../../components/ButtonGroup/BuyProduct';
@@ -58,7 +60,7 @@ function ProductDetail() {
 
     let offer;
 
-    if (values.checked.length > 0 || values.OfferPrice) {
+    if ((values.checked.length > 0 &&  values.checked.length <= 1 && !values.OfferPrice) || (values.OfferPrice && values.checked.length === 0)) {
         if (values.checked[0] === '20') {
             offer = ((product.price / 100) * 20).toFixed(1);
             
@@ -73,9 +75,13 @@ function ProductDetail() {
         }
         getOffer(offer, product.id);        
 
+    } else if ( values.checked.length >= 1 && values.OfferPrice) {
+        console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
+        errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
     } else {
-        console.log("hata");
-    }          
+      console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
+      errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
+    }       
   }
 
   return (

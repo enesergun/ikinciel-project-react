@@ -6,7 +6,7 @@ const ErrorPopUp = (text) => {
     toast.error(text, {
         theme: "colored", 
         hideProgressBar: true,
-        autoClose: 1500,});    
+        autoClose: 2000,});    
 };
 
 
