@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 
 import axios, { URL } from "../constants/axios";
 
-import  ErrorPopUp  from '../utils/errorPopup'
-import  SuccessPopUp  from '../utils/successPopup'
+import  ErrorPopUp  from '../utils/PopUpFunctions/errorPopup'
+import  SuccessPopUp  from '../utils/PopUpFunctions/successPopup'
 
 const AuthContext = React.createContext();
 

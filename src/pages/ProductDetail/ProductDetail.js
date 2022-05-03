@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 
 import styles from "../style/ProductDetail.module.css";
 
-import  errorPopup  from '../../utils/errorPopup'
+import  errorPopup  from '../../utils/PopUpFunctions/errorPopup'
 
 import Navbar from '../../components/Navbar/Navbar';
 import ProductInfo from '../../components/ProductDetail/ProductInfo';
@@ -31,10 +31,13 @@ function ProductDetail() {
   const [offer, setOffer] = useState(JSON.parse(sessionStorage.getItem(id)));  
   
   useEffect(() => {    
-    getProduct();
-  }, [])
-
-    
+    getProduct();   
+  }, []);
+/* 
+  useEffect(() => {
+    setOffer(JSON.parse(sessionStorage.getItem(id)))      
+  }) */
+      
   const getProduct = async () => {
     const res = await getProductDetail(id);
     setProduct(res);    
@@ -49,7 +52,7 @@ function ProductDetail() {
   }
 
   const handleDeleteOffer = async () => {    
-    const res = await deleteProductOffer(offer.id, product.id); 
+    const res = await deleteProductOffer(offer.id, product.id);    
   }
 
   const handleOffer = (values) => {
@@ -69,7 +72,8 @@ function ProductDetail() {
         } else if (values.OfferPrice) {
             offer = values.OfferPrice;
         }
-        getOffer(offer, product.id);        
+        getOffer(offer, product.id);   
+        
 
     } else if ( values.checked.length >= 1 && values.OfferPrice) {
         console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
@@ -97,12 +101,10 @@ function ProductDetail() {
             </div>
 
             <div className={styles.productDetails}>
-                <ProductInfo 
-                                        
+                <ProductInfo                                         
                     product={product}
                     offer={offer}
-                /> 
-
+                />   
                 <div className={`${styles.buttons} ${styles.detailButtons}`}>
                    {
                        product.isSold 

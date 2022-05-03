@@ -6,6 +6,8 @@ import Register from '../pages/Register/Register'
 import SignIn from "../pages/SignIn/SignIn";
 import Account from "../pages/Account/Account";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
+import GetOffers from "../components/Offers/GetOffers";
+import GiveOffers from "../components/Offers/GiveOffers";
 
 
 function Router() {
@@ -18,8 +20,13 @@ function Router() {
       <Route path="register" element={<Register />} />
       <Route path="login" element={<SignIn />} />
       <Route path="addproduct" element={<AddProduct />} />
-      <Route path="account" element={<Account />} />
+      <Route path="account" element={<Account />}>
+        <Route index element={<GetOffers />} />
+        <Route path="getoffers" element={<GetOffers />} />
+        <Route path="giveoffers" element={<GiveOffers />} />
+      </Route>
       <Route path="productdetail/:id" element={<ProductDetail />} />
+      
     </Routes>
   )
 }

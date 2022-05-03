@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios, {URL} from "../constants/axios";
-import  SuccessPopUp  from '../utils/successPopup'
+import  SuccessPopUp  from '../utils/PopUpFunctions/successPopup'
 
 const ProductContext = React.createContext();
 
