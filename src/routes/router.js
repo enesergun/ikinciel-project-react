@@ -6,8 +6,8 @@ import Register from '../pages/Register/Register'
 import SignIn from "../pages/SignIn/SignIn";
 import Account from "../pages/Account/Account";
 import ProductDetail from "../pages/ProductDetail/ProductDetail";
-import GetOffers from "../components/Offers/GetOffers";
-import GiveOffers from "../components/Offers/GiveOffers";
+import GetOffers from "../components/OffersTab/GetOffers";
+import GiveOffers from "../components/OffersTab/GiveOffers";
 
 
 function Router() {

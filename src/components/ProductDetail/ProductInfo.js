@@ -3,6 +3,7 @@ import React from 'react'
 import styles from "./ProductInfo.module.css";
 
 import { useProduct } from '../../context/ProductContext';
+import OfferInformation from '../OfferInformation/OfferInformation';
 
 const ProductInfo = ({product, offer}) => {
     const {userMe} = useProduct();
@@ -35,9 +36,7 @@ const ProductInfo = ({product, offer}) => {
                     {
                         offer 
                         ? 
-                        <div className={styles.gotOfferPrice}>
-                            <div className={styles.Offer}>Verilen teklif : <strong>{offer.offerPrice} TL </strong></div>
-                        </div>
+                        <OfferInformation text={"Verilen Teklif"} offerPrice={offer.offerPrice}/>
                         : <span></span>
                     }
                   

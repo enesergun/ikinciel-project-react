@@ -1,0 +1,17 @@
+.gotOfferPrice {
+    margin-bottom: 20px;
+    width: 260px;
+}
+
+.Offer {
+    background-color: #F2F2F2;
+    /* width: 50%; */
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+    color: #B1B1B1;
+}
+
+.Offer strong {
+    color: #525252;
+}

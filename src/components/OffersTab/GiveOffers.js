@@ -8,11 +8,12 @@ import { gaveOffer } from "../../services/productsService";
 import { useAuth } from '../../context/AuthContext';
 
 import { baseURL } from '../../constants/axios';
+import OfferInformation from '../OfferInformation/OfferInformation';
 
 const GiveOffers = () => {
   const {token} = useAuth();
-  const [offers, setOffers] = useState([])
-  const [status, setStatus] = useState()
+  const [offers, setOffers] = useState([]);
+  const [status, setStatus] = useState();
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('userMeInformation')));
 
 
@@ -41,9 +42,8 @@ const GiveOffers = () => {
                 <div className={styles.productInfo}>
                   <div className={styles.productName}>{offer.product.name}</div>
 
-                  <div className={styles.gotOfferPrice}>
-                    <div className={styles.Offer}>Verilen teklif : <strong>{offer.offerPrice} TL </strong></div>
-                  </div>
+                  <OfferInformation text={"Verilen Teklif"} offerPrice={offer.offerPrice}/>
+                  
                 </div> 
               </div>
 
