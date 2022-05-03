@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import styles from './Offers.module.css'
 
-import product from "../../assets/product.png";
+import notProductImage from "../../assets/notProductImage.png";
 import { gaveOffer } from "../../services/productsService";
 
 import { useAuth } from '../../context/AuthContext';
@@ -25,8 +25,7 @@ const GiveOffers = () => {
     const res = await gaveOffer(user.id, token);  
     setOffers(res)  
   }
-
-  console.log(status)
+  
   
   return (
     <div className={styles.Offers}>
@@ -36,7 +35,7 @@ const GiveOffers = () => {
             <div className={styles.ProductCardWrapper}>
               <div className={styles.ProductFeatures}>
                 <div className={styles.productImage}>
-                  <img src={baseURL + "/uploads/thumbnail_1_org_zoom_a113905455.jpeg"} alt="" />
+                  <img src={offer.product.image?.formats.thumbnail.url ? `${baseURL}${offer.product.image?.formats.thumbnail.url}` : notProductImage } alt="" />
                 </div>
 
                 <div className={styles.productInfo}>
