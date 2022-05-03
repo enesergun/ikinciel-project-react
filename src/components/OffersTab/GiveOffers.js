@@ -11,11 +11,10 @@ import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
 
 const GiveOffers = () => {
-  const {token} = useAuth();
+  const {token, userMe} = useAuth();
   const [offers, setOffers] = useState([]);
   const [status, setStatus] = useState();
-  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('userMeInformation')));
-
+  
 
   useEffect(() => {
     handleGaveOffers();  
@@ -23,7 +22,7 @@ const GiveOffers = () => {
   
 
   const handleGaveOffers = async () => {
-    const res = await gaveOffer(user.id, token);  
+    const res = await gaveOffer(userMe.id, token);  
     setOffers(res)  
   }
   
@@ -32,7 +31,7 @@ const GiveOffers = () => {
     <div className={styles.Offers}>
       {
         offers?.map((offer, index) => (
-          <div className={styles.ProductCard}>
+          <div className={styles.ProductCard} key={index}>
             <div className={styles.ProductCardWrapper}>
               <div className={styles.ProductFeatures}>
                 <div className={styles.productImage}>

@@ -6,10 +6,12 @@ import { giveOffer } from "../../services/productsService";
 import notProductImage from "../../assets/notProductImage.png";
 import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
+import { useAuth } from '../../context/AuthContext';
 
 const GetOffers = () => {
+  const {userMe} = useAuth();
   const [product, setProduct] = useState([]);
-  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('userMeInformation')));
+  
 
   useEffect(() => {
     handleGiveOffers();  
@@ -17,7 +19,7 @@ const GetOffers = () => {
   
 
   const handleGiveOffers = async () => {
-    const res = await giveOffer(user.id);  
+    const res = await giveOffer(userMe.id);  
     
     const haveOfferRes = res.filter(product => product.offers.length > 0);
 
@@ -31,7 +33,7 @@ const GetOffers = () => {
       {
         product?.map((item, index) => (
           item.offers.map((offer, index) => (
-            <div className={styles.ProductCard}>
+            <div className={styles.ProductCard} key={index}>
             <div className={styles.ProductCardWrapper}>
               <div className={styles.ProductFeatures}>
                 <div className={styles.productImage}>

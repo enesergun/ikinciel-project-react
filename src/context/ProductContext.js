@@ -66,8 +66,7 @@ const ProductProvider = ({children}) => {
 
   return (
     <ProductContext.Provider
-      value={{
-        userMe,
+      value={{        
         getOffer,        
         deleteProductOffer,
         getBuyProduct,

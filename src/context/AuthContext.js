@@ -8,7 +8,7 @@ import  SuccessPopUp  from '../utils/PopUpFunctions/successPopup'
 const AuthContext = React.createContext();
 
 const AuthProvider = ({children}) => {
-    const [userMe, setUserMe] = useState([])
+    const [userMe, setUserMe] = useState(() => JSON.parse(localStorage.getItem('userMeInformation')))
     const [user, setUser] = useState(null);
     const [loggenIn, setLoggenIn] = useState(() => sessionStorage.getItem('loggedIn'));
     const [token] = useState(document.cookie.split("=")[1])
@@ -76,11 +76,12 @@ const AuthProvider = ({children}) => {
     return (
         <AuthContext.Provider
             value={{
-                token,
-                user,
+                userMe,
+                token,                
                 loggenIn,
                 register,
-                login,                            
+                login,  
+                                          
             }}>
             {children}
         </AuthContext.Provider>

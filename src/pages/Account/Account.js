@@ -7,7 +7,9 @@ import { Outlet, NavLink, Navigate } from "react-router-dom";
 
 
 function Account() {
-  const {loggenIn,token} = useAuth();
+  const {loggenIn,token, userMe} = useAuth();
+
+  console.log(userMe);
 
 
   return (
@@ -46,7 +48,7 @@ function Account() {
               </div>
 
               <div className={styles.AccountAddress}>
-                <div><strong>enesergun15</strong></div>
+                <div><strong>{userMe.email}</strong></div>
               </div>
 
             </div>
