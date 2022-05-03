@@ -35,9 +35,12 @@
     display: flex;
     padding: 10px 25px;
 }
+.activeTab {
+    color: #4B9CE2;
+}
 
 a {
-    color: #4B9CE2;
+    color: #B1B1B1;
 }
 .getOffers {
     margin-right: 34px;

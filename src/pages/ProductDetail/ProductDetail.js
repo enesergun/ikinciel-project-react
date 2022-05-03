@@ -14,7 +14,7 @@ import CancelOffer from '../../components/ButtonGroup/CancelOffer';
 import { useAuth } from '../../context/AuthContext';
 import { useProduct } from '../../context/ProductContext';
 
-import { getProductDetail } from '../../services/productsService';
+import { getProductDetail, gaveOffer } from '../../services/productsService';
 import { baseURL } from '../../constants/axios';
 import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
@@ -31,7 +31,7 @@ function ProductDetail() {
   const [offer, setOffer] = useState(JSON.parse(sessionStorage.getItem(id)));  
   
   useEffect(() => {    
-    getProduct();   
+    getProduct(); 
   }, []);
 /* 
   useEffect(() => {
@@ -54,6 +54,7 @@ function ProductDetail() {
   const handleDeleteOffer = async () => {    
     const res = await deleteProductOffer(offer.id, product.id);    
   }
+
 
   const handleOffer = (values) => {
 

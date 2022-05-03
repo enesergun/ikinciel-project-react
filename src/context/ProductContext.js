@@ -63,6 +63,7 @@ const ProductProvider = ({children}) => {
   }
 
 
+
   return (
     <ProductContext.Provider
       value={{
@@ -70,6 +71,7 @@ const ProductProvider = ({children}) => {
         getOffer,        
         deleteProductOffer,
         getBuyProduct,
+        token
       }}
     >
       {children}

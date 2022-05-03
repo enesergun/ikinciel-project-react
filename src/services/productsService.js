@@ -56,3 +56,27 @@ export const getProductDetail = async (id) => {
     console.log(error);
   }
 }
+
+export const gaveOffer = async (id, token) => {
+  try {
+    const res = await axios.get(URL.offers + '?users_permissions_user=' + id, {
+      headers: {
+        Authorization: `Bearer ${token}`
+    }
+    }); 
+
+    if(res.statusText === 'OK') {
+                
+      return res.data;
+              
+    }
+    else {
+      return {
+        error: 'Offer error'
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
