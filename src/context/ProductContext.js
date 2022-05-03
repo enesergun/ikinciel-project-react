@@ -42,6 +42,26 @@ const ProductProvider = ({children}) => {
       })
   }
 
+  const getBuyProduct = (productID) => {
+    axios
+      .put(URL.products + '/' + productID, {
+      isOfferable: false,
+      isSold: true
+    },{
+      headers: {
+        Authorization: `Bearer ${token}`
+    }
+    })
+    .then((res) => {
+      console.log("Ürün satın alındı");
+      SuccessPopUp('Ürün satın alındı')
+    })
+    .catch((error) => {
+      console.log('satın alma işlemi gerçekleştirilemedi')
+    })
+
+  }
+
 
   return (
     <ProductContext.Provider
@@ -49,6 +69,7 @@ const ProductProvider = ({children}) => {
         userMe,
         getOffer,        
         deleteProductOffer,
+        getBuyProduct,
       }}
     >
       {children}

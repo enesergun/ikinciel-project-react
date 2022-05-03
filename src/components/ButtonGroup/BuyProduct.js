@@ -7,7 +7,7 @@ import styles from './ButtonGroup.module.css'
 
 Modal.setAppElement("#root");
 
-const BuyProduct = ({toggleModalBuy, isOpenBuy, loggenIn}) => {
+const BuyProduct = ({toggleModalBuy, isOpenBuy, loggenIn, handleBuyProduct}) => {
   return (
     <>
         <button className={styles.buyButton} onClick={toggleModalBuy}>Satın Al</button>
@@ -31,7 +31,7 @@ const BuyProduct = ({toggleModalBuy, isOpenBuy, loggenIn}) => {
 
                                         <div className={styles.PopUpButtons}>
                                             <button className={styles.Quit} onClick={toggleModalBuy}>Vazgeç</button>
-                                            <button className={styles.buyButton}>Satın Al</button>
+                                            <button className={styles.buyButton} onClick={handleBuyProduct}>Satın Al</button>
                                         </div>
                                     </div> 
                                     :

@@ -22,7 +22,7 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 function ProductDetail() {    
   const {loggenIn} = useAuth();
   const { id } = useParams();
-  const {deleteProductOffer, getOffer} = useProduct();
+  const {deleteProductOffer, getOffer, getBuyProduct} = useProduct();
 
   const [product, setProduct] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -48,12 +48,8 @@ function ProductDetail() {
     setIsOpenBuy(!isOpenBuy)
   }
 
-  const handleDeleteOffer = async () => {
-    
+  const handleDeleteOffer = async () => {    
     const res = await deleteProductOffer(offer.id, product.id); 
-    console.log("sildim");
-    
-
   }
 
   const handleOffer = (values) => {
@@ -82,6 +78,10 @@ function ProductDetail() {
       console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
       errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
     }       
+  }
+
+  const handleBuyProduct = async () => {
+    const res = await getBuyProduct(id);
   }
 
   return (
@@ -113,6 +113,7 @@ function ProductDetail() {
                             toggleModalBuy={toggleModalBuy} 
                             isOpenBuy={isOpenBuy} 
                             loggenIn={loggenIn}
+                            handleBuyProduct={handleBuyProduct}
                         />                    
                         {
                            offer
