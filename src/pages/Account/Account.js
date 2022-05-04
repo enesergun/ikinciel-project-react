@@ -7,7 +7,7 @@ import { Outlet, NavLink, Navigate } from "react-router-dom";
 
 
 function Account() {
-  const {loggenIn,token, userMe} = useAuth();
+  const {loggenIn, userMe} = useAuth();
 
   console.log(userMe);
 

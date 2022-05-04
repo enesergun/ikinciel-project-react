@@ -15,16 +15,17 @@ const AuthProvider = ({children}) => {
     
 
 
-    const getMyUserInformation = () => {
+    const getMyUserInformation = (userToken) => {
         
         axios
         .get(URL.usersMe, {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${userToken}`
             }
         })
         .then((response) => {
-            localStorage.setItem('userMeInformation', JSON.stringify(response.data))
+            localStorage.setItem('userMeInformation', JSON.stringify(response.data));
+            setUserMe(response.data);            
         })
 
     }
@@ -45,7 +46,8 @@ const AuthProvider = ({children}) => {
             setUser(response.data.user);
             setLoggenIn(true);
             sessionStorage.setItem('loggedIn', true);
-            getMyUserInformation();
+            getMyUserInformation(response.data.jwt);
+            /* localStorage.setItem('userMeInformation', JSON.stringify(response.data.user)); */
         })
         .catch((error) => {            
             console.log("An error occured", error.response);
@@ -62,11 +64,13 @@ const AuthProvider = ({children}) => {
             console.log("token", response.data.jwt);
             document.cookie = `name=${response.data.jwt}`;
             sessionStorage.setItem('loggedIn', true);
+            console.log("login olup", response.data.user)
             setTimeout(() => {
                 setLoggenIn(true);
               }, 3000);            
             SuccessPopUp('giriş Başarılı');
-            getMyUserInformation();
+            getMyUserInformation(response.data.jwt);
+            /* localStorage.setItem('userMeInformation', JSON.stringify(response.data.user)); */
         }).catch((error) => {
             console.log("error", error);
             ErrorPopUp("Email veya şifre hatalı!");
