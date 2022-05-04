@@ -162,3 +162,18 @@ input[type=number] {
   .ReactModal__Overlay--before-close {
     opacity: 0;
   }
+
+  @media screen and (max-width: 376px) {
+    .container {
+        flex-direction: column;
+    }
+    .productLargeImage,
+    .productDetails,
+    .detailButtons,
+    .description {
+        width: auto;        
+    }
+    .productLargeImage img {
+        height: 362px;
+    }    
+}

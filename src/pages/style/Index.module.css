@@ -78,3 +78,10 @@
         width: calc(100% - 20px);
     }
 }
+
+@media screen and (max-width: 320px) {
+    .products {
+        justify-content: center;
+    
+    }
+}

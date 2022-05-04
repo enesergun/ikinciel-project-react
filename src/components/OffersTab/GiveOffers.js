@@ -11,13 +11,13 @@ import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
 import BuyProduct from '../ButtonGroup/BuyProduct';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const GiveOffers = () => {
   const {token, userMe} = useAuth();
   const [offers, setOffers] = useState([]);
-  const [status, setStatus] = useState(true);
+  /* const [status, setStatus] = useState(true); */
   
 
   useEffect(() => {
@@ -53,13 +53,13 @@ const GiveOffers = () => {
 
               <div className={styles.buttons}>
                 {
-                  status === true 
+                  offers.status === true 
                   ? 
                   <>
-                    <BuyProduct id={offer.product.id} />
+                    <BuyProduct id={offer.product.id} stylesProp={"acceptButton"}/>
                     <span className={`${styles.status} ${styles.accepted}`}>Onaylandı</span>
                   </>
-                  : status === false 
+                  : offers.status === false 
                   ? 
                   <>
                     <span className={`${styles.status} ${styles.rejected}`}>Reddedildi</span>

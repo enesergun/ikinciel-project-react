@@ -64,3 +64,12 @@
 .wait {
     color: green;
 }
+
+@media screen and (max-width: 376px) {
+    .Offers {
+        padding: 10px;
+    }  
+    .ProductCardWrapper {
+        flex-direction: column;
+    }
+}

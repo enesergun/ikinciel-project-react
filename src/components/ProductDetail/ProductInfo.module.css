@@ -29,3 +29,15 @@
 .Offer strong {
     color: #525252;
 }
+
+@media screen and (max-width: 376px) {
+    .name p {
+        font-size: 18px;
+    }
+    .features {
+        margin: 10px 0;
+    }
+    .features div {
+        margin: 0;
+    }
+}

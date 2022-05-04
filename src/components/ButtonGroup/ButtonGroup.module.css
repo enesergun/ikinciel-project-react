@@ -34,6 +34,19 @@
     font-size: 18px;
     cursor: pointer;
 }
+.acceptButton {
+    width: 86px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.acceptButton {
+    margin-right: 10px;
+    background-color: #4B9CE2;
+}
 .offerButton,
 .Quit {
     width: 50%;
@@ -47,7 +60,8 @@
 }
 
 /* MODAL START */
-.mymodal {
+.mymodal, 
+.mymodalOffer {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -199,6 +213,12 @@ input[type=number] {
     }
     .navbarButton {
         width: 116px;    
+    }
+    .mymodal {        
+        top: 15%;        
+    }
+    .mymodalOffer {
+        top: 30%;
     }
 }
   

@@ -51,3 +51,11 @@ a {
     height: 1px;
     background-color: #F2F2F2;
 }
+
+@media screen and (max-width: 376px) {
+    .container {
+        max-width: 355px;
+    }
+}
+
+

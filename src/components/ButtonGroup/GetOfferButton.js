@@ -26,7 +26,7 @@ const GetOfferButton = ({toggleModal, isOpen, product, loggenIn, handleOffer}) =
                 isOpen={isOpen}
                 onRequestClose={toggleModal}
                 contentLabel="My dialog"
-                className={styles.mymodal}
+                className={styles.mymodalOffer}
                 overlayClassName={styles.myoverlay}
                 closeTimeoutMS={500}
             >

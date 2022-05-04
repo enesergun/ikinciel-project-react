@@ -11,7 +11,8 @@ import styles from './ButtonGroup.module.css'
 
 Modal.setAppElement("#root");
 
-const BuyProduct = ({id}) => {
+const BuyProduct = ({id, stylesProp}) => {
+    
   const {getBuyProduct} = useProduct();
   const {loggenIn} = useAuth();
   const [isOpenBuy, setIsOpenBuy] = useState(false);
@@ -22,11 +23,12 @@ const BuyProduct = ({id}) => {
 
   const handleBuyProduct = async () => {
     const res = await getBuyProduct(id);
+    console.log(res);
   }
 
   return (
     <>
-        <button className={styles.buyButton} onClick={toggleModalBuy}>Satın Al</button>
+        <button className={stylesProp === 'acceptButton' ? styles.acceptButton : styles.buyButton} onClick={toggleModalBuy}>Satın Al</button>
                     <Modal
                         isOpen={isOpenBuy}
                         onRequestClose={toggleModalBuy}
