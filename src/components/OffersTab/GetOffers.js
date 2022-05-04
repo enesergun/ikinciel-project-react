@@ -13,7 +13,8 @@ const GetOffers = () => {
   const {userMe} = useAuth();
   const {offerChoice} = useProduct();
   const [product, setProduct] = useState([]);
-  
+  const [click, setClick] = useState('');  
+
 
   useEffect(() => {
     handleGiveOffers();  
@@ -23,25 +24,34 @@ const GetOffers = () => {
   const handleGiveOffers = async () => {
     const res = await giveOffer(userMe.id);  
     
-    const haveOfferRes = res.filter(product => product.offers.length > 0);
-
+    const haveOfferRes = res.filter(product => product.offers.length > 0);    
     setProduct(haveOfferRes);
 
   }
 
-  const handleOfferAction = (offerID, choice) => {
+  const handleOfferAction = (offerID, choice, index, key) => {
     const res = offerChoice(offerID, choice);
-    console.log(res)
+        
+    if (choice === true) {
+      setClick(true);
+    } else if (choice === false) {
+      setClick(false);
+    } else {
+      setClick('');
+    }    
+    /* setProduct(product[index].offers[key].isStatus = choice); */
 
   }
 
+
+  
 
   return (
     <div className={styles.Offers}>
       {
         product?.map((item, index) => (
-          item.offers.map((offer, index) => (
-            <div className={styles.ProductCard} key={index}>
+          item.offers.map((offer, key) => (
+            <div className={styles.ProductCard} key={key}>
             <div className={styles.ProductCardWrapper}>
               <div className={styles.ProductFeatures}>
                 <div className={styles.productImage}>
@@ -64,8 +74,8 @@ const GetOffers = () => {
                   ? <span className={`${styles.status} ${styles.rejected}`}>Reddedildi</span>
                   : 
                   <>  
-                    <button className={styles.acceptButton} onClick={() => handleOfferAction(offer.id, true)}>Onayla</button>
-                    <button className={styles.rejectButton} onClick={() => handleOfferAction(offer.id, false)}>Reddet</button>
+                    <button className={styles.acceptButton} onClick={() => {handleOfferAction(offer.id, true, index, key); setClick('tiklandi')}}>Onayla</button>
+                    <button className={styles.rejectButton} onClick={() => {handleOfferAction(offer.id, false, index, key); setClick('tiklandi')}}>Reddet</button>
                   </>
                 }                               
                 

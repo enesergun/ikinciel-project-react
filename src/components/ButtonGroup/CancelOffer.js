@@ -4,6 +4,7 @@ import styles from './ButtonGroup.module.css'
 import { ToastContainer } from 'react-toastify';
 
 const CancelOffer = ({handleDeleteOffer}) => {
+  
 
   return (
     <>

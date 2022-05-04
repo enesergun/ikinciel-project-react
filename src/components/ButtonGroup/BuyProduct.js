@@ -1,13 +1,29 @@
-import React from 'react';
+import {useState} from 'react';
 import Modal from "react-modal";
 import { Link } from 'react-router-dom';
+
 import LoginButton from './LoginButton';
+
+import { useAuth } from '../../context/AuthContext';
+import { useProduct } from '../../context/ProductContext';
 
 import styles from './ButtonGroup.module.css'
 
 Modal.setAppElement("#root");
 
-const BuyProduct = ({toggleModalBuy, isOpenBuy, loggenIn, handleBuyProduct}) => {
+const BuyProduct = ({id}) => {
+  const {getBuyProduct} = useProduct();
+  const {loggenIn} = useAuth();
+  const [isOpenBuy, setIsOpenBuy] = useState(false);
+
+  const toggleModalBuy = () => {
+    setIsOpenBuy(!isOpenBuy)
+  }
+
+  const handleBuyProduct = async () => {
+    const res = await getBuyProduct(id);
+  }
+
   return (
     <>
         <button className={styles.buyButton} onClick={toggleModalBuy}>Satın Al</button>

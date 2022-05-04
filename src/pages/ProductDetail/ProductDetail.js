@@ -112,11 +112,8 @@ function ProductDetail() {
                        ? <div>Bu ürün satışta değil</div>
                        : 
                        <>
-                        <BuyProduct 
-                            toggleModalBuy={toggleModalBuy} 
-                            isOpenBuy={isOpenBuy} 
-                            loggenIn={loggenIn}
-                            handleBuyProduct={handleBuyProduct}
+                        <BuyProduct                             
+                            id={id}
                         />                    
                         {
                            offer

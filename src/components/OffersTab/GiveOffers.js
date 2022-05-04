@@ -9,11 +9,12 @@ import { useAuth } from '../../context/AuthContext';
 
 import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
+import BuyProduct from '../ButtonGroup/BuyProduct';
 
 const GiveOffers = () => {
   const {token, userMe} = useAuth();
   const [offers, setOffers] = useState([]);
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState(true);
   
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const GiveOffers = () => {
     setOffers(res)  
   }
   
+  console.log(offers)
   
   return (
     <div className={styles.Offers}>
@@ -48,13 +50,13 @@ const GiveOffers = () => {
 
               <div className={styles.buttons}>
                 {
-                  offer.status === true 
+                  status === true 
                   ? 
                   <>
-                    <button className={styles.acceptButton}>Satın Al</button>
+                    <BuyProduct id={offer.product.id} />
                     <span className={`${styles.status} ${styles.accepted}`}>Onaylandı</span>
                   </>
-                  : offer.status === false 
+                  : status === false 
                   ? 
                   <>
                     <span className={`${styles.status} ${styles.rejected}`}>Reddedildi</span>
