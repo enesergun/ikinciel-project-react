@@ -11,6 +11,9 @@ import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
 import BuyProduct from '../ButtonGroup/BuyProduct';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const GiveOffers = () => {
   const {token, userMe} = useAuth();
   const [offers, setOffers] = useState([]);
@@ -70,7 +73,8 @@ const GiveOffers = () => {
           </div>
 
         ))
-      }      
+      }  
+      <ToastContainer hideProgressBar={true}/>    
     </div>
   )
 }
