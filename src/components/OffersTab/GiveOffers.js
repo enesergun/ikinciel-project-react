@@ -35,11 +35,11 @@ const GiveOffers = () => {
             <div className={styles.ProductCardWrapper}>
               <div className={styles.ProductFeatures}>
                 <div className={styles.productImage}>
-                  <img src={offer.product.image?.formats.thumbnail.url ? `${baseURL}${offer.product.image?.formats.thumbnail.url}` : notProductImage } alt="" />
+                  <img src={offer.product.image?.formats.thumbnail.url.length > 0 ? `${baseURL}${offer.product.image?.formats.thumbnail.url}` : notProductImage } alt="" />
                 </div>
 
                 <div className={styles.productInfo}>
-                  <div className={styles.productName}>{offer.product.name}</div>
+                  <div className={styles.productName}>{offer.product?.name}</div>
 
                   <OfferInformation text={"Verilen Teklif"} offerPrice={offer.offerPrice}/>
                   

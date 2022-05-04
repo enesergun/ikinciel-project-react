@@ -7,9 +7,11 @@ import notProductImage from "../../assets/notProductImage.png";
 import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
 import { useAuth } from '../../context/AuthContext';
+import { useProduct } from '../../context/ProductContext';
 
 const GetOffers = () => {
   const {userMe} = useAuth();
+  const {offerChoice} = useProduct();
   const [product, setProduct] = useState([]);
   
 
@@ -24,6 +26,12 @@ const GetOffers = () => {
     const haveOfferRes = res.filter(product => product.offers.length > 0);
 
     setProduct(haveOfferRes);
+
+  }
+
+  const handleOfferAction = (offerID, choice) => {
+    const res = offerChoice(offerID, choice);
+    console.log(res)
 
   }
 
@@ -43,14 +51,24 @@ const GetOffers = () => {
                 <div className={styles.productInfo}>
                   <div className={styles.productName}>{item.name}</div>
 
-                  <OfferInformation text={"Verilen Teklif"} offerPrice={offer.offerPrice}/>
+                  <OfferInformation text={"Alınan Teklif"} offerPrice={offer.offerPrice}/>
                   
                 </div> 
               </div>
 
-              <div className={styles.buttons}>                                
-                <button className={styles.acceptButton}>Onayla</button>
-                <button className={styles.rejectButton}>Reddet</button>
+              <div className={styles.buttons}> 
+                {
+                  offer.isStatus === true 
+                  ? <span className={`${styles.status} ${styles.accepted}`}>Onaylandı</span>
+                  : offer.isStatus === false
+                  ? <span className={`${styles.status} ${styles.rejected}`}>Reddedildi</span>
+                  : 
+                  <>  
+                    <button className={styles.acceptButton} onClick={() => handleOfferAction(offer.id, true)}>Onayla</button>
+                    <button className={styles.rejectButton} onClick={() => handleOfferAction(offer.id, false)}>Reddet</button>
+                  </>
+                }                               
+                
               </div> 
             </div>
           </div>

@@ -9,7 +9,7 @@ const AuthContext = React.createContext();
 
 const AuthProvider = ({children}) => {
     const [userMe, setUserMe] = useState(() => JSON.parse(localStorage.getItem('userMeInformation')))
-    const [user, setUser] = useState(null);
+    
     const [loggenIn, setLoggenIn] = useState(() => sessionStorage.getItem('loggedIn'));
     const [token] = useState(document.cookie.split("=")[1])
     
@@ -43,7 +43,7 @@ const AuthProvider = ({children}) => {
             console.log('User Profile', response.data.user);
             console.log('User token', response.data.jwt);
             document.cookie = `name=${response.data.jwt}`
-            setUser(response.data.user);
+            
             setLoggenIn(true);
             sessionStorage.setItem('loggedIn', true);
             getMyUserInformation(response.data.jwt);

@@ -62,15 +62,36 @@ const ProductProvider = ({children}) => {
 
   }
 
+  const offerChoice = (offerID, choice) => {
+    axios
+      .put(URL.offers + '/' + offerID,{
+        isStatus: choice
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }        
+      })
+      .then((response) => {
+        console.log("teklif", choice);
+        console.log(response.data)
+      })
+  }
+
+  const deneme = () => {
+    console.log("deneme");
+  }
+
 
 
   return (
     <ProductContext.Provider
-      value={{        
+      value={{
+        token,  
         getOffer,        
         deleteProductOffer,
         getBuyProduct,
-        token
+        offerChoice,  
+        deneme      
       }}
     >
       {children}
