@@ -68,6 +68,19 @@ const attention = {
     marginTop: 10,
 }
 
+const removeImage = {
+    height: 28,
+    width: 30,
+    fontSize: 21,
+    backgroundColor: "rgba(0, 0, 0, .7)",
+    color: "white",
+    border: "none",
+    borderRadius: "50%",    
+    position: "relative",
+    bottom: 12,
+    right: 23,
+}
+
 
 function Previews(props) {
   const [files, setFiles] = useState([]);
@@ -95,7 +108,7 @@ function Previews(props) {
           alt=""
         />
       </div>
-      <button onClick={() => setFiles([])}>x</button>  
+       
     </div>
   ));
 
@@ -132,11 +145,9 @@ function Previews(props) {
       
       <aside style={thumbsContainer}>          
         {thumbs}
-       {/*  {
-            files.length > 0 
-            ? <button onClick={() => setFiles([])}>x</button>
-            : <span></span>
-        } */}
+        {
+            files.length > 0 ? <button onClick={() => setFiles([])} style={removeImage}>x</button>  : <span></span>
+        }
       </aside>
     
       </>
