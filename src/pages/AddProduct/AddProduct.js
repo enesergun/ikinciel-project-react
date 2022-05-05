@@ -5,6 +5,9 @@ import styles from '../style/AddProduct.module.css';
 import formValidationStyle from '../../components/Form/FormValidation'
 import { Navigate } from "react-router-dom";
 
+import { AddProductSchema } from '../../constants/AddProductSchema'
+import { Formik } from 'formik';
+
 import Previews from "../../components/DragAndDrop/DragAndDrop";
 
 function AddProduct() {
@@ -37,12 +40,14 @@ function AddProduct() {
                     <div className={`${styles.category} ${styles.formGroup}`}>
                       <label className={styles.AddProductLabel}>Kategori</label>
 
-                      <select name="categories" id="">
-                        <option value="pantol">pantol</option>
-                        <option value="tişmört">tişmört</option>
-                        <option value="kazak">kazak</option>
-                        <option value="ceket">ceket</option>
-                      </select>
+                      
+                        <select name="categories" className={styles.selectWrapper}>
+                          <option value="pantol">pantol</option>
+                          <option value="tişmört">tişmört</option>
+                          <option value="kazak">kazak</option>
+                          <option value="ceket">ceket</option>
+                        </select>
+                      
                     </div>
                     <div className={`${styles.brand} ${styles.formGroup}`}>
                     

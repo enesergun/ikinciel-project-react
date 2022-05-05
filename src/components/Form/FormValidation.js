@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik } from 'formik';
-import { RegisterSchema } from '../../constants/yupSchema'
+import { RegisterSchema } from '../../constants/RegisterSchema'
 import FormButton from '../ButtonGroup/FormButton'
 import {Link} from 'react-router-dom'
 
