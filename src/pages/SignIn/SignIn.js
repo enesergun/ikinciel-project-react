@@ -1,19 +1,23 @@
-import React from 'react'
+import { Suspense, lazy } from 'react'
 
-import RegisterGirl from '../../assets/RegisterGirl.png'
-import brandLogo from '../../assets/brandLogo.png'
+import RegisterGirl from '../../assets/RegisterGirl.webp'
+import brandLogo from '../../assets/brandLogo.webp'
 import styles from '../style/Register.module.css'
 
-import FormValidation from '../../components/Form/FormValidation'
+import useWindowSize from "../../hooks/useWindowSize";
+
 import { useAuth } from '../../context/AuthContext'
 
 import { ToastContainer } from 'react-toastify';
-import {Navigate} from 'react-router-dom'
+import {Navigate} from 'react-router-dom';
 
+
+const FormValidation = lazy(() => import('../../components/Form/FormValidation'));
 
 function SignIn() {
 
   const { loggenIn, login} = useAuth();
+  const [width] = useWindowSize(400, 600);
   
   return (
     <>
@@ -21,21 +25,28 @@ function SignIn() {
       loggenIn ? <Navigate replace to="/index" /> 
       :
       <div className={styles.registerPage}>
-        <div className={styles.leftSide}>
+        {
+          width > 375 
+          ? 
+          <div className={styles.leftSide}>
             <img src={RegisterGirl} alt="registerGirl" className={styles.registerGirl} />
-        </div>
+          </div>
+          : <span></span>
+        }
         <div className={styles.rightSide}>
             <div className={styles.brandLogoWrap}>
                 <img src={brandLogo} alt="brandLogo" className={styles.brandLogo} />
             </div>
             {/* üye ol, yararlanmak için, buton üye ol */}
-            <FormValidation 
-                ComponentType={'Giriş Yap'} 
-                text={'Fırsatlardan yararlanmak için giriş yap!'} 
-                isAlready={'Hesabın yok mu?'} 
-                Route={'Üye ol'}
-                RoutePath={'register'}
-                Authentication={login}/>
+            <Suspense>
+              <FormValidation 
+                  ComponentType={'Giriş Yap'} 
+                  text={'Fırsatlardan yararlanmak için giriş yap!'} 
+                  isAlready={'Hesabın yok mu?'} 
+                  Route={'Üye ol'}
+                  RoutePath={'register'}
+                  Authentication={login}/>
+            </Suspense>
         </div>
         <ToastContainer hideProgressBar={true}/>
     </div>

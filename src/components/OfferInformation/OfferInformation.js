@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './OfferInformation.module.css'
 
-const OfferInformation = ({text, offerPrice}) => {
+const OfferInformation = ({text, offerPrice, customStyles}) => {
   return (
     
-    <div className={styles.gotOfferPrice}>
+    <div className={customStyles === 'productDetail' ? styles.gotOfferPriceProductDetail : styles.gotOfferPrice}>
         <div className={styles.Offer}>{text} : <strong>{offerPrice} TL </strong></div>
     </div>
 

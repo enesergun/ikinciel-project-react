@@ -6,9 +6,13 @@ import { Link } from 'react-router-dom';
 import LoginButton from './LoginButton';
 
 import { useProduct } from '../../context/ProductContext';
+import { useAuth } from '../../context/AuthContext';
+
+import  errorPopup  from '../../utils/PopUpFunctions/errorPopup'
 import styles from './ButtonGroup.module.css'
 
 import { ToastContainer } from 'react-toastify';
+
 
 Modal.setAppElement("#root");
 
@@ -16,7 +20,44 @@ Modal.setAppElement("#root");
 /* teklif verdiğinde pop up kapanmalı  */
 
 
-const GetOfferButton = ({toggleModal, isOpen, product, loggenIn, handleOffer}) => {    
+const GetOfferButton = ({product}) => {    
+    const [isOpen, setIsOpen] = useState(false);
+    const {getOffer} = useProduct();
+    const {loggenIn} = useAuth();
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  }
+
+  const handleOffer = (values) => {
+
+    let offer;
+
+    if ((values.checked.length > 0 &&  values.checked.length <= 1 && !values.OfferPrice) || (values.OfferPrice && values.checked.length === 0)) {
+        if (values.checked[0] === '20') {
+            offer = ((product.price / 100) * 20).toFixed(1);
+            
+        } else if (values.checked[0] === '30') {
+            offer = ((product.price / 100) * 30).toFixed(1);
+
+        } else if (values.checked[0] === '40') {
+            offer = ((product.price / 100) * 40).toFixed(1);
+
+        } else if (values.OfferPrice) {
+            offer = values.OfferPrice;
+        }
+        getOffer(offer, product.id);   
+        
+
+    } else if ( values.checked.length >= 1 && values.OfferPrice) {
+        console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
+        errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
+    } else {
+      console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
+      errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
+    }       
+  }
+
     
     
   return (
