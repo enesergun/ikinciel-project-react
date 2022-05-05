@@ -24,7 +24,172 @@ function AddProduct() {
             </div>
 
             <div className={styles.AddProductContainer}>              
-              <div className={styles.productDetails}>
+              <Formik
+               initialValues={{
+                name: '',
+                description:'',
+                category:'',
+                color:'',
+                condition:'',
+                price:0
+               }}
+               onSubmit={values => {
+                 console.log(values)
+               }}
+               validationSchema={AddProductSchema}              
+              >
+                {
+                  ({values, handleChange, handleSubmit, errors, touched, handleBlur  }) =>
+                  <div className={styles.productDetails}>
+                    <div className={styles.header}>Ürün Detayları</div>
+                    <form>
+                      <div className={styles.addProductForm}>
+                        <div className={`${styles.productName} ${styles.formGroup}`}>
+                          <label className={styles.AddProductLabel}>Ürün Adı</label>
+                          <input 
+                            type="text"
+                            name="name"                      
+                            value={values.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                            {/* <span>{touched.name && errors.name ? errors.name : ''}</span> */}
+                        </div>
+
+                        <div className={`${styles.description} ${styles.formGroup}`}>
+                          <label className={styles.AddProductLabel}>Açıklama</label>
+                          <input
+                            type="text"
+                            name="description"                      
+                            value={values.description}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                        </div>
+
+                        <div className={styles.SelectGroup}>
+                          <div className={`${styles.category} ${styles.formGroup}`}>
+                            <label className={styles.AddProductLabel}>Kategori</label>
+
+                            
+                              <select 
+                                className={styles.selectWrapper}
+                                name="category"                      
+                                value={values.category}
+                                onChange={handleChange}
+                                onBlur={handleBlur} 
+                                >
+
+                                <option value="pantol" label='pantol'>pantol</option>
+                                <option value="tişmört" label='tişmört'>tişmört</option>
+                                <option value="kazak" label='kazak'>kazak</option>
+                                <option value="ceket" label='ceket'>ceket</option>
+                              </select>
+                              <span>{touched.category && errors.category ? errors.category : ''}</span>
+                            
+                          </div>
+                          <div className={`${styles.brand} ${styles.formGroup}`}>
+                          
+                          <label className={styles.AddProductLabel}>Marka</label>
+
+                          <select 
+                                className={styles.selectWrapper}
+                                name="brand"                      
+                                value={values.brand}
+                                onChange={handleChange}
+                                onBlur={handleBlur} 
+                                >
+
+                                <option value="mavi" label='mavi'>mavi</option>
+                                <option value="koton" label='koton'>koton</option>
+                                <option value="lcw" label='lcw'>lcw</option>
+                                <option value="nike" label='nike'>nike</option>
+                              </select>
+
+                          </div>
+                        </div>
+
+                        <div className={styles.SelectGroup}>
+                          <div className={`${styles.color} ${styles.formGroup}`}>
+                            
+                            <label className={styles.AddProductLabel}>Renk</label>
+
+                            <select 
+                                className={styles.selectWrapper}
+                                name="color"                      
+                                value={values.color}
+                                onChange={handleChange}
+                                onBlur={handleBlur} 
+                                >
+
+                                <option value="yeşil" label='yeşil'>yeşil</option>
+                                <option value="sarı" label='sarı'>sarı</option>
+                                <option value="turuncu" label='turuncu'>turuncu</option>
+                                <option value="kırmızı" label='kırmızı'>kırmızı</option>
+                              </select>
+
+                          </div>
+                          <div className={`${styles.condition} ${styles.formGroup}`}>
+
+                            <label className={styles.AddProductLabel}>Kullanım Durumu</label>
+
+                            <select 
+                                className={styles.selectWrapper}
+                                name="condition"                      
+                                value={values.condition}
+                                onChange={handleChange}
+                                onBlur={handleBlur} 
+                                >
+
+                                <option value="güzel" label='güzel'>güzel</option>
+                                <option value="idare eder" label='idare eder'>idare eder</option>
+                                <option value="harika" label='harika'>harika</option>
+                                <option value="pis" label='pis'>pis</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div className={`${styles.price} ${styles.formGroup}`}>
+                          <label className={styles.AddProductLabel}>Fiyat</label>
+                          <input 
+                            type="number" 
+                            name="price" 
+                            value={values.price}
+                            onChange={handleChange}
+                            onBlur={handleBlur} 
+                            />
+                        </div>
+                        <div className={styles.offerable}>
+                        <label class={styles.switch}>
+                          offerable
+                          <input type="checkbox" />
+                          <span class={`${styles.slider} ${styles.round}`}></span>                    
+                        </label>                                                          
+                        </div>
+                      </div>
+                      <button type='submit' onClick={handleSubmit}>SUBMIT</button>
+                    </form>
+
+                  </div>
+                }
+
+              </Formik>
+              <div className={styles.productImage}>
+              <div className={styles.header}>Ürün Görseli</div>
+              
+              <Previews minSize={0} maxSize={400000}/>
+              </div>
+            </div>
+
+          </div>
+        )
+        : <Navigate replace to="/login" /> 
+      }
+
+    </>
+  )
+}
+
+export default AddProduct
+
+/* <div className={styles.productDetails}>
                 <div className={styles.header}>Ürün Detayları</div>
                 <div className={styles.addProductForm}>
                   <div className={`${styles.productName} ${styles.formGroup}`}>
@@ -101,21 +266,4 @@ function AddProduct() {
                   </label>                                                          
                   </div>
                 </div>
-              </div>
-              <div className={styles.productImage}>
-              <div className={styles.header}>Ürün Görseli</div>
-              
-              <Previews minSize={0} maxSize={400000}/>
-              </div>
-            </div>
-
-          </div>
-        )
-        : <Navigate replace to="/login" /> 
-      }
-
-    </>
-  )
-}
-
-export default AddProduct
+              </div> */
