@@ -98,7 +98,9 @@ function AddProduct() {
                 </div>
               </div>
               <div className={styles.productImage}>
-              <Previews />
+              <div className={styles.header}>Ürün Görseli</div>
+              
+              <Previews minSize={0} maxSize={400000}/>
               </div>
             </div>
 
