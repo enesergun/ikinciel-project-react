@@ -10,10 +10,24 @@ import { Options } from "../../services/productsService";
 
 import SelectOptions from '../../components/SelectOptions/SelectOptions'
 
+import { useProduct } from '../../context/ProductContext';
+
 
 
 
 export const AddProductForm = () => {
+    const { AddProduct} = useProduct();
+
+    const handleAddProduct = async (values) => {
+        const image = sessionStorage.getItem('image');
+
+        if (image) {
+            const imageFile = JSON.parse(sessionStorage.getItem('file'));
+            console.log(imageFile);
+            console.log(values);    
+            AddProduct(values)
+        }
+    }
    
 
   return (
@@ -34,7 +48,7 @@ export const AddProductForm = () => {
                  } else {
                    console.log('image yok');
                  } */
-                 console.log(values)
+                 handleAddProduct(values);
                }}
                validationSchema={AddProductSchema}              
               >

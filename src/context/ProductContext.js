@@ -93,7 +93,13 @@ const ProductProvider = ({children}) => {
         headers: {
           Authorization: `Bearer ${token}`
       }
-      } )
+      })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
 
