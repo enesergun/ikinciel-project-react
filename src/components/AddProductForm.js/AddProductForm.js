@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import { AddProductSchema } from '../../constants/AddProductSchema'
 import { Formik, Field } from 'formik';
@@ -6,34 +6,46 @@ import { Formik, Field } from 'formik';
 import styles from '../../pages/style/AddProduct.module.css';
 import FormValidationStyle from '../Form/FormValidation.module.css'
 
+import { Options } from "../../services/productsService";
+
 import SelectOptions from '../../components/SelectOptions/SelectOptions'
 
 
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
-  const optionsBrand = [
-    { value: 'marka1', label: 'marka1' },
-    { value: 'marka2', label: 'marka2' },
-    { value: 'marka3', label: 'marka3' },
-  ];
-  
-  const optionsColor = [
-    { value: 'renk1', label: 'renk1' },
-    { value: 'renk2', label: 'renk2' },
-    { value: 'renk3', label: 'renk3' },
-  ];
-  
-  
-  const optionsStatus = [
-    { value: 'status1', label: 'status1' },
-    { value: 'status2', label: 'status2' },
-    { value: 'status3', label: 'status3' },
-  ];
+const selectItems = ['categories', 'brands', 'colors', 'using-statuses']
 
 export const AddProductForm = () => {
+    const [options, setOptions] = useState([])
+
+    const handleOptions= async (endpoint) => {
+        let data = [];
+        let newData = [];
+        if (endpoint === "Kategori Seçiniz") {
+            const res = await Options('categories');
+            data = res;
+
+        } else if (endpoint === "Marka Seçiniz") {
+            const res = await Options('brands');        
+            data = res;
+
+        } else if (endpoint === "Renk Seçiniz" ) {
+           const res = await Options('colors');           
+           data = res;
+
+        } else if (endpoint === "Kullanım durumu seçiniz") {
+            const res = await Options('using-statuses');            
+            data = res;
+
+        } else {
+            console.log("Yanlış yer.")
+        }
+
+        for (let i = 0; i < data.length; i++) {
+            newData.push({id: data[i].id, value: data[i].id, label: data[i].name});            
+        }
+
+        setOptions(newData);
+    }
+
   return (
     <>
         <Formik
@@ -84,15 +96,16 @@ export const AddProductForm = () => {
                         </div>
 
                         <div className={styles.SelectGroup}>
-                          <div className={`${styles.category} ${styles.formGroup}`}>
+                          <div className={`${styles.category} ${styles.formGroup}`} >
                             <label className={styles.AddProductLabel}>Kategori</label>
 
                             <Field
-                              className='custom-select'
+                              className='categories'
                               name='category'
                               options={options}
                               component={SelectOptions}
-                              placeholder="Kategori Seçiniz"                              
+                              placeholder="Kategori Seçiniz"   
+                              onClick={() => console.log('fielda tıkladın')}                             
                             />
                             
                               
@@ -105,9 +118,9 @@ export const AddProductForm = () => {
 
                           
                             <Field
-                                className='custom-select'
+                                className='brands'
                                 name='brand'
-                                options={optionsBrand}
+                                options={options}
                                 component={SelectOptions}
                                 placeholder="Marka Seçiniz"                              
                             />
@@ -123,9 +136,9 @@ export const AddProductForm = () => {
                            
 
                             <Field
-                              className='custom-select'
+                              className='colors'
                               name='color'
-                              options={optionsColor}
+                              options={options}
                               component={SelectOptions}
                               placeholder="Renk Seçiniz"                              
                             />
@@ -138,9 +151,9 @@ export const AddProductForm = () => {
 
                            
                                <Field
-                                className='custom-select'
+                                className='using-statuses'
                                 name='condition'
-                                options={optionsStatus}
+                                options={options}
                                 component={SelectOptions}
                                 placeholder="Kullanım durumu seçiniz"
                             />

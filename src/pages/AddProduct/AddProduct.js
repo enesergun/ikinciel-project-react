@@ -3,15 +3,10 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useAuth } from '../../context/AuthContext';
 import styles from '../style/AddProduct.module.css';
 
-
 import { Navigate } from "react-router-dom";
 
 import Previews from '../../components/DragAndDrop/DragAndDrop';
 import { AddProductForm } from '../../components/AddProductForm.js/AddProductForm';
-
-
-
-
 
 
 function AddProduct() {

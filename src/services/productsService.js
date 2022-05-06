@@ -99,7 +99,7 @@ export const giveOffer = async (id) => {
   }
 }
 
-export const SelectOptions = async (option) => {
+export const Options = async (option) => {
   try {
     const res = await axios.get(baseURL + '/' +  option) 
 
