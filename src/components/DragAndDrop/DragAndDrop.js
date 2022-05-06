@@ -84,6 +84,7 @@ const removeImage = {
 
 function Previews(props) {
   const [files, setFiles] = useState([]);
+
   const {getRootProps, getInputProps} = useDropzone({
     accept: {
         'image/jpg': [],
@@ -94,9 +95,15 @@ function Previews(props) {
       setFiles(acceptedFiles.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
-      sessionStorage.setItem('image', true);
+      sessionStorage.setItem('image', true);      
     }
   });
+
+  useEffect(() => {
+    sessionStorage.setItem('file', JSON.stringify(files[0]))    
+    
+  }, [files])
+  
   
   const thumbs = files.map(file => (
     <div style={thumb} key={file.name}>
@@ -118,7 +125,7 @@ function Previews(props) {
     return () => files.forEach(file => URL.revokeObjectURL(file.preview));
   }, []);
 
-  console.log(files)
+  
 
   return (
       <>
@@ -147,7 +154,7 @@ function Previews(props) {
       <aside style={thumbsContainer}>          
         {thumbs}
         {
-            files.length > 0 ? <button onClick={() => {setFiles([]); sessionStorage.removeItem('image')}} style={removeImage}>x</button>  : <span></span>
+            files.length > 0 ? <button onClick={() => {setFiles([]); sessionStorage.removeItem('image'); sessionStorage.removeItem('file')}} style={removeImage}>x</button>  : <span></span>
         }
       </aside>
     

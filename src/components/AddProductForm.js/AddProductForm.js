@@ -11,40 +11,10 @@ import { Options } from "../../services/productsService";
 import SelectOptions from '../../components/SelectOptions/SelectOptions'
 
 
-const selectItems = ['categories', 'brands', 'colors', 'using-statuses']
+
 
 export const AddProductForm = () => {
-    const [options, setOptions] = useState([])
-
-    const handleOptions= async (endpoint) => {
-        let data = [];
-        let newData = [];
-        if (endpoint === "Kategori Seçiniz") {
-            const res = await Options('categories');
-            data = res;
-
-        } else if (endpoint === "Marka Seçiniz") {
-            const res = await Options('brands');        
-            data = res;
-
-        } else if (endpoint === "Renk Seçiniz" ) {
-           const res = await Options('colors');           
-           data = res;
-
-        } else if (endpoint === "Kullanım durumu seçiniz") {
-            const res = await Options('using-statuses');            
-            data = res;
-
-        } else {
-            console.log("Yanlış yer.")
-        }
-
-        for (let i = 0; i < data.length; i++) {
-            newData.push({id: data[i].id, value: data[i].id, label: data[i].name});            
-        }
-
-        setOptions(newData);
-    }
+   
 
   return (
     <>
@@ -102,7 +72,7 @@ export const AddProductForm = () => {
                             <Field
                               className='categories'
                               name='category'
-                              options={options}
+                              
                               component={SelectOptions}
                               placeholder="Kategori Seçiniz"   
                               onClick={() => console.log('fielda tıkladın')}                             
@@ -120,7 +90,7 @@ export const AddProductForm = () => {
                             <Field
                                 className='brands'
                                 name='brand'
-                                options={options}
+                                
                                 component={SelectOptions}
                                 placeholder="Marka Seçiniz"                              
                             />
@@ -138,7 +108,7 @@ export const AddProductForm = () => {
                             <Field
                               className='colors'
                               name='color'
-                              options={options}
+                              
                               component={SelectOptions}
                               placeholder="Renk Seçiniz"                              
                             />
@@ -153,7 +123,7 @@ export const AddProductForm = () => {
                                <Field
                                 className='using-statuses'
                                 name='condition'
-                                options={options}
+                                
                                 component={SelectOptions}
                                 placeholder="Kullanım durumu seçiniz"
                             />
@@ -184,7 +154,7 @@ export const AddProductForm = () => {
                         </label>                                                          
                         </div>
                       </div>
-                      <button type='submit' onClick={handleSubmit}>SUBMIT</button>
+                      <button type='submit' className={styles.AddProductButton} onClick={handleSubmit}>SUBMIT</button>
                     </form>
 
                   </div>

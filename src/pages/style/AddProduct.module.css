@@ -148,4 +148,16 @@ option:hover {
   
   .slider.round:before {
     border-radius: 50%;
-  }
+}
+
+  .AddProductButton {
+    background-color: #4B9CE2;
+    position: relative;
+    float: right;
+    left: 70%;
+    height: 40px;
+    width: 40%;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}

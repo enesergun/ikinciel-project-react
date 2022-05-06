@@ -23,8 +23,8 @@ const customStyles = {
 
 
 
-const SelectOptions = ({className, name, options, field, form, placeholder}) => {
-        const [x, setX] = useState([])
+const SelectOptions = ({className, name, field, form, placeholder}) => {
+        const [options, setOptions] = useState([])
 
     useEffect(() => {
       handleOptions(className);
@@ -35,12 +35,15 @@ const SelectOptions = ({className, name, options, field, form, placeholder}) => 
     }
     
     const handleOptions= async (className) => {
-        console.log("classNAme", className)
+        
         let data = [];
         let newData = [];
         if (className === "categories") {
             const res = await Options('categories');
-            data = res;
+
+            for (let i = 0; i < res.length; i++) {
+                newData.push({id: res[i].id, value: res[i].id, label: res[i].name});            
+            }
 
         } else if (className === "brands") {
             const res = await Options('brands');        
@@ -59,11 +62,10 @@ const SelectOptions = ({className, name, options, field, form, placeholder}) => 
         }
 
         for (let i = 0; i < data.length; i++) {
-            newData.push({id: data[i].id, value: data[i].id, label: data[i].name});            
+            newData.push({id: data[i].id, value: data[i].name, label: data[i].name});            
         }
 
-        setX(newData);
-        console.log(newData);
+        setOptions(newData);
         
     }
               
@@ -74,7 +76,7 @@ const SelectOptions = ({className, name, options, field, form, placeholder}) => 
               name={field.name}          
               onChange={onChange}
               placeholder={placeholder}
-              options={x}  
+              options={options}  
               styles={customStyles}
           />      
         </>

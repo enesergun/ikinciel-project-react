@@ -77,8 +77,23 @@ const ProductProvider = ({children}) => {
       })
   }
 
-  const deneme = () => {
-    console.log("deneme");
+  const AddProduct = (values) => {
+    axios
+      .post(URL.products, {
+        name: values.name,
+        description: values.description,
+        category: values.category,
+        brand: values.brand,
+        color: values.color,
+        price: values.price,
+        isOfferable: values.offerable,
+        isSold:false,
+        users_permissions_user: userMe.id
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`
+      }
+      } )
   }
 
 
@@ -91,7 +106,7 @@ const ProductProvider = ({children}) => {
         deleteProductOffer,
         getBuyProduct,
         offerChoice,  
-        deneme      
+        AddProduct      
       }}
     >
       {children}
