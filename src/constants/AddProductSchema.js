@@ -25,6 +25,7 @@ export const AddProductSchema = yup.object().shape({
 
     price: yup
     .number()
-    .required('Zorunlu alan.')
+    .required('Zorunlu alan.'),
+        
     
 });

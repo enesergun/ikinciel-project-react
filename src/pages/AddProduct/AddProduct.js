@@ -36,17 +36,19 @@ function AddProduct() {
                initialValues={{
                 name: '',
                 description:'',
-                category:'',
+                category:'kullanım durmuunu seç',
                 color:'',
                 condition:'',
-                price:0
+                offerable: false                
+                
                }}
                onSubmit={values => {
-                 if (sessionStorage.getItem('image')) {
+                /*  if (sessionStorage.getItem('image')) {
                    console.log('image var');                  
                  } else {
                    console.log('image yok');
-                 }
+                 } */
+                 console.log(values)
                }}
                validationSchema={AddProductSchema}              
               >
@@ -87,9 +89,8 @@ function AddProduct() {
                                 name="category"                      
                                 value={values.category}
                                 onChange={handleChange}
-                                onBlur={handleBlur} 
-                                >
-
+                                onBlur={handleBlur}                                 
+                                >                                
                                 <option value="pantol" label='pantol'>pantol</option>
                                 <option value="tişmört" label='tişmört'>tişmört</option>
                                 <option value="kazak" label='kazak'>kazak</option>
@@ -171,7 +172,14 @@ function AddProduct() {
                         <div className={styles.offerable}>
                         <label class={styles.switch}>
                           offerable
-                          <input type="checkbox" />
+                          <input 
+                            type="checkbox"
+                            name='offerable'
+                            checked={values.offerable}
+                            value={values.offerable}
+                            onChange={handleChange}
+                            onBlur={handleBlur} 
+                            />
                           <span class={`${styles.slider} ${styles.round}`}></span>                    
                         </label>                                                          
                         </div>
