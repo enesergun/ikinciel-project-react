@@ -94,6 +94,7 @@ function Previews(props) {
       setFiles(acceptedFiles.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
+      sessionStorage.setItem('image', true);
     }
   });
   
@@ -146,7 +147,7 @@ function Previews(props) {
       <aside style={thumbsContainer}>          
         {thumbs}
         {
-            files.length > 0 ? <button onClick={() => setFiles([])} style={removeImage}>x</button>  : <span></span>
+            files.length > 0 ? <button onClick={() => {setFiles([]); sessionStorage.removeItem('image')}} style={removeImage}>x</button>  : <span></span>
         }
       </aside>
     

@@ -5,6 +5,11 @@
     background-color: white;
     z-index: 1;
 }
+/* 
+.FormContainer {
+    display: flex;
+    width: 100%;
+} */
 
 .AddProductContainer {
     position: relative;

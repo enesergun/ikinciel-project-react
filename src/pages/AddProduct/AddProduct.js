@@ -7,11 +7,19 @@ import { Navigate } from "react-router-dom";
 
 import { AddProductSchema } from '../../constants/AddProductSchema'
 import { Formik } from 'formik';
+import Previews from '../../components/DragAndDrop/DragAndDrop'
 
-import Previews from "../../components/DragAndDrop/DragAndDrop";
 
 function AddProduct() {
   const {loggenIn, userMe} = useAuth();
+  const [image, setImage] = useState(sessionStorage.getItem('image') || false);
+
+
+
+  
+  
+
+
   return (
     <>
       {
@@ -34,7 +42,11 @@ function AddProduct() {
                 price:0
                }}
                onSubmit={values => {
-                 console.log(values)
+                 if (sessionStorage.getItem('image')) {
+                   console.log('image var');                  
+                 } else {
+                   console.log('image yok');
+                 }
                }}
                validationSchema={AddProductSchema}              
               >
