@@ -6,19 +6,28 @@ import formValidationStyle from '../../components/Form/FormValidation'
 import { Navigate } from "react-router-dom";
 
 import { AddProductSchema } from '../../constants/AddProductSchema'
-import { Formik } from 'formik';
-import Previews from '../../components/DragAndDrop/DragAndDrop'
+import { Formik, Field } from 'formik';
+import Previews from '../../components/DragAndDrop/DragAndDrop';
+
+import Select from 'react-select';
+
+
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
 
 
 function AddProduct() {
   const {loggenIn, userMe} = useAuth();
   const [image, setImage] = useState(sessionStorage.getItem('image') || false);
+/*   const [selectedOption, setSelectedOption] = useState(null);
+ */
 
-
-
+ 
   
-  
-
 
   return (
     <>
@@ -36,7 +45,7 @@ function AddProduct() {
                initialValues={{
                 name: '',
                 description:'',
-                category:'kullanım durmuunu seç',
+                category:'',
                 color:'',
                 condition:'',
                 offerable: false                
@@ -53,7 +62,7 @@ function AddProduct() {
                validationSchema={AddProductSchema}              
               >
                 {
-                  ({values, handleChange, handleSubmit, errors, touched, handleBlur  }) =>
+                  ({values, handleChange, handleSubmit, errors, touched, handleBlur, setFieldValue, setFieldTouched  }) =>
                   <div className={styles.productDetails}>
                     <div className={styles.header}>Ürün Detayları</div>
                     <form>
@@ -64,7 +73,7 @@ function AddProduct() {
                             type="text"
                             name="name"                      
                             value={values.name}
-                            onChange={handleChange}
+                            onChange={(handleChange)}
                             onBlur={handleBlur} />
                             {/* <span>{touched.name && errors.name ? errors.name : ''}</span> */}
                         </div>
@@ -83,19 +92,16 @@ function AddProduct() {
                           <div className={`${styles.category} ${styles.formGroup}`}>
                             <label className={styles.AddProductLabel}>Kategori</label>
 
+                            <Field
+                              className='custom-select'
+                              name='category'
+                              options={options}
+                              component={MySelect}
+                              placeholder="Kategori Seçiniz"
+                              isMulti={false}
+                            />
                             
-                              <select 
-                                className={styles.selectWrapper}
-                                name="category"                      
-                                value={values.category}
-                                onChange={handleChange}
-                                onBlur={handleBlur}                                 
-                                >                                
-                                <option value="pantol" label='pantol'>pantol</option>
-                                <option value="tişmört" label='tişmört'>tişmört</option>
-                                <option value="kazak" label='kazak'>kazak</option>
-                                <option value="ceket" label='ceket'>ceket</option>
-                              </select>
+                              
                               <span>{touched.category && errors.category ? errors.category : ''}</span>
                             
                           </div>
@@ -115,7 +121,7 @@ function AddProduct() {
                                 <option value="koton" label='koton'>koton</option>
                                 <option value="lcw" label='lcw'>lcw</option>
                                 <option value="nike" label='nike'>nike</option>
-                              </select>
+                          </select>
 
                           </div>
                         </div>
@@ -208,6 +214,45 @@ function AddProduct() {
 }
 
 export default AddProduct
+
+
+
+function MySelect({className, name, options, field, form, isMulti= false, placeholder}) {
+
+  const onChange = (option) => {
+    form.setFieldValue(field.name, option.value)
+
+  }
+  return (
+    <>
+      <Select
+          className={className}
+          name={field.name}
+          /* value={getValue()} */
+          onChange={onChange}
+          placeholder={placeholder}
+          options={options}
+          isMulti={isMulti}
+      />      
+    </>
+  )
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* <div className={styles.productDetails}>
                 <div className={styles.header}>Ürün Detayları</div>
