@@ -99,3 +99,22 @@ export const giveOffer = async (id) => {
   }
 }
 
+export const SelectOptions = async (option) => {
+  try {
+    const res = await axios.get(baseURL + '/' +  option) 
+
+    if(res.statusText === 'OK') {
+                
+      return res.data;
+              
+    }
+    else {
+      return {
+        error: 'Offer error'
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
