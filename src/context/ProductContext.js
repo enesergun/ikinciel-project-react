@@ -7,6 +7,7 @@ const ProductContext = React.createContext();
 const ProductProvider = ({children}) => {    
   const [userMe] = useState(JSON.parse(localStorage.getItem('userMeInformation')));
   const [token] = useState(document.cookie.split("=")[1]);
+  const [image, setImage] = useState();
     
   const getOffer = (offer, productID) => {
       axios
@@ -77,28 +78,37 @@ const ProductProvider = ({children}) => {
       })
   }
 
+  const imageFile =  (file) => {
+    const imgFile = file;
+    setImage(imgFile);
+    console.log(imgFile);
+  }
+
   const AddProduct = (values) => {
+
+    const formData = new FormData();
+
+    formData.append('files.image', image);
+    formData.append('data', JSON.stringify(values));
+
+   
+    /* for (var pair of formData.entries()) {
+      console.log(pair[0]+ ', ' + pair[1]); 
+    } */
+    
     axios
-      .post(URL.products, {
-        name: values.name,
-        description: values.description,
-        category: values.category,
-        brand: values.brand,
-        color: values.color,
-        price: values.price,
-        isOfferable: values.offerable,
-        isSold:false,
-        users_permissions_user: userMe.id
-      },{
+      .post(URL.products, formData, {
         headers: {
           Authorization: `Bearer ${token}`
-      }
+        } 
       })
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
+        console.log('ürün basariyla eklendi');
       })
-      .catch((error) => {
-        console.log(error)
+      .catch((err) => {
+        console.log(err);
+        console.log('hata')
       })
   }
 
@@ -107,12 +117,14 @@ const ProductProvider = ({children}) => {
   return (
     <ProductContext.Provider
       value={{
+        image,
         token,  
         getOffer,        
         deleteProductOffer,
         getBuyProduct,
-        offerChoice,  
-        AddProduct      
+        offerChoice,
+        imageFile,  
+        AddProduct,    
       }}
     >
       {children}

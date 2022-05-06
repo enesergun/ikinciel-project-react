@@ -16,15 +16,11 @@ import { useProduct } from '../../context/ProductContext';
 
 
 export const AddProductForm = () => {
-    const { AddProduct} = useProduct();
+    const { AddProduct, image} = useProduct();
 
     const handleAddProduct = async (values) => {
-        const image = sessionStorage.getItem('image');
-
-        if (image) {
-            const imageFile = JSON.parse(sessionStorage.getItem('file'));
-            console.log(imageFile);
-            console.log(values);    
+        
+        if (image) {                      
             AddProduct(values)
         }
     }
@@ -39,7 +35,7 @@ export const AddProductForm = () => {
                 category:'',
                 color:'',
                 condition:'',
-                offerable: false                
+                isOfferable: false                
                 
                }}
                onSubmit={values => {
@@ -158,9 +154,9 @@ export const AddProductForm = () => {
                           offerable
                           <input 
                             type="checkbox"
-                            name='offerable'
-                            checked={values.offerable}
-                            value={values.offerable}
+                            name='isOfferable'
+                            checked={values.isOfferable}
+                            value={values.isOfferable}
                             onChange={handleChange}
                             onBlur={handleBlur} 
                             />
