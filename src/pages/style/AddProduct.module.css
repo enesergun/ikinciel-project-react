@@ -174,9 +174,9 @@ option:hover {
     color: white;
 }
 
-@media screen and (max-width: 376px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
     .AddProductContainer {        
-       max-width: 355px;
+       max-width: 90%;
        flex-direction: column;
     }
     .AddProductButton {
@@ -216,3 +216,10 @@ option:hover {
     }
     
 }
+
+@media screen and (min-width: 1920px) { 
+    .AddProductContainer   {
+        top: 100px;
+    }
+}
+
