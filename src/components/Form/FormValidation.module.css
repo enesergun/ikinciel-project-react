@@ -59,6 +59,10 @@ input[type="password"]::placeholder {
     padding: 30px 0;
     text-align: center;
 }
+.alreadyAccount p > a {
+    color: #4B9CE2;
+    text-decoration: none;
+}
 
 .header {
     text-align: center;

@@ -51,7 +51,7 @@ function Register() {
               Authentication={register}/>
           </Suspense>
       </div>
-      <ToastContainer hideProgressBar={true}/>
+      <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
   </div>
     }
     </>

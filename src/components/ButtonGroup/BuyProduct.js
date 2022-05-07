@@ -61,7 +61,7 @@ const BuyProduct = ({id, stylesProp}) => {
             </>
             }
           </Modal> 
-      <ToastContainer hideProgressBar={true}/>                    
+        <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>                  
     </>
   )
 }

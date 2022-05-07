@@ -74,7 +74,7 @@ const GiveOffers = () => {
 
         ))
       }  
-      <ToastContainer hideProgressBar={true}/>    
+      <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>   
     </div>
   )
 }

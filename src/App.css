@@ -22,3 +22,38 @@ body {
   .ReactModal__Overlay--before-close {
     opacity: 0;
 }
+
+.toast-success-container {
+  color: #46AF32 !important;
+  border-radius: 8px !important;
+  background: #F1FFF0 !important;  
+  box-shadow: 0px 1px 5px rgba(248, 175, 175, 0.1) !important;
+}
+
+.toast-success-container-after {
+  overflow: hidden;
+  position: relative;
+}
+
+.toast-success-container-after::after{
+  background: black !important;
+}
+
+
+
+.toast-error-container {
+  color: #F77474 !important;
+  border-radius: 8px !important;
+  background: #FFE5E5 !important;
+  
+  box-shadow: 0px 1px 5px rgba(248, 175, 175, 0.1) !important;
+}
+
+.toast-error-container-after {
+  overflow: hidden;
+  position: relative;
+}
+
+.toast-error-container-after::after{
+  background: black !important;
+}

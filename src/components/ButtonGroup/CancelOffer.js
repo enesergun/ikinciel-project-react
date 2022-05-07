@@ -9,7 +9,7 @@ const CancelOffer = ({handleDeleteOffer}) => {
   return (
     <>
       <button className={styles.offerButton} onClick={handleDeleteOffer}>Teklifi Geri Çek</button>
-      <ToastContainer hideProgressBar={true}/>
+      <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
     </>
   )
 }

@@ -19,6 +19,7 @@
     color: #4B9CE2;
     font-size: 15px;
     font-weight: 700;
+    cursor: pointer;
 }
 .addProductButton {
     margin-right: 15px;
