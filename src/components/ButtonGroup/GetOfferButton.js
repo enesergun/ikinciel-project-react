@@ -29,6 +29,8 @@ const GetOfferButton = ({product}) => {
     setIsOpen(!isOpen);
   }
 
+  
+
   const handleOffer = (values) => {
 
     let offer;

@@ -8,8 +8,10 @@ import { useProduct } from '../../context/ProductContext';
 import OfferInformation from '../OfferInformation/OfferInformation';
 
 const ProductInfo = ({product, offer}) => {
-    const {userMe} = useProduct();
+    const {userMe, offered} = useProduct();
     const [width] = useWindowSize(400, 600);
+
+    console.log(offered)
   return (
     <>
         {
@@ -41,9 +43,9 @@ const ProductInfo = ({product, offer}) => {
 
                 <div className={styles.gotOfferPrice}>
                     {
-                        offer 
+                        offered 
                         ? 
-                        <OfferInformation text={"Verilen Teklif"} offerPrice={offer.offerPrice}/>
+                        <OfferInformation text={"Verilen Teklif"} offerPrice={offer?.offerPrice}/>
                         : <span></span>
                     }
                         
@@ -59,7 +61,7 @@ const ProductInfo = ({product, offer}) => {
                 <span className={styles.price}>{product.price} TL</span>
                 <div className={styles.gotOfferPriceProductDetail}>
                     {
-                        offer 
+                        offer
                         ? 
                         <OfferInformation text={"Verilen Teklif"} offerPrice={offer.offerPrice} customStyles={'productDetail'}/>
                         : <span></span>

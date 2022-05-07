@@ -8,6 +8,8 @@ const ProductProvider = ({children}) => {
   const [userMe] = useState(JSON.parse(localStorage.getItem('userMeInformation')));
   const [token] = useState(document.cookie.split("=")[1]);
   const [image, setImage] = useState();
+  const [offered, setOffered] = useState(sessionStorage.getItem('offered') || false);
+  
     
   const getOffer = (offer, productID) => {
       axios
@@ -22,7 +24,10 @@ const ProductProvider = ({children}) => {
             }
         }).then((res) => {
             SuccessPopUp('Teklif verildi');
+            setOffered(res.data)
             sessionStorage.setItem(productID, JSON.stringify(res.data));
+            setOffered(true);
+            sessionStorage.setItem('offered', true);
             }
         ).catch((error) => {
             console.log(error);
@@ -37,9 +42,12 @@ const ProductProvider = ({children}) => {
       }
       })
       .then((response) =>{
+        SuccessPopUp('Teklif geri çekildi');
         sessionStorage.removeItem(productID);
         sessionStorage.removeItem(`offer ${productID}`)
-        SuccessPopUp('Teklif geri çekildi');
+        sessionStorage.removeItem('offered')
+        setOffered(false);        
+
       })
   }
 
@@ -117,6 +125,7 @@ const ProductProvider = ({children}) => {
   return (
     <ProductContext.Provider
       value={{
+        offered,
         image,
         token,  
         getOffer,        

@@ -22,8 +22,9 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
+  const {deleteProductOffer, offered} = useProduct();
   const { id } = useParams();
-  const {deleteProductOffer} = useProduct();
+    
   const [width] = useWindowSize(400, 600);
   const [product, setProduct] = useState([]);
 
@@ -32,11 +33,12 @@ function ProductDetail() {
   useEffect(() => {    
     getProduct(); 
   }, []);
-/* 
-  useEffect(() => {
-    setOffer(JSON.parse(sessionStorage.getItem(id)))      
-  }) */
 
+  useEffect(() => {
+    setOffer(JSON.parse(sessionStorage.getItem(id)));
+  
+  }, [offered])
+  
       
   const getProduct = async () => {
     const res = await getProductDetail(id);
@@ -82,7 +84,7 @@ function ProductDetail() {
                             id={id}
                         />                    
                         {
-                           offer
+                           offered
                            ? <><CancelOffer handleDeleteOffer={handleDeleteOffer}/></>
                            : 
                            <>
