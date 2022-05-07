@@ -51,3 +51,9 @@
 .error {
     color: red;
 }
+
+@media screen and (max-width: 376px) {    
+    .DragAndDrop {
+        /* padding-bottom: 10px; */
+    }
+}
