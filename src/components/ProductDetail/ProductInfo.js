@@ -9,6 +9,8 @@ import useWindowSize from "../../hooks/useWindowSize";
 import { useProduct } from '../../context/ProductContext';
 import OfferInformation from '../OfferInformation/OfferInformation';
 
+
+
 const ProductInfo = ({product, offer}) => {
     const {userMe, offered, isOfferExist} = useProduct();
     const { id } = useParams();
@@ -16,7 +18,7 @@ const ProductInfo = ({product, offer}) => {
 
     
   return (
-    <>
+    <>         
         {
             width > 375 
             ?

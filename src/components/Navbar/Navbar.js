@@ -4,6 +4,7 @@ import AccountButton from '../ButtonGroup/AccountButton'
 import AddProductButton from '../ButtonGroup/AddProductButton'
 import LoginButton from '../ButtonGroup/LoginButton'
 
+
 import styles from "./Navbar.module.css";
 
 import { Link } from "react-router-dom";
@@ -21,7 +22,10 @@ const Navbar = ({loggenIn}) => {
             { 
                 loggenIn ?
                 <>
-                <Link to="/addproduct"><AddProductButton /></Link>
+                <Link to="/addproduct">
+                   
+                   <AddProductButton />
+                </Link>
                 <Link to="/account"><AccountButton /></Link>
                 </>                
                 :

@@ -7,6 +7,8 @@ import LoginButton from './LoginButton';
 import { useAuth } from '../../context/AuthContext';
 import { useProduct } from '../../context/ProductContext';
 
+import { ToastContainer } from 'react-toastify';
+
 import styles from './ButtonGroup.module.css'
 
 Modal.setAppElement("#root");
@@ -29,37 +31,37 @@ const BuyProduct = ({id, stylesProp}) => {
   return (
     <>
         <button className={stylesProp === 'acceptButton' ? styles.acceptButton : styles.buyButton} onClick={toggleModalBuy}>Satın Al</button>
-                    <Modal
-                        isOpen={isOpenBuy}
-                        onRequestClose={toggleModalBuy}
-                        contentLabel="BuyModal"
-                        className={styles.mymodal}
-                        overlayClassName={styles.myoverlay}
-                        closeTimeoutMS={500}
-                            >
-                                {
-                                    loggenIn 
-                                    ?
-                                    <div className={styles.buyButtonModal}>    
-                                        <p><strong>Satın Al</strong></p>                                
+          <Modal
+            isOpen={isOpenBuy}
+            onRequestClose={toggleModalBuy}
+            contentLabel="BuyModal"
+            className={styles.mymodal}
+            overlayClassName={styles.myoverlay}
+            closeTimeoutMS={500}
+            >
+            {
+            loggenIn 
+            ?
+            <div className={styles.buyButtonModal}>    
+              <p><strong>Satın Al</strong></p>                                
 
-                                        <div className={styles.PopUpContent}>
-                                            <p>Satın almak istiyor musunuz?</p>
-                                        </div>
+              <div className={styles.PopUpContent}>
+                <p>Satın almak istiyor musunuz?</p>
+              </div>
 
-                                        <div className={styles.PopUpButtons}>
-                                            <button className={styles.Quit} onClick={toggleModalBuy}>Vazgeç</button>
-                                            <button className={styles.buyButton} onClick={handleBuyProduct}>Satın Al</button>
-                                        </div>
-                                    </div> 
-                                    :
-                                    <>
-                                        <div><strong>Lütfen giriş yapınız.</strong></div>
-                                        <Link to="/login"><LoginButton /></Link>
-                                    </>
-                                }
-                            
-                    </Modal> 
+              <div className={styles.PopUpButtons}>
+                <button className={styles.Quit} onClick={toggleModalBuy}>Vazgeç</button>
+                <button className={styles.buyButton} onClick={handleBuyProduct}>Satın Al</button>
+              </div>
+            </div> 
+            :
+            <>
+              <div><strong>Lütfen giriş yapınız.</strong></div>
+              <Link to="/login"><LoginButton /></Link>
+            </>
+            }
+          </Modal> 
+      <ToastContainer hideProgressBar={true}/>                    
     </>
   )
 }

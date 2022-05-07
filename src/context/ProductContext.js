@@ -95,12 +95,14 @@ const ProductProvider = ({children}) => {
     }
     })
     .then((res) => {
-      console.log("Ürün satın alındı");
-      sessionStorage.setItem(`isSold ${productID}`, true);
       setTimeout(() => {
         SuccessPopUp('Ürün satın alındı.');
+        
       }, 100);
+      console.log("Ürün satın alındı");
+      sessionStorage.setItem(`isSold ${productID}`, true);      
       setProductSold('sold');
+      
     })
     .catch((error) => {
       console.log('satın alma işlemi gerçekleştirilemedi')

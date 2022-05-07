@@ -24,6 +24,10 @@
     margin-right: 15px;
 }
 
+button span {
+    margin-left: 6px;
+}
+
 .buyButton {
     width: 45%;
     height: 40px;
