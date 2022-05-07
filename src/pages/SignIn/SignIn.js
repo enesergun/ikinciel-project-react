@@ -26,7 +26,7 @@ function SignIn() {
       :
       <div className={styles.registerPage}>
         {
-          width > 375 
+          width > 768
           ? 
           <div className={styles.leftSide}>
             <img src={RegisterGirl} alt="registerGirl" className={styles.registerGirl} />

@@ -29,9 +29,26 @@
     text-align: center;
     margin: 55px 0;
 }
+  
+.toast-error-container {
+    color: #000 !important;
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #34A853 !important;
+    box-shadow: 0px 1px 5px rgba(248, 175, 175, 0.1) !important;
+  }
+
+.toast-error-container-after {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .toast-error-container-after::after{
+    background: black !important;
+}
 
 
-@media screen and (max-width: 376px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
     .registerPage {
         background-color: #F2F2F2;
     }
@@ -56,21 +73,3 @@
         margin: 10px 0;
     }
 }
-  
-
-.toast-error-container {
-    color: #000 !important;
-    border-radius: 8px !important;
-    background: #FFFFFF !important;
-    border: 1px solid #34A853 !important;
-    box-shadow: 0px 1px 5px rgba(248, 175, 175, 0.1) !important;
-  }
-
-.toast-error-container-after {
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .toast-error-container-after::after{
-    background: black !important;
-  }
