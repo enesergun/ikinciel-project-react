@@ -63,6 +63,7 @@ const AddProductForm = () => {
                         <div className={`${styles.description} ${styles.formGroup}`}>
                           <label className={styles.AddProductLabel}>Açıklama</label>
                           <input
+                            className={styles.DescriptionInput}
                             type="text"
                             id={touched.description && errors.description ? FormValidationStyle.errorDescription : ' '} 
                             name="description"                      

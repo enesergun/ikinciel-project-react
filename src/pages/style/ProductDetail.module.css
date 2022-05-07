@@ -166,6 +166,7 @@ input[type=number] {
   @media screen and (max-width: 376px) {
     .container {
         flex-direction: column;
+        width: 355px;
     }
     .productLargeImage,
     .productDetails,

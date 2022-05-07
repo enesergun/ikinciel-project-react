@@ -40,7 +40,7 @@ const GiveOffers = () => {
             <div className={styles.ProductCardWrapper}>
               <div className={styles.ProductFeatures}>
                 <div className={styles.productImage}>
-                  <img src={offer.product.image?.formats.thumbnail.url.length > 0 ? `${baseURL}${offer.product.image?.formats.thumbnail.url}` : notProductImage } alt="" />
+                  {<img src={offer.product?.image?.formats.thumbnail.url.length > 0 ? `${baseURL}${offer.product?.image?.formats.thumbnail.url}` : notProductImage } alt="" />}
                 </div>
 
                 <div className={styles.productInfo}>

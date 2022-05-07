@@ -52,6 +52,9 @@
     width: 48%;
     
 }
+.DescriptionInput {
+    height: 91px !important;
+}
 .price {
     width: 30%;    
 }
@@ -169,4 +172,35 @@ option:hover {
     border: none;
     border-radius: 10px;
     color: white;
+}
+
+@media screen and (max-width: 376px) {
+    .AddProductContainer {        
+       max-width: 355px;
+       flex-direction: column;
+    }
+    .AddProductButton {
+        left: 0;
+    }
+    .SelectGroup {
+        flex-direction: column;
+    }
+    .productDetails,
+    .category,
+    .brand,
+    .color,
+    .condition,
+    .price,
+    .productImage {
+        width: auto;
+    }
+    /* .price {
+        width: 100%;
+    } */
+
+    .slider {
+        left: 257px;
+        right: -197px;
+    }
+    
 }
