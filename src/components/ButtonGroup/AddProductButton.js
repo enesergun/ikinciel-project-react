@@ -12,7 +12,7 @@ const AddProductButton = () => {
      
         <button className={styles.navbarButton}> 
           {
-            width > 375 
+            width > 492 
             ? 
             <>
               <Add />     

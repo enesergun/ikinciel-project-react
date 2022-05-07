@@ -12,8 +12,15 @@
 
 /* padding: 0 10px; */
 
+/* @media screen and (max-width: 426px) {
+    .navbarWrapper {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+} */
 
-@media screen and (max-width: 376px) {
+@media screen and (min-width: 375px) {
     .navbarWrapper {
         max-width: 100%;
         padding: 0 10px;
@@ -25,5 +32,35 @@
     .navbarButton {
         width: 116px;
     
+    }
+}
+
+
+@media screen and (min-width: 1024px) {    
+    .brandLogo {
+        width: 150px;
+        height: 43px;
+    }
+    .navbarButton {
+        width: 116px;
+    
+    }
+}
+
+@media screen and (min-width: 1440px) {  
+    .navbarWrapper {
+        max-width: 80%;
+        /* padding: 0 10px; */
+    }  
+}
+
+
+@media screen and (min-width: 1920px) {  
+    .navbarWrapper {    
+        padding: 10px 0;
+    }
+    .brandLogo {
+        width: 128px;
+        height: 42px;
     }
 }

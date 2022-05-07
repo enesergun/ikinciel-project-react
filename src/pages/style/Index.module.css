@@ -21,7 +21,9 @@
     max-width: 80%;
     justify-content: space-between;
     /* overflow: scroll; */
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    overflow: scroll;
+    flex-wrap: nowrap;
 }
 .categoryName {
     font-weight: 600;
@@ -48,7 +50,47 @@
     color: #4B9CE2;    
 }
 
-@media screen and (max-width: 376px) {
+/* @media screen and (max-width: 768px) and (min-width: 425px) {
+    .banner,
+    .categories,
+    .underline{     
+        max-width: 100%;
+        padding: 0 10px;        
+    }
+    .categories {
+        overflow: scroll;
+        flex-wrap: nowrap;        
+    }
+    .categoryName {
+        margin-right: 27.5px;
+        font-size: 18px;
+    }
+    .products {
+        width: calc(100% - 20px);        
+    }
+} */
+
+/* @media screen and (max-width: 426px) {
+    .banner,
+    .categories,
+    .underline{     
+        max-width: 100%;
+        padding: 0 10px;        
+    }
+    .categories {
+        overflow: scroll;
+        flex-wrap: nowrap;        
+    }
+    .categoryName {
+        margin-right: 27.5px;
+        font-size: 18px;
+    }
+    .products {
+        width: calc(100% - 20px);        
+    }
+} */
+
+@media screen and (min-width: 375px) {
     .banner,
     .categories,
     .underline{     
@@ -75,13 +117,43 @@
     }
 
     .products {
-        width: calc(100% - 20px);
+        width: calc(100% - 20px);        
     }
 }
 
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 370px) {
     .products {
         justify-content: center;
     
     }
-}
+} */
+
+@media screen and (min-width: 1440px) {    
+    .banner,
+    .categories,
+    .underline,
+    .products{     
+        max-width: 80%;
+        padding: 0 10px;        
+    }
+    .banner img {
+        
+        margin-top: 80px;
+    }
+    .categories {
+        overflow: scroll;
+        flex-wrap: nowrap;        
+    }
+    ::-webkit-scrollbar {
+        height: 1px;
+      }
+    .categoryName {
+        margin-right: 27.5px;
+        font-size: 18px;
+    }
+    .underline {
+        width: calc(100% - 40px);   
+    }
+
+    
+  }
