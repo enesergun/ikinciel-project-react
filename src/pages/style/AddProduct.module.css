@@ -52,7 +52,14 @@
     width: 48%;
     
 }
-
+.price {
+    width: 30%;    
+}
+.price:focus {
+    background-color: #F0F8FF;
+    color: #3E3E3E;
+    border: 2px solid #4B9CE2;
+}
 .formGroup {
     display: inline-flex;
     flex-direction: column;
@@ -90,22 +97,27 @@ option:hover {
 .switch {
     position: relative;
     display: inline-block;
-    width: 50px;
+    width: 113px;
     height: 24px;
-  }
+}
+.switch p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #3E3E3E;
+}
   
-  .switch input { 
+.switch input { 
     opacity: 0;
     width: 0;
     height: 0;
-  }
+}
 
 .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 169px;
+    right: -106px;
     bottom: 0;
     background-color: #ccc;
     -webkit-transition: .4s;

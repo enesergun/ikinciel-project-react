@@ -30,13 +30,17 @@ input[type="password"] {
     
 }
 #errorEmail,
-#errorPassword {
+#errorPassword,
+#errorName,
+#errorDescription,
+#errorCategory {
     color: red;
     border: 2px solid #F77474;
     background-color: #FFF2F2;
 }
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="number"]:focus {
     background-color: #F0F8FF;
     color: #3E3E3E;
     border: 2px solid #4B9CE2;
@@ -67,6 +71,10 @@ input[type="password"]::placeholder {
 .header {
     text-align: center;
     margin: 55px 0;
+}
+
+.price {
+    width: 50%;
 }
 
 @media screen and (max-width: 376px) {   
