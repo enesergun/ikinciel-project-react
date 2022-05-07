@@ -23,11 +23,14 @@ const ProductProvider = ({children}) => {
                 Authorization: `Bearer ${token}`
             }
         }).then((res) => {
-            SuccessPopUp('Teklif verildi');
+            setTimeout(() => {
+              SuccessPopUp('Teklif verildi');
+            }, 100);
             setOffered(res.data)
             sessionStorage.setItem(productID, JSON.stringify(res.data));
             setOffered(true);
             sessionStorage.setItem('offered', true);
+            console.log("teklif verildi")
             }
         ).catch((error) => {
             console.log(error);
@@ -42,11 +45,14 @@ const ProductProvider = ({children}) => {
       }
       })
       .then((response) =>{
-        SuccessPopUp('Teklif geri çekildi');
+        setTimeout(() => {
+          SuccessPopUp('Teklif geri çekildi');
+        }, 100);
         sessionStorage.removeItem(productID);
         sessionStorage.removeItem(`offer ${productID}`)
         sessionStorage.removeItem('offered')
         setOffered(false);        
+        console.log("teklif silindi")
 
       })
   }
