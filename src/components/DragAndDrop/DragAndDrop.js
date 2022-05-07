@@ -73,14 +73,7 @@ function Previews({maxFileSize, acceptType}) {
                 <path id="Path_14465" data-name="Path 14465" d="M339.46,421.91a.72.72,0,0,0-.99,0l-5.7,5.706a.7.7,0,0,0,.99.99l4.515-4.516c0,.01,0,.018,0,.027v11.127a.7.7,0,1,0,1.4,0V424.117c0-.009-.005-.017-.005-.027l4.517,4.516a.7.7,0,0,0,.99-.99Zm-.495,1.507c-.01,0-.018.005-.027.005l.027-.026.027.026C338.982,423.422,338.974,423.417,338.965,423.417Z" fill="#4b9ce2"/>
               </g>
             </svg>
-            {
-               errors && <div>
-               
-               {errors.acceptType && <span>Seçtiğiniz fotoğraf tipi desteklenmiyor</span>}
-               {errors.maxFileSize && <span>Yalnızca 400kb küçük fotoğraflar</span>}
-               
-             </div>
-            }  
+            
             <p className="dragNdropText">Sürükleyip bırakarak yükle</p>
             <p>veya</p>
             <button className={styles.AddImageButton}              
@@ -90,6 +83,14 @@ function Previews({maxFileSize, acceptType}) {
             </button>
 
             <div className={styles.Attention}>PNG ve JPEG Dosya boyutu: max. 400kb</div>
+            {
+               errors && <div>
+               
+               {errors.acceptType && <span className={styles.error}>Seçtiğiniz fotoğraf tipi desteklenmiyor</span>}
+               {errors.maxFileSize && <span className={styles.error}>Yalnızca 400kb küçük fotoğraflar</span>}
+               
+             </div>
+            }  
             </div>
              </>
            }
