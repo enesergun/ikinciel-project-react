@@ -163,16 +163,16 @@ input[type=number] {
     opacity: 0;
   }
 
-  @media screen and (max-width: 376px) {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     .container {
         flex-direction: column;
-        width: 355px;
+        width: 90%;
     }
     .productLargeImage,
     .productDetails,
     .detailButtons,
     .description {
-        width: auto;        
+        width: auto;
     }
     .productLargeImage img {
         height: 362px;
