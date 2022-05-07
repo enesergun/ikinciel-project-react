@@ -65,19 +65,21 @@
     color: green;
 }
 
-@media screen and (max-width: 376px) {
+@media screen and (min-width: 320px) and (max-width:768px) {
     .Offers {
         padding: 10px;
     }  
     .ProductCardWrapper {
         flex-direction: column;
+        align-items: inherit;
     }
     .buttons {
         width: 100%;
     }
     .ButtonsWrapper {
-        width: calc(100% - 80px);
+        /* width: calc(100% - 80px); */
         float: right;
         text-align: right;
     }
+    
 }

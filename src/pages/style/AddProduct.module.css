@@ -176,7 +176,7 @@ option:hover {
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
     .AddProductContainer {        
-       max-width: 90%;
+       max-width: 96%;
        flex-direction: column;
     }
     .AddProductButton {
