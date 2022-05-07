@@ -22,23 +22,38 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
-  const {deleteProductOffer, offered} = useProduct();
+  const {deleteProductOffer, offered, isOfferExist} = useProduct();
   const { id } = useParams();
     
   const [width] = useWindowSize(400, 600);
   const [product, setProduct] = useState([]);
 
+  const [of, setOf] = useState(false);
+
   const [offer, setOffer] = useState(JSON.parse(sessionStorage.getItem(id)));  
   
   useEffect(() => {    
-    getProduct(); 
+    getProduct();
+    /* checkOfferExist(); */
   }, []);
 
   useEffect(() => {
     setOffer(JSON.parse(sessionStorage.getItem(id)));
+    /* checkOfferExist(); */
   
   }, [offered])
-  
+
+
+  /* const checkOfferExist = async () => {
+    const result = await isOfferExist(id);
+
+    if (result) {
+      setOf(true);
+    } else {
+      setOf(false);
+    }
+  }
+   */
       
   const getProduct = async () => {
     const res = await getProductDetail(id);
@@ -84,7 +99,7 @@ function ProductDetail() {
                             id={id}
                         />                    
                         {
-                           offered
+                           isOfferExist(id)
                            ? <><CancelOffer handleDeleteOffer={handleDeleteOffer}/></>
                            : 
                            <>

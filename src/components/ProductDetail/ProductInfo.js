@@ -2,16 +2,19 @@ import React from 'react'
 
 import styles from "./ProductInfo.module.css";
 
+import {useParams} from 'react-router-dom';
+
 import useWindowSize from "../../hooks/useWindowSize";
 
 import { useProduct } from '../../context/ProductContext';
 import OfferInformation from '../OfferInformation/OfferInformation';
 
 const ProductInfo = ({product, offer}) => {
-    const {userMe, offered} = useProduct();
+    const {userMe, offered, isOfferExist} = useProduct();
+    const { id } = useParams();
     const [width] = useWindowSize(400, 600);
 
-    console.log(offered)
+    
   return (
     <>
         {
@@ -43,7 +46,7 @@ const ProductInfo = ({product, offer}) => {
 
                 <div className={styles.gotOfferPrice}>
                     {
-                        offered 
+                        isOfferExist(id) 
                         ? 
                         <OfferInformation text={"Verilen Teklif"} offerPrice={offer?.offerPrice}/>
                         : <span></span>
