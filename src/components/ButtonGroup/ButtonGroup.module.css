@@ -13,8 +13,8 @@
 .navbarButton {
     background-color: #F0F8FF;
     border: none;    
-    border-radius: 8px;
-    width: 124px;
+    border-radius: 8px;    
+    padding: 0 20px;
     height: 40px;
     color: #4B9CE2;
     font-size: 15px;
@@ -26,6 +26,8 @@
 
 button span {
     margin-left: 6px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .buyButton {
@@ -216,7 +218,7 @@ input[type=number] {
         font-size: 18px;
     }
     .navbarButton {
-        width: 116px;    
+        padding: 0 15px;
     }
     .mymodal {        
         top: 15%;        
