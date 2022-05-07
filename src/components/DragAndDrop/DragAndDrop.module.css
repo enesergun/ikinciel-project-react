@@ -1,0 +1,49 @@
+
+.DragAndDrop {
+    margin-top: 20px;
+}
+
+.uploadImageWrapper {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px dashed #B1B1B1;
+    text-align: center;
+}
+.uploadImageWrapper p {
+    font-size: 14px;
+    color: #525252;
+    font-weight: 600;
+}
+
+.Attention{
+    font-size: 12px;
+    font-weight: normal;
+    color: #B1B1B1;
+}
+
+.AddImageButton {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #B1B1B1;
+    margin: 10px;
+}
+.imageItem {
+    display: flex;    
+}
+.RemoveImageButton {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2px 5px;
+    border-radius: 50%;
+    border: none;
+    width: 15px;
+    height: 15px;
+}
+
+.RemoveImageButton svg{ 
+    position: relative;
+    bottom: 3px;
+    right: 1px;
+}

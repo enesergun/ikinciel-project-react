@@ -33,7 +33,7 @@ function AddProduct() {
               <div className={styles.productImage}>
               <div className={styles.header}>Ürün Görseli</div>
               
-              <Previews minSize={0} maxSize={400000}/>
+              <Previews maxFileSize={400000} acceptType={['jpg', 'jpeg', 'png']}/>
               </div>
             </div>
 
