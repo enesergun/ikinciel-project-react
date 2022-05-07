@@ -6,7 +6,7 @@ import styles from '../style/AddProduct.module.css';
 import { Navigate } from "react-router-dom";
 
 import Previews from '../../components/DragAndDrop/DragAndDrop';
-import { AddProductForm } from '../../components/AddProductForm.js/AddProductForm';
+import  AddProductForm  from '../../components/AddProductForm/AddProductForm';
 
 
 function AddProduct() {

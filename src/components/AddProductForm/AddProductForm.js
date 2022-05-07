@@ -15,7 +15,7 @@ import { useProduct } from '../../context/ProductContext';
 
 
 
-export const AddProductForm = () => {
+const AddProductForm = () => {
     const { AddProduct, image} = useProduct();
 
     const handleAddProduct = async (values) => {
@@ -34,7 +34,7 @@ export const AddProductForm = () => {
                 description:'',
                 category:'',
                 color:'',
-                condition:'',
+                status:'',
                 isOfferable: false                
                 
                }}
@@ -132,7 +132,7 @@ export const AddProductForm = () => {
                            
                                <Field
                                 className='using-statuses'
-                                name='condition'
+                                name='status'
                                 
                                 component={SelectOptions}
                                 placeholder="Kullanım durumu seçiniz"
@@ -174,3 +174,5 @@ export const AddProductForm = () => {
     </>
   )
 }
+
+export default AddProductForm

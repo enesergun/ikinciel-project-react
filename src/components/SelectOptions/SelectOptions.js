@@ -4,21 +4,51 @@ import Select from 'react-select';
 import { Options } from "../../services/productsService";
 
 const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      height: 40,
+      background: "#F4F4F4",
+      border: "none",
+    }),
     indicatorSeparator: (provided) => ({
-      display: 'none',
+      ...provided,
+      display: "none",
     }),
     input: (provided) => ({
-      margin: 0,
-    }),
-    container: (provided, state) => ({
       ...provided,
-      /* height: 40, */
-    }),
-    control: (provided, state) => ({
-      ...provided,
-      backgroundColor: '#ccc',
       height: 40,
-    })
+    }),
+    valueContainer : (provided) => ({
+      ...provided,
+      height: 40,
+      padding: 0,
+    }),
+    option: (styles, { isDisabled, isFocused, isSelected }) => {
+      
+      return {
+        ...styles,
+        backgroundColor: 
+          isSelected
+          ? '#F2F2F2'
+          : isFocused
+          ? '#F2F2F2'
+          : undefined,
+        color:
+          isSelected
+          ? '#4B9CE2'
+          : '#3E3E3E',
+        cursor: isDisabled ? 'not-allowed' : 'default',
+  
+        ':active': {
+          ...styles[':active'],
+          backgroundColor: !isDisabled
+            ? isSelected
+              ? 'red'
+              :'#F2F2F2'
+            : undefined,
+        },
+      };
+    },
 }
 
 

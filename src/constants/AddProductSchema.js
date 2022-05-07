@@ -19,7 +19,7 @@ export const AddProductSchema = yup.object().shape({
     .string()
     .required('Renk Seçmek Zorundasınız.'),
 
-    condition: yup
+    status: yup
     .string()
     .required('Kullanım durumunu belirtmek zorundasınız'),
 
