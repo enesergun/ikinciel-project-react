@@ -3,13 +3,17 @@ import React, { useEffect, useState } from 'react'
 import styles from './Offers.module.css'
 import { giveOffer } from "../../services/productsService";
 
+import useWindowSize from "../../hooks/useWindowSize";
+
 import notProductImage from "../../assets/notProductImage.png";
 import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
 import { useAuth } from '../../context/AuthContext';
 import { useProduct } from '../../context/ProductContext';
 
+
 const GetOffers = () => {
+  const [width] = useWindowSize(400, 600);
   const {userMe} = useAuth();
   const {offerChoice} = useProduct();
   const [product, setProduct] = useState([]);
@@ -67,6 +71,7 @@ const GetOffers = () => {
               </div>
 
               <div className={styles.buttons}> 
+                <div className={styles.ButtonsWrapper}>
                 {
                   offer.isStatus === true 
                   ? <span className={`${styles.status} ${styles.accepted}`}>Onaylandı</span>
@@ -77,7 +82,8 @@ const GetOffers = () => {
                     <button className={styles.acceptButton} onClick={() => {handleOfferAction(offer.id, true, index, key); setClick('tiklandi')}}>Onayla</button>
                     <button className={styles.rejectButton} onClick={() => {handleOfferAction(offer.id, false, index, key); setClick('tiklandi')}}>Reddet</button>
                   </>
-                }                               
+                }                   
+                </div>            
                 
               </div> 
             </div>

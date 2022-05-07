@@ -35,7 +35,7 @@
 
 .acceptButton, 
 .rejectButton {
-    width: 86px;
+    width: 108px;
     height: 30px;
     border-radius: 8px;
     border: none;
@@ -71,5 +71,13 @@
     }  
     .ProductCardWrapper {
         flex-direction: column;
+    }
+    .buttons {
+        width: 100%;
+    }
+    .ButtonsWrapper {
+        width: calc(100% - 80px);
+        float: right;
+        text-align: right;
     }
 }
