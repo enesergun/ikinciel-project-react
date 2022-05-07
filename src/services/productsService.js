@@ -42,8 +42,7 @@ export const getProductDetail = async (id) => {
   try {
     const res = await axios.get(URL.products + '/' + id ); 
 
-    if(res.statusText === 'OK') {
-                
+    if(res.statusText === 'OK') {      
       return res.data;
               
     }

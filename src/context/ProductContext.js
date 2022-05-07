@@ -9,16 +9,31 @@ const ProductProvider = ({children}) => {
   const [token] = useState(document.cookie.split("=")[1]);
   const [image, setImage] = useState();
   const [offered, setOffered] = useState(sessionStorage.getItem('offered') || false);
+  const [ProductSold, setProductSold] = useState();
 
+
+  const isProductSold = (productID) => {
+    const product = JSON.parse(sessionStorage.getItem(`isSold ${productID}`));
+
+    if (product) {
+      return true
+      
+    } else {
+
+      return false
+    }
+
+  }
 
   const isOfferExist = (productID) => {
     const offer = JSON.parse(sessionStorage.getItem(productID));
 
     if (offer) {
       return true;
-    }
-    else {
+
+    } else {
       return false;
+
     }
   }
   
@@ -81,7 +96,11 @@ const ProductProvider = ({children}) => {
     })
     .then((res) => {
       console.log("Ürün satın alındı");
-      SuccessPopUp('Ürün satın alındı');
+      sessionStorage.setItem(`isSold ${productID}`, true);
+      setTimeout(() => {
+        SuccessPopUp('Ürün satın alındı.');
+      }, 100);
+      setProductSold('sold');
     })
     .catch((error) => {
       console.log('satın alma işlemi gerçekleştirilemedi')
@@ -146,13 +165,15 @@ const ProductProvider = ({children}) => {
         offered,
         image,
         token,  
+        ProductSold,
         getOffer,        
         deleteProductOffer,
         getBuyProduct,
         offerChoice,
         imageFile,  
         AddProduct,    
-        isOfferExist
+        isOfferExist,
+        isProductSold
       }}
     >
       {children}
