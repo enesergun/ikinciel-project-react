@@ -17,7 +17,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const GiveOffers = () => {
   const {token, userMe} = useAuth();
   const [offers, setOffers] = useState([]);
-  /* const [status, setStatus] = useState(true); */
   
 
   useEffect(() => {

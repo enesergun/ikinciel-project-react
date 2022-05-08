@@ -107,8 +107,8 @@ const GetOfferButton = ({product}) => {
                             {({values, handleChange}) => (
                                 <Form>
                                     <div className={styles.checkBoxGroup} role="group" aria-labelledby="checkbox-group">
-                                        <label className={`${styles.offer} ${styles.offerTwelvePercentage}`}>
-                                            <input 
+                                        <label className={values.checked.includes('20') ? `${styles.offer} ${styles.offerTwelvePercentage} ${styles.offerChecked}` :`${styles.offer} ${styles.offerTwelvePercentage}` }>
+                                            <input                                             
                                                 type="checkbox" 
                                                 name="checked" 
                                                 value="20" 
@@ -119,7 +119,7 @@ const GetOfferButton = ({product}) => {
                                             <span>%20'si kadar teklif ver</span>
                                         </label>
 
-                                        <label className={`${styles.offer} ${styles.offerThirtyPercentage}`}>
+                                        <label className={values.checked.includes('30') ? `${styles.offer} ${styles.offerThirtyPercentage} ${styles.offerChecked}` : `${styles.offer} ${styles.offerThirtyPercentage}`}>
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 
@@ -131,7 +131,7 @@ const GetOfferButton = ({product}) => {
                                                 <span>%30'u Kadar Teklif Ver</span>
                                         </label>
                                                         
-                                        <label className={`${styles.offer} ${styles.offerFourtyPercentage}`}>
+                                        <label className={values.checked.includes('40') ? `${styles.offer} ${styles.offerFourtyPercentage} ${styles.offerChecked}` : `${styles.offer} ${styles.offerFourtyPercentage}` }>
                                             <input 
                                                 type="checkbox" 
                                                 name="checked" 

@@ -149,7 +149,8 @@ button span {
     flex-direction: column;
     justify-content: center;
 }
-.offer:hover {
+
+.offerChecked {
     background-color: #F0F8FF;
     color: #4B9CE2;
 }
