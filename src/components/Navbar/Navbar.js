@@ -1,5 +1,5 @@
 import React from 'react'
-import brandLogoIndex from '../../assets/brandLogoIndex.svg'
+
 import AccountButton from '../ButtonGroup/AccountButton'
 import AddProductButton from '../ButtonGroup/AddProductButton'
 import LoginButton from '../ButtonGroup/LoginButton'
@@ -15,7 +15,7 @@ const Navbar = ({loggenIn}) => {
   return (
     <div className={styles.navbarWrapper}>        
         <div className={styles.brand}>
-            <Link to="/index"><img src={brandLogoIndex} alt="" className={styles.brandLogo}/> {/* <BrandLogo /> */}</Link>
+            <Link to="/index">{/* <img src={brandLogoIndex} alt="" className={styles.brandLogo}/>  */}<BrandLogo width={"110"}/></Link>
             
         </div>
           

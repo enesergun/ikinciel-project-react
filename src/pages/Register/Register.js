@@ -1,7 +1,8 @@
 import {Suspense, lazy} from 'react'
 
 import RegisterGirl from '../../assets/RegisterGirl.webp'
-import brandLogo from '../../assets/brandLogo.webp'
+
+import { BrandLogo } from '../../assets/icons'
 
 import styles from '../style/Register.module.css'
 
@@ -38,7 +39,7 @@ function Register() {
        }
       <div className={styles.rightSide}>
           <div className={styles.brandLogoWrap}>
-              <img src={brandLogo} alt="brandLogo" className={styles.brandLogo} />
+          <BrandLogo width={"200"} height={"60"}/>
           </div>
           {/* üye ol, yararlanmak için, buton üye ol */}
           <Suspense fallback={<div>Yükleniyor...</div>}>

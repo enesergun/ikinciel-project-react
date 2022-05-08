@@ -59,8 +59,9 @@
         width: 100%;
     }
     .brandLogoWrap {
-        width: 148px;
-        height: 48px;
+       /*  width: 148px;
+        height: 48px; */
+        
         margin: 28.5px 0 24px 0;
     }
 
