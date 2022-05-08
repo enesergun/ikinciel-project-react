@@ -11,7 +11,6 @@ const AuthProvider = ({children}) => {
     const [userMe, setUserMe] = useState(() => JSON.parse(localStorage.getItem('userMeInformation')))
     
     const [loggenIn, setLoggenIn] = useState(() => sessionStorage.getItem('loggedIn'));
-    const [token] = useState(document.cookie.split("=")[1])
     
 
 
@@ -80,8 +79,7 @@ const AuthProvider = ({children}) => {
     return (
         <AuthContext.Provider
             value={{
-                userMe,
-                token,                
+                userMe,                        
                 loggenIn,
                 register,
                 login,  

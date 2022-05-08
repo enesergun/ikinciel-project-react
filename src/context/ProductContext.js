@@ -7,12 +7,12 @@ const ProductContext = React.createContext();
 
 const ProductProvider = ({children}) => {    
   const [userMe] = useState(JSON.parse(localStorage.getItem('userMeInformation')));
-  const [token] = useState(document.cookie.split("=")[1]);
+
   const [image, setImage] = useState();
   const [offered, setOffered] = useState(sessionStorage.getItem('offered') || false);
   const [ProductSold, setProductSold] = useState();
-
-
+  
+  
 
   const isOfferStatus = (choice) => {
   
@@ -45,7 +45,7 @@ const ProductProvider = ({children}) => {
   }
   
     
-  const getOffer = (offer, productID) => {
+  const getOffer = (offer, productID, token) => {
       axios
         .post(URL.offers,{
             product: productID,
@@ -75,7 +75,7 @@ const ProductProvider = ({children}) => {
         })
   }
 
-  const deleteProductOffer = (offerID, productID) =>{  
+  const deleteProductOffer = (offerID, productID, token) =>{  
     axios
       .delete(URL.offers + '/' + offerID, {
         headers: {
@@ -100,7 +100,7 @@ const ProductProvider = ({children}) => {
       })
   }
 
-  const getBuyProduct = (productID) => {
+  const getBuyProduct = (productID, token) => {
     axios
       .put(URL.products + '/' + productID, {
       isOfferable: false,
@@ -110,21 +110,26 @@ const ProductProvider = ({children}) => {
         Authorization: `Bearer ${token}`
     }
     })
-    .then((res) => {      
-      console.log("Ürün satın alındı");
+    .then((res) => {   
+      setTimeout(() => {
+        SuccessPopUp('Ürün satıldı');
+        console.log("Ürün satın alındı");
+      }, 100);      
       sessionStorage.setItem(`isSold ${productID}`, true);      
       setProductSold('sold');
       
     })
     .catch((error) => {
+      
       setTimeout(() => {
         ErrorPopUp('Bir sebepten ötürü ürün alınamadı, ama ne inan bilmiyorum. Tekrar deneyiniz.');
+        console.log("token", token);
       }, 100);
     })
 
   }
 
-  const offerChoice = (offerID, choice) => {
+  const offerChoice = (offerID, choice, token) => {
     axios
       .put(URL.offers + '/' + offerID,{
         isStatus: choice
@@ -149,7 +154,7 @@ const ProductProvider = ({children}) => {
     console.log(imgFile);
   }
 
-  const AddProduct = (values) => {
+  const AddProduct = (values, token) => {
 
     const formData = new FormData();
 
@@ -182,9 +187,9 @@ const ProductProvider = ({children}) => {
   return (
     <ProductContext.Provider
       value={{
+        
         offered,
-        image,
-        token,  
+        image,      
         ProductSold,
         getOffer,        
         deleteProductOffer,

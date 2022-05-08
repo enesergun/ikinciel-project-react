@@ -15,13 +15,14 @@ import { ToastContainer } from 'react-toastify';
 
 
 
-const AddProductForm = () => {
+const AddProductForm = ({token}) => {
     const { AddProduct, image} = useProduct();
+    
 
     const handleAddProduct = async (values) => {
         
         if (image) {                      
-            AddProduct(values)
+            AddProduct(values, token)
         }
     }
    

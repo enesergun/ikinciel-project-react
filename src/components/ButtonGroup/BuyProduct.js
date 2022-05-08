@@ -13,7 +13,7 @@ import styles from './ButtonGroup.module.css'
 
 Modal.setAppElement("#root");
 
-const BuyProduct = ({id, stylesProp}) => {
+const BuyProduct = ({id, stylesProp, token}) => {
     
   const {getBuyProduct} = useProduct();
   const {loggenIn} = useAuth();
@@ -24,7 +24,7 @@ const BuyProduct = ({id, stylesProp}) => {
   }
 
   const handleBuyProduct = async () => {
-    const res = await getBuyProduct(id);
+    const res = await getBuyProduct(id, token);
     console.log(res);
   }
 

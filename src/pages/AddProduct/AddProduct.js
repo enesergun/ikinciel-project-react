@@ -14,6 +14,7 @@ function AddProduct() {
   const [image, setImage] = useState(sessionStorage.getItem('image') || false);
 /*   const [selectedOption, setSelectedOption] = useState(null);
  */
+const [token, setToken] = useState(() => document.cookie.split("=")[1]);
 
   return (
     <>
@@ -28,7 +29,7 @@ function AddProduct() {
 
             <div className={styles.AddProductContainer}>              
 
-                <AddProductForm />
+                <AddProductForm token={token}/>
 
               <div className={styles.productImage}>
               <div className={styles.header}>Ürün Görseli</div>

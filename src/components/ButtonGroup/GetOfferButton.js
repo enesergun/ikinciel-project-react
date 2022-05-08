@@ -21,7 +21,7 @@ Modal.setAppElement("#root");
 /* teklif verdiğinde pop up kapanmalı  */
 
 
-const GetOfferButton = ({product}) => {    
+const GetOfferButton = ({product, token}) => {    
     const [isOpen, setIsOpen] = useState(false);
     const {getOffer} = useProduct();
     const {loggenIn} = useAuth();
@@ -49,7 +49,7 @@ const GetOfferButton = ({product}) => {
         } else if (values.OfferPrice) {
             offer = values.OfferPrice;
         }
-        getOffer(offer, product.id);   
+        getOffer(offer, product.id, token);   
         
 
     } else if ( values.checked.length >= 1 && values.OfferPrice) {

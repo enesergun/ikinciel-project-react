@@ -20,6 +20,7 @@ const GetOffers = () => {
   const {offerChoice} = useProduct();
   const [product, setProduct] = useState([]);
   const [click, setClick] = useState(''); 
+  const [token, setToken] = useState(() => document.cookie.split("=")[1]);
 
   
 
@@ -39,7 +40,7 @@ const GetOffers = () => {
   }
 
   const handleOfferAction = (offerID, choice, index, key) => {
-    const res = offerChoice(offerID, choice);
+    const res = offerChoice(offerID, choice, token);
         
     /* setChoiceClick('tiklandi'); */
     /* setProduct(product[index].offers[key].isStatus = choice); */

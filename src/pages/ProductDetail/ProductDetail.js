@@ -5,6 +5,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 
 import styles from "../style/ProductDetail.module.css";
 
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from '../../components/Navbar/Navbar';
 import ProductInfo from '../../components/ProductDetail/ProductInfo';
@@ -23,6 +24,7 @@ import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 function ProductDetail() {    
   const {loggenIn} = useAuth();
   const {deleteProductOffer, offered, isOfferExist, isProductSold, ProductSold} = useProduct();
+  const [token, setToken] = useState(() => document.cookie.split("=")[1]);
   const { id } = useParams();
     
   const [width] = useWindowSize(400, 600);
@@ -56,9 +58,9 @@ function ProductDetail() {
   } 
  
   const handleDeleteOffer = async () => {    
-    const res = await deleteProductOffer(offer.id, product.id);    
+    const res = await deleteProductOffer(offer.id, product.id, token);    
   }
-
+  console.log(token);
   return (
     <div className={styles.ProductDetailPage}>
 
@@ -90,9 +92,10 @@ function ProductDetail() {
                        ? <div>Bu ürün satışta değil</div>
                        : 
                        <>
-                        <BuyProduct                             
+                          <BuyProduct                             
                             id={id}
-                        />                    
+                            token={token}
+                          />                    
                         {
                            isOfferExist(id)
                            ? <><CancelOffer handleDeleteOffer={handleDeleteOffer}/></>
@@ -103,7 +106,8 @@ function ProductDetail() {
                                ?
                                <>
                                    <GetOfferButton                                                                               
-                                       product={product}                                                                             
+                                       product={product}  
+                                       token={token}                                                                           
                                    />                                
                                </>                                                         
                              : <span></span>
@@ -120,6 +124,7 @@ function ProductDetail() {
                 </div>
             </div>
        </div>
+       <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
     </div>
   )
 }

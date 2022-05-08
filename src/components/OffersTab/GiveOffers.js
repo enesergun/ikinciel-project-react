@@ -15,8 +15,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const GiveOffers = () => {
-  const {token, userMe} = useAuth();
+  const { userMe} = useAuth();
   const [offers, setOffers] = useState([]);
+  const [token, setToken] = useState(() => document.cookie.split("=")[1]);
   
 
   useEffect(() => {
