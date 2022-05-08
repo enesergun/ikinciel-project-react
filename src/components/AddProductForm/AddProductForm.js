@@ -51,7 +51,7 @@ const AddProductForm = () => {
                     <form>
                       <div className={styles.addProductForm}>
                         <div className={`${styles.productName} ${styles.formGroup}`}>
-                          <label className={styles.AddProductLabel}>Ürün Adı</label>
+                          <label className={`${styles.AddProductLabel} ${styles.required}`}>Ürün Adı</label>
                           <input 
                             id={touched.name && errors.name ? FormValidationStyle.errorName : ' '} 
                             type="text"
@@ -63,7 +63,7 @@ const AddProductForm = () => {
                         </div>
 
                         <div className={`${styles.description} ${styles.formGroup}`}>
-                          <label className={styles.AddProductLabel}>Açıklama</label>
+                          <label className={`${styles.AddProductLabel} ${styles.required}`}>Açıklama</label>
                           <input
                             className={styles.DescriptionInput}
                             type="text"
@@ -76,7 +76,7 @@ const AddProductForm = () => {
 
                         <div className={styles.SelectGroup}>
                           <div className={`${styles.category} ${styles.formGroup}`} >
-                            <label className={styles.AddProductLabel}>Kategori</label>
+                            <label className={`${styles.AddProductLabel} ${styles.required}`}>Kategori</label>
 
                             <Field
                               className='categories'
@@ -90,7 +90,7 @@ const AddProductForm = () => {
                           </div>
                           <div className={`${styles.brand} ${styles.formGroup}`}>
                           
-                          <label className={`${styles.AddProductLabel} ${styles.notRequired}`}>Marka</label>
+                          <label className={`${styles.AddProductLabel}`}>Marka</label>
 
                           
                             <Field
@@ -107,7 +107,7 @@ const AddProductForm = () => {
                         <div className={styles.SelectGroup}>
                           <div className={`${styles.color} ${styles.formGroup}`}>
                             
-                            <label className={`${styles.AddProductLabel} ${styles.notRequired}`}>Renk</label>
+                            <label className={`${styles.AddProductLabel}`}>Renk</label>
 
                            
 
@@ -123,7 +123,7 @@ const AddProductForm = () => {
                           </div>
                           <div className={`${styles.condition} ${styles.formGroup}`}>
 
-                            <label className={styles.AddProductLabel}>Kullanım Durumu</label>
+                            <label className={`${styles.AddProductLabel} ${styles.required}`}>Kullanım Durumu</label>
 
                            
                                <Field
@@ -137,7 +137,7 @@ const AddProductForm = () => {
                           </div>
                         </div>
                         <div className={`${styles.price} ${styles.formGroup}`}>
-                          <label className={styles.AddProductLabel}>Fiyat</label>
+                          <label className={`${styles.AddProductLabel} ${styles.required}`}>Fiyat</label>
                           <input 
                             /* style={{width: '30%'}} */
                             className={styles.price}

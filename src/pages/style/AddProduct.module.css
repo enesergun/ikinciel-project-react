@@ -44,15 +44,13 @@
     display: flex;
     flex-direction: column;
 }
-label::after {
+label.required::after {
     content: "*";
     color: red;
     padding-left: 2px;
 }
 
-label.notRequired::after {
-    content: "";
-}
+
 
 .error {
     color: rgba(238, 99, 86, 1);

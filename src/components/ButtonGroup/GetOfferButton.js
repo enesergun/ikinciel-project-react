@@ -171,7 +171,7 @@ const GetOfferButton = ({product}) => {
                 </>
                 }                
             </Modal>
-            <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
+        <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
     </>
   )
 }

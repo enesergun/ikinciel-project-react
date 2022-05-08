@@ -104,10 +104,7 @@ const ProductProvider = ({children}) => {
         Authorization: `Bearer ${token}`
     }
     })
-    .then((res) => {
-      setTimeout(() => {
-        SuccessPopUp('Ürün satın alındı.');        
-      }, 100);
+    .then((res) => {      
       console.log("Ürün satın alındı");
       sessionStorage.setItem(`isSold ${productID}`, true);      
       setProductSold('sold');
