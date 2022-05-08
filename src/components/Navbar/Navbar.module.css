@@ -38,8 +38,8 @@
 
 @media screen and (min-width: 768px) {    
     .navbarWrapper {        
-        /* padding: 0 10px; */
-    }  
+        max-width: 80%;
+    }    
     .brandLogo {
         width: 150px;
         height: 43px;

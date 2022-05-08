@@ -17,7 +17,9 @@ const GetOffers = () => {
   const {userMe} = useAuth();
   const {offerChoice} = useProduct();
   const [product, setProduct] = useState([]);
-  const [click, setClick] = useState('');  
+  const [click, setClick] = useState(''); 
+
+  
 
 
   useEffect(() => {
@@ -30,23 +32,20 @@ const GetOffers = () => {
     
     const haveOfferRes = res.filter(product => product.offers.length > 0);    
     setProduct(haveOfferRes);
+    sessionStorage.setItem('offers', JSON.stringify(haveOfferRes));
 
   }
 
   const handleOfferAction = (offerID, choice, index, key) => {
     const res = offerChoice(offerID, choice);
         
-    if (choice === true) {
-      setClick(true);
-    } else if (choice === false) {
-      setClick(false);
-    } else {
-      setClick('');
-    }    
+    /* setChoiceClick('tiklandi'); */
     /* setProduct(product[index].offers[key].isStatus = choice); */
 
   }
 
+
+  console.log('render edildi');
 
   
 
@@ -79,8 +78,8 @@ const GetOffers = () => {
                   ? <span className={`${styles.status} ${styles.rejected}`}>Reddedildi</span>
                   : 
                   <>  
-                    <button className={styles.acceptButton} onClick={() => {handleOfferAction(offer.id, true, index, key); setClick('tiklandi')}}>Onayla</button>
-                    <button className={styles.rejectButton} onClick={() => {handleOfferAction(offer.id, false, index, key); setClick('tiklandi')}}>Reddet</button>
+                    <button className={styles.acceptButton} onClick={() => {/* handleOfferAction(offer.id, true, index, key) */; setClick('tiklandi')}}>Onayla</button>
+                    <button className={styles.rejectButton} onClick={() => {handleOfferAction(offer.id, false, index, key)}}>Reddet</button>
                   </>
                 }                   
                 </div>            

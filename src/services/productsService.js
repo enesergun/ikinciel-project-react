@@ -65,7 +65,7 @@ export const gaveOffer = async (id, token) => {
     }); 
 
     if(res.statusText === 'OK') {
-                
+            
       return res.data;
               
     }
@@ -84,8 +84,8 @@ export const giveOffer = async (id) => {
     const res = await axios.get(URL.products + '?users_permissions_user=' + id) 
 
     if(res.statusText === 'OK') {
-                
-      return res.data;
+      console.log(res.data);  
+      return res.data;      
               
     }
     else {

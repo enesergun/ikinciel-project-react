@@ -13,6 +13,12 @@ const ProductProvider = ({children}) => {
   const [ProductSold, setProductSold] = useState();
 
 
+
+  const isOfferStatus = (choice) => {
+  
+  }
+
+
   const isProductSold = (productID) => {
     const product = JSON.parse(sessionStorage.getItem(`isSold ${productID}`));
 
@@ -128,6 +134,10 @@ const ProductProvider = ({children}) => {
         }        
       })
       .then((response) => {
+        setTimeout(() => {
+          SuccessPopUp(choice ? `Teklif Başarıyla Onaylandı`: 'Teklif Başarıyla Reddedildi.');
+        }, 100);
+        isOfferStatus(choice);
         console.log("teklif", choice);
         console.log(response.data)
       })
