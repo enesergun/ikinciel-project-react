@@ -83,6 +83,7 @@ const getCategoryProduct = (category) => {
   
   return (
     <div className={styles.indexPage}>
+      
 
       <div className={styles.navbar}>
         <Navbar loggenIn={loggenIn}/>

@@ -8,13 +8,14 @@ import LoginButton from '../ButtonGroup/LoginButton'
 import styles from "./Navbar.module.css";
 
 import { Link } from "react-router-dom";
+import { BrandLogo } from '../../assets/icons'
 
 
 const Navbar = ({loggenIn}) => {
   return (
     <div className={styles.navbarWrapper}>        
         <div className={styles.brand}>
-            <Link to="/index"><img src={brandLogoIndex} alt="" className={styles.brandLogo}/></Link>
+            <Link to="/index"><img src={brandLogoIndex} alt="" className={styles.brandLogo}/> {/* <BrandLogo /> */}</Link>
             
         </div>
           
