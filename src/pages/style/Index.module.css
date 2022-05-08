@@ -50,46 +50,6 @@
     color: #4B9CE2;    
 }
 
-/* @media screen and (max-width: 768px) and (min-width: 425px) {
-    .banner,
-    .categories,
-    .underline{     
-        max-width: 100%;
-        padding: 0 10px;        
-    }
-    .categories {
-        overflow: scroll;
-        flex-wrap: nowrap;        
-    }
-    .categoryName {
-        margin-right: 27.5px;
-        font-size: 18px;
-    }
-    .products {
-        width: calc(100% - 20px);        
-    }
-} */
-
-/* @media screen and (max-width: 426px) {
-    .banner,
-    .categories,
-    .underline{     
-        max-width: 100%;
-        padding: 0 10px;        
-    }
-    .categories {
-        overflow: scroll;
-        flex-wrap: nowrap;        
-    }
-    .categoryName {
-        margin-right: 27.5px;
-        font-size: 18px;
-    }
-    .products {
-        width: calc(100% - 20px);        
-    }
-} */
-
 @media screen and (min-width: 375px) {
     .banner,
     .categories,

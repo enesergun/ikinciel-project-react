@@ -11,6 +11,8 @@ import OfferInformation from '../OfferInformation/OfferInformation';
 import { useAuth } from '../../context/AuthContext';
 import { useProduct } from '../../context/ProductContext';
 
+import { ToastContainer } from 'react-toastify';
+
 
 const GetOffers = () => {
   const [width] = useWindowSize(400, 600);
@@ -78,7 +80,7 @@ const GetOffers = () => {
                   ? <span className={`${styles.status} ${styles.rejected}`}>Reddedildi</span>
                   : 
                   <>  
-                    <button className={styles.acceptButton} onClick={() => {/* handleOfferAction(offer.id, true, index, key) */; setClick('tiklandi')}}>Onayla</button>
+                    <button className={styles.acceptButton} onClick={() => {handleOfferAction(offer.id, true, index, key); setClick('tiklandi')}}>Onayla</button>
                     <button className={styles.rejectButton} onClick={() => {handleOfferAction(offer.id, false, index, key)}}>Reddet</button>
                   </>
                 }                   
@@ -90,7 +92,8 @@ const GetOffers = () => {
           ))
 
         ))
-      }      
+      }     
+      <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/> 
     </div>
   )
 }
