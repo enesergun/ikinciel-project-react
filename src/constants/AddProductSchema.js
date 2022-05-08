@@ -13,11 +13,7 @@ export const AddProductSchema = yup.object().shape({
 
     category: yup
     .string()
-    .required('Kategori seçmek zorundasınız.'),
-    
-    color: yup
-    .string()
-    .required('Renk Seçmek Zorundasınız.'),
+    .required('Kategori seçmek zorundasınız.'),    
 
     status: yup
     .string()
@@ -25,7 +21,7 @@ export const AddProductSchema = yup.object().shape({
 
     price: yup
     .number()
-    .required('Zorunlu alan.'),
+    .required('Fiyat Girmek Zorundasınız.'),
         
     
 });

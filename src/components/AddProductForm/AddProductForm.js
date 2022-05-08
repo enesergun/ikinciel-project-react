@@ -11,6 +11,7 @@ import SelectOptions from '../../components/SelectOptions/SelectOptions'
 
 import { useProduct } from '../../context/ProductContext';
 
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -31,14 +32,15 @@ const AddProductForm = () => {
                initialValues={{
                 name: '',
                 description:'',
-                category:'',
-                color:'',
+                category:'',                
                 status:'',
+                price:'', 
                 isOfferable: false                
                 
                }}
-               onSubmit={values => {                
-                 handleAddProduct(values);
+               onSubmit={(values, { resetForm }, errors) => {                                 
+                handleAddProduct(values);
+                resetForm();                 
                }}
                validationSchema={AddProductSchema}              
               >
@@ -57,7 +59,7 @@ const AddProductForm = () => {
                             value={values.name}
                             onChange={(handleChange)}
                             onBlur={handleBlur} />
-                            {/* <span>{touched.name && errors.name ? errors.name : ''}</span> */}
+                            
                         </div>
 
                         <div className={`${styles.description} ${styles.formGroup}`}>
@@ -83,11 +85,12 @@ const AddProductForm = () => {
                               component={SelectOptions}
                               placeholder="Kategori Seçiniz"   
                               onClick={() => console.log('fielda tıkladın')}                             
-                            />                                                                                                                    
+                            />    
+                            <span className={styles.error}>{touched.category && errors.category ? errors.category : ''}</span>
                           </div>
                           <div className={`${styles.brand} ${styles.formGroup}`}>
                           
-                          <label className={styles.AddProductLabel}>Marka</label>
+                          <label className={`${styles.AddProductLabel} ${styles.notRequired}`}>Marka</label>
 
                           
                             <Field
@@ -104,7 +107,7 @@ const AddProductForm = () => {
                         <div className={styles.SelectGroup}>
                           <div className={`${styles.color} ${styles.formGroup}`}>
                             
-                            <label className={styles.AddProductLabel}>Renk</label>
+                            <label className={`${styles.AddProductLabel} ${styles.notRequired}`}>Renk</label>
 
                            
 
@@ -129,7 +132,8 @@ const AddProductForm = () => {
                                 
                                 component={SelectOptions}
                                 placeholder="Kullanım durumu seçiniz"
-                            />
+                              />
+                            <span className={styles.error}>{touched.status && errors.status ? errors.status : ''}</span>
                           </div>
                         </div>
                         <div className={`${styles.price} ${styles.formGroup}`}>
@@ -142,10 +146,11 @@ const AddProductForm = () => {
                             value={values.price}
                             onChange={handleChange}
                             onBlur={handleBlur} 
-                            />
+                          />
+                          <span className={styles.error}>{touched.price && errors.price ? errors.price : ''}</span>
                         </div>
                         <div className={styles.offerable}>
-                        <label class={styles.switch}>
+                        <label class={`${styles.switch} ${styles.notRequired}`}>
                           <p>Teklif opsiyonu</p>
                           <input 
                             type="checkbox"
@@ -164,8 +169,8 @@ const AddProductForm = () => {
 
                   </div>
                 }
-
               </Formik>
+        <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios, {URL} from "../constants/axios";
+import ErrorPopUp from "../utils/PopUpFunctions/errorPopup";
 import  SuccessPopUp  from '../utils/PopUpFunctions/successPopup'
 
 const ProductContext = React.createContext();
@@ -59,8 +60,12 @@ const ProductProvider = ({children}) => {
             sessionStorage.setItem('offered', true);
             console.log("teklif verildi")
             }
-        ).catch((error) => {
+        )
+        .catch((error) => {
             console.log(error);
+            setTimeout(() => {
+              ErrorPopUp('Bir sebepten ötürü teklif verilemedi, ama ne inan bilmiyorum. Tekrar deneyiniz.');
+            }, 100);
         })
   }
 
@@ -82,6 +87,11 @@ const ProductProvider = ({children}) => {
         console.log("teklif silindi")
 
       })
+      .catch((error) => {
+        setTimeout(() => {
+          ErrorPopUp('Bir sebepten ötürü teklif geri çekilemedi, ama ne inan bilmiyorum. Tekrar deneyiniz.');
+        }, 100);
+      })
   }
 
   const getBuyProduct = (productID) => {
@@ -96,8 +106,7 @@ const ProductProvider = ({children}) => {
     })
     .then((res) => {
       setTimeout(() => {
-        SuccessPopUp('Ürün satın alındı.');
-        
+        SuccessPopUp('Ürün satın alındı.');        
       }, 100);
       console.log("Ürün satın alındı");
       sessionStorage.setItem(`isSold ${productID}`, true);      
@@ -105,7 +114,9 @@ const ProductProvider = ({children}) => {
       
     })
     .catch((error) => {
-      console.log('satın alma işlemi gerçekleştirilemedi')
+      setTimeout(() => {
+        ErrorPopUp('Bir sebepten ötürü ürün alınamadı, ama ne inan bilmiyorum. Tekrar deneyiniz.');
+      }, 100);
     })
 
   }
@@ -152,10 +163,10 @@ const ProductProvider = ({children}) => {
       .then((res) => {
         console.log(res.data);
         console.log('ürün basariyla eklendi');
+        SuccessPopUp('Ürün Başarıyla Eklendi.')
       })
       .catch((err) => {
-        console.log(err);
-        console.log('hata')
+        ErrorPopUp('Bir sebepten ötürü ürün yüklenemedi. Lütfen tekrar deneyiniz.');
       })
   }
 

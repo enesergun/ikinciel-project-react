@@ -12,6 +12,7 @@ import  errorPopup  from '../../utils/PopUpFunctions/errorPopup'
 import styles from './ButtonGroup.module.css'
 
 import { ToastContainer } from 'react-toastify';
+import { CloseIcon } from '../../assets/icons';
 
 
 Modal.setAppElement("#root");
@@ -78,7 +79,7 @@ const GetOfferButton = ({product}) => {
                     <div className={styles.popup}>
                     <div className={styles.PopUpheader}>
                         <p>Teklif Ver</p>
-                        <button onClick={toggleModal}>x</button>
+                        <button className={styles.ModalCloseButton} onClick={toggleModal}><CloseIcon /></button>
                     </div>
 
                     <div className={styles.productInfo}>                                        
@@ -116,7 +117,7 @@ const GetOfferButton = ({product}) => {
                                                 onChange={handleChange}
                                                 /* onClick={() => setChecked({'TwelvePercentage' : true})} */
                                             />                        
-                                            <span>%20'si kadar teklif ver</span>
+                                            <span>%20'si Kadar Teklif Ver</span>
                                         </label>
 
                                         <label className={values.checked.includes('30') ? `${styles.offer} ${styles.offerThirtyPercentage} ${styles.offerChecked}` : `${styles.offer} ${styles.offerThirtyPercentage}`}>
@@ -128,7 +129,7 @@ const GetOfferButton = ({product}) => {
                                                 onChange={handleChange}
                                                 /* onClick={() => setChecked({'ThirtyPercentage' : true})} */
                                             />
-                                                <span>%30'u Kadar Teklif Ver</span>
+                                                <span>%30’u Kadar Teklif Ver</span>
                                         </label>
                                                         
                                         <label className={values.checked.includes('40') ? `${styles.offer} ${styles.offerFourtyPercentage} ${styles.offerChecked}` : `${styles.offer} ${styles.offerFourtyPercentage}` }>
@@ -141,7 +142,7 @@ const GetOfferButton = ({product}) => {
                                                 onChange={handleChange}
                                                 
                                             />
-                                                <span>%40'ı Kadar Teklif Ver</span>
+                                                <span>%40’ı Kadar Teklif Ver</span>
                                         </label>
 
                                         <label htmlFor="offer offerByNumber">
