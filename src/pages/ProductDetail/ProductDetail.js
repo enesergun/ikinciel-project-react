@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-toastify';
 import styles from "../style/ProductDetail.module.css";
 import { getProductDetail } from '../../services/productsService';
 import { baseURL } from '../../constants/axios';
+import NotAvailableProduct from '../../components/NotAvailableProduct/NotAvailableProduct';
 
 
 function ProductDetail() {    
@@ -99,12 +100,12 @@ function ProductDetail() {
                 <div className={`${styles.buttons} ${styles.detailButtons}`}>
                     {
                       product.isSold 
-                      ? <div>Bu ürün satışta değil</div>
+                      ? <NotAvailableProduct />
                       : 
                       <>
                         {
                         isProductSold(id)
-                        ? <div>Bu ürün satışta değil</div>
+                        ? <NotAvailableProduct />
                         : 
                         <>
                           <BuyProduct                             
