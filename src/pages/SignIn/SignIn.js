@@ -1,16 +1,15 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy } from 'react';
 
-import RegisterGirl from '../../assets/RegisterGirl.webp'
+import { useAuth } from '../../context/AuthContext';
 
-import styles from '../style/Register.module.css'
-import { BrandLogo } from '../../assets/icons'
 import useWindowSize from "../../hooks/useWindowSize";
-
-import { useAuth } from '../../context/AuthContext'
 
 import { ToastContainer } from 'react-toastify';
 import {Navigate} from 'react-router-dom';
 
+import RegisterGirl from '../../assets/RegisterGirl.webp'
+import styles from '../style/Register.module.css'
+import { BrandLogo } from '../../assets/icons'
 
 const FormValidation = lazy(() => import('../../components/Form/FormValidation'));
 

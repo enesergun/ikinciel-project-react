@@ -1,15 +1,15 @@
 import {useState} from 'react';
-import Modal from "react-modal";
-import { Link } from 'react-router-dom';
-
-import LoginButton from './LoginButton';
 
 import { useAuth } from '../../context/AuthContext';
 import { useProduct } from '../../context/ProductContext';
 
-import { ToastContainer } from 'react-toastify';
+import LoginButton from './LoginButton';
 
-import styles from './ButtonGroup.module.css'
+import { ToastContainer } from 'react-toastify';
+import Modal from "react-modal";
+import { Link } from 'react-router-dom';
+
+import styles from './ButtonGroup.module.css';
 
 Modal.setAppElement("#root");
 

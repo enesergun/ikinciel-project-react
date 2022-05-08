@@ -1,6 +1,7 @@
-import React from 'react'
-import { AccountAvatar } from '../../assets/icons'
-import styles from './ButtonGroup.module.css'
+import React from 'react';
+
+import { AccountAvatar } from '../../assets/icons';
+import styles from './ButtonGroup.module.css';
 
 const AccountButton = () => {
   return (

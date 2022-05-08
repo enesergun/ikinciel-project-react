@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+import { useProduct } from '../../context/ProductContext';
 
 import styles from "./ProductInfo.module.css";
 
@@ -6,7 +8,6 @@ import {useParams} from 'react-router-dom';
 
 import useWindowSize from "../../hooks/useWindowSize";
 
-import { useProduct } from '../../context/ProductContext';
 import OfferInformation from '../OfferInformation/OfferInformation';
 
 

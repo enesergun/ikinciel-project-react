@@ -1,20 +1,22 @@
-import {useState, useEffect} from 'react'
-import Navbar from "../../components/Navbar/Navbar";
+import {useState} from 'react'
+
 import { useAuth } from '../../context/AuthContext';
-import styles from '../style/AddProduct.module.css';
 
-import { Navigate } from "react-router-dom";
-
+import Navbar from "../../components/Navbar/Navbar";
 import Previews from '../../components/DragAndDrop/DragAndDrop';
 import  AddProductForm  from '../../components/AddProductForm/AddProductForm';
 
+import { Navigate } from "react-router-dom";
+
+import styles from '../style/AddProduct.module.css';
+
+
 
 function AddProduct() {
-  const {loggenIn, userMe} = useAuth();
-  const [image, setImage] = useState(sessionStorage.getItem('image') || false);
-/*   const [selectedOption, setSelectedOption] = useState(null);
- */
-const [token, setToken] = useState(() => document.cookie.split("=")[1]);
+  const {loggenIn} = useAuth();
+  
+
+const [token] = useState(() => document.cookie.split("=")[1]);
 
   return (
     <>

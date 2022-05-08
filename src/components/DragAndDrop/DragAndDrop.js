@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import ImageUploading from 'react-images-uploading';
+import React, {useState} from 'react';
 
 import { useProduct } from '../../context/ProductContext';
+
+import ImageUploading from 'react-images-uploading';
 
 import styles from './DragAndDrop.module.css'
 

@@ -1,18 +1,16 @@
 import {Suspense, lazy} from 'react'
 
-import RegisterGirl from '../../assets/RegisterGirl.webp'
-
-import { BrandLogo } from '../../assets/icons'
-
-import styles from '../style/Register.module.css'
-
 import { useAuth } from '../../context/AuthContext'
+
+import useWindowSize from "../../hooks/useWindowSize";
 
 import {Navigate} from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import useWindowSize from "../../hooks/useWindowSize";
+import RegisterGirl from '../../assets/RegisterGirl.webp'
+import { BrandLogo } from '../../assets/icons'
+import styles from '../style/Register.module.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 const FormValidation = lazy(() => import('../../components/Form/FormValidation'));
 

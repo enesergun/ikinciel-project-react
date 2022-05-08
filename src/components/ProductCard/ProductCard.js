@@ -1,10 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import styled from "styled-components";
 
 import styles from "./ProductCard.module.css";
 
 import { baseURL } from "../../constants/axios";
+
+import {Link} from 'react-router-dom';
+import styled from "styled-components";
 
 import notProductImage from "../../assets/notProductImage.png";
 

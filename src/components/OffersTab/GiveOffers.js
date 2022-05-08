@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
-
-import styles from './Offers.module.css'
-
-import notProductImage from "../../assets/notProductImage.png";
-import { gaveOffer } from "../../services/productsService";
+import React, { useEffect, useState } from 'react';
 
 import { useAuth } from '../../context/AuthContext';
+
+import { gaveOffer } from "../../services/productsService";
 
 import { baseURL } from '../../constants/axios';
 import OfferInformation from '../OfferInformation/OfferInformation';
 import BuyProduct from '../ButtonGroup/BuyProduct';
 
 import { ToastContainer } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
+import styles from './Offers.module.css';
+import notProductImage from "../../assets/notProductImage.png";
 
 const GiveOffers = () => {
   const { userMe} = useAuth();
@@ -30,7 +30,6 @@ const GiveOffers = () => {
     setOffers(res)  
   }
   
-  console.log(offers)
   
   return (
     <div className={styles.Offers}>

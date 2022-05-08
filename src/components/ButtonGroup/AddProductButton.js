@@ -1,5 +1,6 @@
-import React from 'react'
-import {Add} from '../../assets/icons'
+import React from 'react';
+
+import {Add} from '../../assets/icons';
 import styles from "./ButtonGroup.module.css";
 
 import useWindowSize from "../../hooks/useWindowSize";

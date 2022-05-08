@@ -1,8 +1,10 @@
 import React from 'react'
+
+import { RegisterSchema } from '../../constants/RegisterSchema';
+import FormButton from '../ButtonGroup/FormButton';
+
 import { Formik } from 'formik';
-import { RegisterSchema } from '../../constants/RegisterSchema'
-import FormButton from '../ButtonGroup/FormButton'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 import styles from './FormValidation.module.css'
 

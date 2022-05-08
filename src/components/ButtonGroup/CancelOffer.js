@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import styles from './ButtonGroup.module.css'
 import { ToastContainer } from 'react-toastify';
+
+import styles from './ButtonGroup.module.css';
 
 const CancelOffer = ({handleDeleteOffer}) => {
   

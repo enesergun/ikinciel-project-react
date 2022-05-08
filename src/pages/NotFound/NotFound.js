@@ -1,10 +1,11 @@
 import React from 'react'
+
 import { useAuth } from '../../context/AuthContext';
+
 import Navbar from '../../components/Navbar/Navbar';
-import styles from "../style/NotFound.module.css";
 
 import {NotFoundHuman} from '../../assets/icons'
-
+import styles from "../style/NotFound.module.css";
 
 function NotFound() {
     const {loggenIn} = useAuth();

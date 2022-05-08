@@ -1,13 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import AccountButton from '../ButtonGroup/AccountButton'
-import AddProductButton from '../ButtonGroup/AddProductButton'
-import LoginButton from '../ButtonGroup/LoginButton'
-
-
-import styles from "./Navbar.module.css";
+import AccountButton from '../ButtonGroup/AccountButton';
+import AddProductButton from '../ButtonGroup/AddProductButton';
+import LoginButton from '../ButtonGroup/LoginButton';
 
 import { Link } from "react-router-dom";
+
+import styles from "./Navbar.module.css";
 import { BrandLogo } from '../../assets/icons'
 
 

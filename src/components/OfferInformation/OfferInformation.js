@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './OfferInformation.module.css'
+import React from 'react';
+import styles from './OfferInformation.module.css';
 
 const OfferInformation = ({text, offerPrice, customStyles}) => {
   return (

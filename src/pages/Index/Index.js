@@ -1,31 +1,23 @@
 import {useState, useEffect, Suspense, lazy} from 'react'
 
+import { useAuth } from '../../context/AuthContext';
 
-import * as qs from 'qs'
+import Navbar from '../../components/Navbar/Navbar';
+
+import useWindowSize from "../../hooks/useWindowSize";
+
+import {getAllProduct, getProductFilterCategory } from '../../services/productsService';
 
 import BannerDesktop from '../../assets/BannerDesktop.webp';
 import BannerMobile from '../../assets/BannerMobile.webp';
 import styles from "../style/Index.module.css";
 
-import {getAllProduct, getAllCategory, getProductFilterCategory } from '../../services/productsService';
-import axios, { URL, baseURL } from "../../constants/axios";
-
-/* import ProductCard from '../../components/ProductCard/ProductCard' */
-import Navbar from '../../components/Navbar/Navbar';
-
-import { useAuth } from '../../context/AuthContext';
-
-import useWindowSize from "../../hooks/useWindowSize";
-
 const ProductCard = lazy(() => import('../../components/ProductCard/ProductCard'));
  
 
-
-
-/*  */
 function Index() {
 
-  const [categories, setCategories] = useState([]);
+  const [categories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('Hepsi')
   const [products, setProducts] = useState([]);
   const [start, setStart] = useState(0);
@@ -38,16 +30,9 @@ function Index() {
     window.addEventListener('scroll', handleScroll);
   }, [start, selectedCategory]);
 
-  useEffect(() => {
-    getCategoryProduct(selectedCategory);
+  useEffect(() => {    
     setStart(0);
   }, [selectedCategory]);
-
-  useEffect(() => {
-    getCategory();    
-    
-  }, [])
-  
 
   
   
@@ -75,38 +60,9 @@ function Index() {
     }
   } else {
     const res = await getProductFilterCategory(selectedCategory);
-    console.log(res[0].products);
-    setProducts(res[0].products);
-    console.log("burdyım")
+    setProducts(res[0].products);    
   }
 }
-
-
-const getCategory = async () => {
-  const res = await getAllCategory();  
-  setCategories(res);
-}
-
-const getCategoryProduct = async (category) => {
-  /* console.log(category)
-  const res = await getProductFilterCategory(category);
-
-  if (category === 'Hepsi') {
-    setProducts([]);
-  }
-
-  else if (category !== "Hepsi") {
-    setProducts(res[0].products);
-  }
-
-  categories.map((element) => {
-    if (element.name === category) {
-      setProducts(element.products)
-    }
-  }) */
-}
-
-console.log(selectedCategory);
   
   return (
     <div className={styles.indexPage}>

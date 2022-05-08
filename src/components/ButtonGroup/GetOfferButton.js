@@ -1,24 +1,24 @@
-import { useState } from 'react'
-import { Formik, Form} from 'formik';
-import Modal from "react-modal";
-import { baseURL } from '../../constants/axios';
-import { Link } from 'react-router-dom';
-import LoginButton from './LoginButton';
+import { useState } from 'react';
 
 import { useProduct } from '../../context/ProductContext';
 import { useAuth } from '../../context/AuthContext';
 
-import  errorPopup  from '../../utils/PopUpFunctions/errorPopup'
-import styles from './ButtonGroup.module.css'
+import { baseURL } from '../../constants/axios';
+
+import LoginButton from './LoginButton';
+
+import  errorPopup  from '../../utils/PopUpFunctions/errorPopup';
 
 import { ToastContainer } from 'react-toastify';
+import { Formik, Form} from 'formik';
+import Modal from "react-modal";
+import { Link } from 'react-router-dom';
+
+import styles from './ButtonGroup.module.css'
 import { CloseIcon } from '../../assets/icons';
 
 
 Modal.setAppElement("#root");
-
-
-/* teklif verdiğinde pop up kapanmalı  */
 
 
 const GetOfferButton = ({product, token}) => {    
@@ -29,8 +29,6 @@ const GetOfferButton = ({product, token}) => {
   const toggleModal = () => {
     setIsOpen(!isOpen);
   }
-
-  
 
   const handleOffer = (values) => {
 
@@ -59,9 +57,7 @@ const GetOfferButton = ({product, token}) => {
       console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
       errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
     }       
-  }
-
-    
+  } 
     
   return (
     <>

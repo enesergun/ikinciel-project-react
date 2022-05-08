@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import styles from '../Form/FormValidation.module.css'
+import styles from '../Form/FormValidation.module.css';
 
 const FormButton = ({content, handleSubmit}) => {
   return (

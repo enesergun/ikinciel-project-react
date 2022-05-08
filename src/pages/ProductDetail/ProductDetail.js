@@ -1,31 +1,30 @@
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom';
+
+import { useAuth } from '../../context/AuthContext';
+import { useProduct } from '../../context/ProductContext';
 
 import useWindowSize from "../../hooks/useWindowSize";
 
-import styles from "../style/ProductDetail.module.css";
-
-import { ToastContainer } from 'react-toastify';
+import NotFound from '../NotFound/NotFound';
 
 import Navbar from '../../components/Navbar/Navbar';
 import ProductInfo from '../../components/ProductDetail/ProductInfo';
 import BuyProduct from '../../components/ButtonGroup/BuyProduct';
 import CancelOffer from '../../components/ButtonGroup/CancelOffer';
+import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
 
+import {useParams} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-import { useAuth } from '../../context/AuthContext';
-import { useProduct } from '../../context/ProductContext';
-
+import styles from "../style/ProductDetail.module.css";
 import { getProductDetail } from '../../services/productsService';
 import { baseURL } from '../../constants/axios';
-import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
-import NotFound from '../NotFound/NotFound';
 
 
 function ProductDetail() {    
   const {loggenIn} = useAuth();
   const {deleteProductOffer, offered, isOfferExist, isProductSold, ProductSold} = useProduct();
-  const [token, setToken] = useState(() => document.cookie.split("=")[1]);
+  const [token] = useState(() => document.cookie.split("=")[1]);
   const { id } = useParams();
     
   const [width] = useWindowSize(400, 600);
@@ -99,6 +98,11 @@ function ProductDetail() {
                 />   
                 <div className={`${styles.buttons} ${styles.detailButtons}`}>
                     {
+                      product.isSold 
+                      ? <div>Bu ürün satışta değil</div>
+                      : 
+                      <>
+                        {
                         isProductSold(id)
                         ? <div>Bu ürün satışta değil</div>
                         : 
@@ -126,6 +130,8 @@ function ProductDetail() {
                             </>
                         }
                         </> 
+                    }
+                      </>
                     }
                 </div>
 

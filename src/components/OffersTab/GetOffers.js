@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import styles from './Offers.module.css'
-import { giveOffer } from "../../services/productsService";
-
-import useWindowSize from "../../hooks/useWindowSize";
-
-import notProductImage from "../../assets/notProductImage.png";
-import { baseURL } from '../../constants/axios';
-import OfferInformation from '../OfferInformation/OfferInformation';
 import { useAuth } from '../../context/AuthContext';
 import { useProduct } from '../../context/ProductContext';
 
+import useWindowSize from "../../hooks/useWindowSize";
+
+import OfferInformation from '../OfferInformation/OfferInformation';
+import { giveOffer } from "../../services/productsService";
+import { baseURL } from '../../constants/axios';
+
 import { ToastContainer } from 'react-toastify';
 
+import notProductImage from "../../assets/notProductImage.png";
+import styles from './Offers.module.css'
 
 const GetOffers = () => {
   const [width] = useWindowSize(400, 600);
@@ -45,12 +45,7 @@ const GetOffers = () => {
     /* setChoiceClick('tiklandi'); */
     /* setProduct(product[index].offers[key].isStatus = choice); */
 
-  }
-
-
-  console.log('render edildi');
-
-  
+  }  
 
   return (
     <div className={styles.Offers}>

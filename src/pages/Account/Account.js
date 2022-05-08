@@ -1,18 +1,14 @@
-import {useState, useEffect} from 'react'
-import Navbar from "../../components/Navbar/Navbar";
 import { useAuth } from '../../context/AuthContext';
-import styles from '../style/Account.module.css'
+
+import Navbar from "../../components/Navbar/Navbar";
 
 import { Outlet, NavLink, Navigate } from "react-router-dom";
 
-import {AccountPicture} from '../../assets/icons'
-
+import styles from '../style/Account.module.css';
+import {AccountPicture} from '../../assets/icons';
 
 function Account() {
   const {loggenIn, userMe} = useAuth();
-
-  console.log(userMe);
-
 
   return (
     <>
