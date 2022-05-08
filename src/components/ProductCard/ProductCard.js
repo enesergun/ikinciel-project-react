@@ -4,6 +4,10 @@ import styled from "styled-components";
 
 import styles from "./ProductCard.module.css";
 
+import { baseURL } from "../../constants/axios";
+
+import notProductImage from "../../assets/notProductImage.png";
+
 const LinkStyled = styled.div`
   a {
     text-decoration: none;
@@ -23,21 +27,21 @@ const LinkStyled = styled.div`
   }
 `
 
-const ProductCard = ({index, image, brand, productColor, productPrice, productID}) => {
+const ProductCard = ({ product,index, /* image, brand, productColor, productPrice, productID */}) => {
   return (
     <div className={styles.product} key={index}>
       <LinkStyled>
-        <Link to={`/productdetail/${productID}`}>
+        <Link to={`/productdetail/${product.id}`}>
           <div className={styles.productImage}>
-              <img src={image} alt="" />
+              <img src={product.image?.url ? baseURL + product.image?.url : notProductImage} alt="" />
           </div>        
 
           <div className={styles.productFeatures}>
-              <div className={styles.brandName}>{brand}</div>
-              <div className={styles.productColor}><strong>Renk</strong>: {productColor}</div>
+              <div className={styles.brandName}>{product.brand}</div>
+              <div className={styles.productColor}><strong>Renk</strong>: {product.productColor}</div>
           </div>
 
-          <div className={styles.productPrice}><strong>{productPrice} TL</strong></div>
+          <div className={styles.productPrice}><strong>{product.productPrice} TL</strong></div>
         </Link>
       </LinkStyled>
     </div>

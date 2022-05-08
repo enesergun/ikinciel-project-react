@@ -1,11 +1,14 @@
 import {useState, useEffect, Suspense, lazy} from 'react'
 
+
+import * as qs from 'qs'
+
 import BannerDesktop from '../../assets/BannerDesktop.webp';
 import BannerMobile from '../../assets/BannerMobile.webp';
 import styles from "../style/Index.module.css";
 
-import {getAllProduct, getAllCategory } from '../../services/productsService';
-import {baseURL} from '../../constants/axios';
+import {getAllProduct, getAllCategory, getProductFilterCategory } from '../../services/productsService';
+import axios, { URL, baseURL } from "../../constants/axios";
 
 /* import ProductCard from '../../components/ProductCard/ProductCard' */
 import Navbar from '../../components/Navbar/Navbar';
@@ -15,6 +18,8 @@ import { useAuth } from '../../context/AuthContext';
 import useWindowSize from "../../hooks/useWindowSize";
 
 const ProductCard = lazy(() => import('../../components/ProductCard/ProductCard'));
+ 
+
 
 
 /*  */
@@ -30,38 +35,50 @@ function Index() {
 
   useEffect(() => {
     getData();
-    window.addEventListener('scroll', handleScroll)
-  }, [start]);
+    window.addEventListener('scroll', handleScroll);
+  }, [start, selectedCategory]);
 
   useEffect(() => {
-    getCategoryProduct(selectedCategory)
+    getCategoryProduct(selectedCategory);
+    setStart(0);
   }, [selectedCategory]);
 
   useEffect(() => {
     getCategory();    
+    
   }, [])
   
 
   
-  const handleScroll = () => {
+  
+  const handleScroll = () => {    
     let userScrollHeight = window.innerHeight + window.scrollY;
     let windowBottomHeight = document.documentElement.offsetHeight;
 
     if (userScrollHeight >= windowBottomHeight - 1) {                  
       setStart(start + 1 );
-      }
+    }
 };
 
   const getData = async () => {
-    const newProducts = [...products];        
-    const res = await getAllProduct(start);    
+    if (selectedCategory === "Hepsi") {      
+      const newProducts = [...products];        
+      const res = await getAllProduct(start);    
 
-    if (newProducts.length > 0) {
-      let newArr = newProducts.concat(res);
-      setProducts(newArr);
-    } else {
-      setProducts(res);
+      if (newProducts.length > 0) {
+        let newArr = newProducts.concat(res);
+        setProducts(newArr);
+        localStorage.setItem('products', JSON.stringify(newArr));
+      } else {
+        setProducts(res);
+        localStorage.setItem('products', JSON.stringify(res));
     }
+  } else {
+    const res = await getProductFilterCategory(selectedCategory);
+    console.log(res[0].products);
+    setProducts(res[0].products);
+    console.log("burdyım")
+  }
 }
 
 
@@ -70,16 +87,26 @@ const getCategory = async () => {
   setCategories(res);
 }
 
-const getCategoryProduct = (category) => {
-  if (category === "Hepsi") {
-    getData();
+const getCategoryProduct = async (category) => {
+  /* console.log(category)
+  const res = await getProductFilterCategory(category);
+
+  if (category === 'Hepsi') {
+    setProducts([]);
   }
+
+  else if (category !== "Hepsi") {
+    setProducts(res[0].products);
+  }
+
   categories.map((element) => {
     if (element.name === category) {
       setProducts(element.products)
     }
-  })
+  }) */
 }
+
+console.log(selectedCategory);
   
   return (
     <div className={styles.indexPage}>
@@ -105,7 +132,9 @@ const getCategoryProduct = (category) => {
         <div className={selectedCategory === 'Hepsi' ? `${styles.categoryName} ${styles.activeCategory}` : styles.categoryName} onClick={(e) => setSelectedCategory(e.target.textContent)}>Hepsi</div>
         {
           categories.map((category, index) => (
+            <div key={index}>
             <div className={selectedCategory === category.name ? `${styles.categoryName} ${styles.activeCategory}` : styles.categoryName} onClick={(e) => setSelectedCategory(e.target.textContent)}>{category.name}</div>          
+            </div>
           ))
         }
         <div className={selectedCategory === 'Diğer' ? `${styles.categoryName} ${styles.activeCategory}` : styles.categoryName} onClick={(e) => setSelectedCategory(e.target.textContent)}>Diğer</div>
@@ -119,9 +148,9 @@ const getCategoryProduct = (category) => {
             products.length > 0 
             ?
             products.map((product, index) => (
-
               
-                <ProductCard index={index} image={width > 375 ? baseURL + product.image?.formats?.medium?.url : baseURL + product.image?.formats?.small?.url} brand={product.brand} productColor={product.color} productPrice={product.price} productID={product.id}/>
+              
+                <ProductCard index={index} product={product} /* image={width > 375 ? baseURL + product.image?.formats?.medium?.url : baseURL + product.image?.formats?.small?.url} brand={product.brand} productColor={product.color} productPrice={product.price} productID={product.id }*//>
               
             
               )) 
