@@ -28,6 +28,7 @@ const LinkStyled = styled.div`
 `
 
 const ProductCard = ({ product,index, /* image, brand, productColor, productPrice, productID */}) => {
+  console.log(product?.brand)
   return (
     <div className={styles.product} key={index}>
       <LinkStyled>
@@ -38,10 +39,10 @@ const ProductCard = ({ product,index, /* image, brand, productColor, productPric
 
           <div className={styles.productFeatures}>
               <div className={styles.brandName}>{product.brand}</div>
-              <div className={styles.productColor}><strong>Renk</strong>: {product.productColor}</div>
+              <div className={styles.productColor}><strong>Renk</strong>: {product.color}</div>
           </div>
 
-          <div className={styles.productPrice}><strong>{product.productPrice} TL</strong></div>
+          <div className={styles.productPrice}><strong>{product.price} TL</strong></div>
         </Link>
       </LinkStyled>
     </div>

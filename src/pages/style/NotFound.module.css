@@ -1,0 +1,17 @@
+.navbar {
+    padding: 10px 0;
+    position: fixed;     
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+}
+
+.ErrorHuman {
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    top: 80px;
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}

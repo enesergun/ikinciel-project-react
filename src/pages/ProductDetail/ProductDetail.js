@@ -19,6 +19,7 @@ import { useProduct } from '../../context/ProductContext';
 import { getProductDetail } from '../../services/productsService';
 import { baseURL } from '../../constants/axios';
 import GetOfferButton from '../../components/ButtonGroup/GetOfferButton';
+import NotFound from '../NotFound/NotFound';
 
 
 function ProductDetail() {    
@@ -54,26 +55,36 @@ function ProductDetail() {
        
   const getProduct = async () => {
     const res = await getProductDetail(id);
-    setProduct(res);    
+    setProduct(res);
+    
   } 
  
   const handleDeleteOffer = async () => {    
     const res = await deleteProductOffer(offer.id, product.id, token);    
   }
-  console.log(token);
+  
   return (
-    <div className={styles.ProductDetailPage}>
+    <> 
 
-       <div className={styles.navbar}>
+     {product.error 
+     ? 
+     <div>
+       <NotFound /> 
+      </div> 
+     : 
+     <>
+      <div className={styles.ProductDetailPage}>
+
+        <div className={styles.navbar}>
             <Navbar loggenIn={loggenIn}/>
-       </div>
+        </div>
 
-       <div className={styles.container}>
+        <div className={styles.container}>
             {
               width > 375
               ?
               <div className={styles.productLargeImage}>
-               <img src={baseURL + product.image?.url} alt="" />
+                <img src={baseURL + product.image?.url} alt="" />
               </div>
             : 
             <div className={styles.productLargeImage}>
@@ -87,35 +98,35 @@ function ProductDetail() {
                     offer={offer}
                 />   
                 <div className={`${styles.buttons} ${styles.detailButtons}`}>
-                   {
-                       isProductSold(id)
-                       ? <div>Bu ürün satışta değil</div>
-                       : 
-                       <>
+                    {
+                        isProductSold(id)
+                        ? <div>Bu ürün satışta değil</div>
+                        : 
+                        <>
                           <BuyProduct                             
                             id={id}
                             token={token}
                           />                    
                         {
-                           isOfferExist(id)
-                           ? <><CancelOffer handleDeleteOffer={handleDeleteOffer}/></>
-                           : 
-                           <>
+                            isOfferExist(id)
+                            ? <><CancelOffer handleDeleteOffer={handleDeleteOffer}/></>
+                            : 
+                            <>
                             {
-                               product.isOfferable 
-                               ?
-                               <>
-                                   <GetOfferButton                                                                               
-                                       product={product}  
-                                       token={token}                                                                           
-                                   />                                
-                               </>                                                         
-                             : <span></span>
+                                product.isOfferable 
+                                ?
+                                <>
+                                    <GetOfferButton                                                                               
+                                        product={product}  
+                                        token={token}                                                                           
+                                    />                                
+                                </>                                                         
+                              : <span></span>
                             }
-                           </>
+                            </>
                         }
                         </> 
-                   }
+                    }
                 </div>
 
                 <div className={styles.description}>
@@ -123,10 +134,17 @@ function ProductDetail() {
                     <p>{product.description}</p>
                 </div>
             </div>
-       </div>
-       <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
-    </div>
+        </div>
+        <ToastContainer hideProgressBar={true} className='toastContainer' toastClassName='darkToast'/>
+        </div>
+     </>
+     }
+
+    </>
+    
   )
 }
 
 export default ProductDetail
+
+

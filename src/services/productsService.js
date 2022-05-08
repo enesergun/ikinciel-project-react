@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import axios, { URL, baseURL } from "../constants/axios";
 
 export const getAllProduct = async (start) => {
@@ -58,7 +59,9 @@ export const getAllCategory = async () => {
 
 export const getProductDetail = async (id) => {
   try {
-    const res = await axios.get(URL.products + '/' + id ); 
+    const res = await axios.get(URL.products + '/' + id ).catch();
+
+    console.log(res);
 
     if(res.statusText === 'OK') {      
       return res.data;
@@ -68,9 +71,11 @@ export const getProductDetail = async (id) => {
       return {
         error: 'Category error'
       }
+      
     }
   } catch (error) {
-    console.log(error);
+    const ERROR = {"error": "error geldi"} ;
+    return ERROR  
   }
 }
 

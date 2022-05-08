@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
+import NotFound from '../pages/NotFound/NotFound'
 import Index from '../pages/Index/Index'
 import Register from '../pages/Register/Register'
 import SignIn from "../pages/SignIn/SignIn";
@@ -15,6 +16,7 @@ function Router() {
 
   return (
     <Routes>
+      <Route path='*' element={<NotFound />} />
       <Route path="/" element={<Index />} />      
       <Route path="/index" element={<Index />} />
       <Route path="register" element={<Register />} />
