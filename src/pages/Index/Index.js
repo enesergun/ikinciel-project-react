@@ -47,7 +47,7 @@ function Index() {
     let userScrollHeight = window.innerHeight + window.scrollY;
     let windowBottomHeight = document.documentElement.offsetHeight;
 
-    if (userScrollHeight >= windowBottomHeight - 0.4) {                  
+    if (userScrollHeight >= windowBottomHeight - 1) {                  
       setStart(start + 1 );
       }
 };
