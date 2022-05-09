@@ -5,6 +5,15 @@
     background-color: white;
     padding: 10px;   
 }
+
+.product:hover {
+  background: #4B9CE2;
+  
+}
+
+.product:hover .brandName {
+  color: white;
+}
 .productImage  {
     display: flex;
     flex-direction: column;
@@ -40,12 +49,6 @@ a {
     margin-top: 20px;
 }
 
-/* @media screen and (max-width: 426px) {
-  .product {
-    width: 42%;
-    margin: 10px 0;
-  }
-} */
 
 @media screen and (min-width: 320px) {
     .product {

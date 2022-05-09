@@ -31,7 +31,7 @@ const GetOfferButton = ({product, token}) => {
   }
 
   const handleOffer = (values) => {
-
+    const productID = product.id;
     let offer;
 
     if ((values.checked.length > 0 &&  values.checked.length <= 1 && !values.OfferPrice) || (values.OfferPrice && values.checked.length === 0)) {
@@ -47,15 +47,15 @@ const GetOfferButton = ({product, token}) => {
         } else if (values.OfferPrice) {
             offer = values.OfferPrice;
         }
-        getOffer(offer, product.id, token);   
+        getOffer(offer, productID, token);
         
 
-    } else if ( values.checked.length >= 1 && values.OfferPrice) {
-        console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
+    } else if ( values.checked.length >= 1 && values.OfferPrice) {        
         errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
-    } else {
-      console.log("Lütfen en fazla bir tane seçenek işaretleyin.");
+
+    } else {      
       errorPopup("Lütfen en fazla bir tane seçenek işaretleyin.");
+      
     }       
   } 
     
@@ -98,6 +98,7 @@ const GetOfferButton = ({product, token}) => {
                             onSubmit={(values) => {
                                 handleOffer(values);
                                 /* console.log(values); */
+                                
                                 
                             }}                                                                                                      
                             >

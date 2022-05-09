@@ -6,7 +6,7 @@ import Navbar from '../../components/Navbar/Navbar';
 
 import useWindowSize from "../../hooks/useWindowSize";
 
-import {getAllProduct, getProductFilterCategory } from '../../services/productsService';
+import {getAllProduct, getProductFilterCategory, getAllCategory } from '../../services/productsService';
 
 import BannerDesktop from '../../assets/BannerDesktop.webp';
 import BannerMobile from '../../assets/BannerMobile.webp';
@@ -17,7 +17,7 @@ const ProductCard = lazy(() => import('../../components/ProductCard/ProductCard'
 
 function Index() {
 
-  const [categories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('Hepsi')
   const [products, setProducts] = useState([]);
   const [start, setStart] = useState(0);
@@ -34,6 +34,15 @@ function Index() {
     setStart(0);
   }, [selectedCategory]);
 
+  useEffect(() => {
+    getCategory();    
+    
+  }, [])
+
+  const getCategory = async () => {
+    const res = await getAllCategory();  
+    setCategories(res);
+  }
   
   
   const handleScroll = () => {    
@@ -44,6 +53,7 @@ function Index() {
       setStart(start + 1 );
     }
 };
+
 
   const getData = async () => {
     if (selectedCategory === "Hepsi") {      

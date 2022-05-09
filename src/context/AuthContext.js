@@ -37,16 +37,11 @@ const AuthProvider = ({children}) => {
             email: user.email,
             password : user.password
         })
-        .then((response) => {
-            console.log("Well done!");
-            console.log('User Profile', response.data.user);
-            console.log('User token', response.data.jwt);
-            document.cookie = `name=${response.data.jwt}`
-            
+        .then((response) => {            
+            document.cookie = `name=${response.data.jwt}`            
             setLoggenIn(true);
             sessionStorage.setItem('loggedIn', true);
-            getMyUserInformation(response.data.jwt);
-            /* localStorage.setItem('userMeInformation', JSON.stringify(response.data.user)); */
+            getMyUserInformation(response.data.jwt);            
         })
         .catch((error) => {            
             console.log("An error occured", error.response);
@@ -58,18 +53,14 @@ const AuthProvider = ({children}) => {
         axios.post(URL.login, {
             identifier: user.email,
             password: user.password,
-        }).then((response) => {
-            console.log("Giriş başarılı");
-            console.log("token", response.data.jwt);
+        }).then((response) => {                        
             document.cookie = `name=${response.data.jwt}`;
-            sessionStorage.setItem('loggedIn', true);
-            console.log("login olup", response.data.user)
+            sessionStorage.setItem('loggedIn', true);        
             setTimeout(() => {
                 setLoggenIn(true);
               }, 3000);            
-            SuccessPopUp('giriş Başarılı');
-            getMyUserInformation(response.data.jwt);
-            /* localStorage.setItem('userMeInformation', JSON.stringify(response.data.user)); */
+            SuccessPopUp('Giriş Başarılı');
+            getMyUserInformation(response.data.jwt);            
         }).catch((error) => {
             console.log("error", error);
             ErrorPopUp("Email veya şifre hatalı!");

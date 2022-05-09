@@ -28,8 +28,7 @@ const LinkStyled = styled.div`
   }
 `
 
-const ProductCard = ({ product,index, /* image, brand, productColor, productPrice, productID */}) => {
-  console.log(product?.brand)
+const ProductCard = ({ product,index, /* image, brand, productColor, productPrice, productID */}) => {  
   return (
     <div className={styles.product} key={index}>
       <LinkStyled>
