@@ -97,9 +97,9 @@ Back end tarafında değerli hocamız [Oğuzhan Akbolat](https://github.com/oguz
 # Ben
   🤓 Enes Ergün
 
-  -Linkedin [Enes Ergün](https://www.linkedin.com/in/enesergun/)
-  -Twitter [@ergunenes_](https://twitter.com/ergunenes_)
-  -Medium [@enesergun](https://medium.com/@enesergun)
+  -Linkedin [Enes Ergün](https://www.linkedin.com/in/enesergun/) <br />
+  -Twitter [@ergunenes_](https://twitter.com/ergunenes_) <br />
+  -Medium [@enesergun](https://medium.com/@enesergun) <br />
 
 # License
 
